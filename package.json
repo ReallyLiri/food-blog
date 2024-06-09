@@ -1,5 +1,5 @@
 {
-  "name": "chakra-next-contentlayer-blog",
+  "name": "food-blog",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,7 @@
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build",
     "search-meta:gen": "ts-node scripts/get-search-meta.ts",
-    "cache:clean": "rm -rf .next .contentlayer",
-    "clean": "rm -rf yarn.lock node_modules",
-    "reinstall": "yarn clean && yarn"
+    "cache:clean": "rm -rf .next .contentlayer"
   },
   "dependencies": {
     "@chakra-ui/cli": "^2.0.0",
@@ -43,7 +41,7 @@
     "match-sorter": "^6.3.1",
     "mdx-bundler": "^9.0.1",
     "next": "12.1.6",
-    "next-auth": "^4.10.2",
+    "next-auth": "^4.24.7",
     "next-contentlayer": "^0.2.5",
     "next-seo": "^4.28.1",
     "octokit": "^1.7.1",
