@@ -2,6 +2,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import type { ReactNode } from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+
 interface Props {
   header?: ReactNode;
   main?: ReactNode;

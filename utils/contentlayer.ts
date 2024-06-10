@@ -76,15 +76,16 @@ export async function getAllTags(allBlogs: Blog[]) {
   return tagCount;
 }
 
-interface ICategorie {
+interface ICategory {
   category: string;
   total: number;
 }
+
 export function getPostsCategoriesGroup() {
-  const categories = allBlogs.reduce((categories: ICategorie[], blog) => {
+  const categories = allBlogs.reduce((categories: ICategory[], blog) => {
     const category = blog._raw.flattenedPath.split("/")[1];
     const findCategory = categories.find((c) => c.category === category);
-    if (!!findCategory) {
+    if (findCategory) {
       findCategory.total++;
     } else {
       categories.push({ category, total: 1 });

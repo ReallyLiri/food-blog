@@ -1,24 +1,19 @@
 import type { NextPage } from "next";
 import {
+  Button,
   Container,
   Heading,
+  Icon,
   Stack,
   Text,
-  Button,
-  Icon,
   VStack,
 } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
-import SEO from "@/components/seo";
 import BaseLayout from "layout/base-layout";
 
 const Home = () => {
   return (
     <>
-      <SEO
-        title="react next 博客"
-        description="使用react next 服务端渲染框架开发的博客网站,chakra ui设计,使用contentlayer生成静态内容,支持 mdx"
-      />
       <Container maxW={"5xl"}>
         <VStack py={{ base: 20, md: 28 }} spacing={{ base: 8, md: 10 }}>
           <Heading

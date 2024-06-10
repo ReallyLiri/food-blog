@@ -2,17 +2,12 @@ import { Button, Heading, Text, VStack } from "@chakra-ui/react";
 import NextLink from "next/link";
 import * as React from "react";
 import { FaHome } from "react-icons/fa";
-import SEO from "components/seo";
 import BaseLayout from "layout/base-layout";
 import { t } from "utils/i18n";
 
 const Main = () => {
   return (
     <>
-      <SEO
-        title={t("notfound.title")}
-        description={t("notfound.description")}
-      />
       <VStack
         justify="center"
         spacing="4"

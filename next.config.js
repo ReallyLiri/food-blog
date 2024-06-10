@@ -1,5 +1,4 @@
 const { withContentlayer } = require("next-contentlayer");
-const SiteConfig = require("./configs/site-config");
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
@@ -67,16 +66,6 @@ module.exports = withContentlayer(
     },
     redirects: require("./next-redirect"),
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-    async rewrites() {
-      return {
-        fallback: [
-          {
-            source: "/service/discuss",
-            destination: `${SiteConfig.site.siteUrl}/service/discuss`,
-          },
-        ],
-      };
-    },
     async headers() {
       return [
         {

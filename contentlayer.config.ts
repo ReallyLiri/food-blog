@@ -9,23 +9,18 @@ import remarkSlug from "remark-slug";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypePresetMinify from "rehype-preset-minify";
-import siteConfig from "./configs/site-config";
 import { getTableOfContents } from "./utils/mdx-utils";
 import { rehypeMdxCodeMeta } from "./utils/rehype-code-meta";
 
 const computedFields: ComputedFields = {
   slug: {
     type: "string",
-    //resolve: doc => `/${doc._raw.flattenedPath}`,
     resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ""),
   },
   blobUrl: {
     type: "string",
     resolve: (doc) =>
-      `${siteConfig.repo.blobUrl}/${doc._raw.flattenedPath.replace(
-        /^.+?(\/)/,
-        "",
-      )}`,
+      `broken/${doc._raw.flattenedPath.replace(/^.+?(\/)/, "")}`,
   },
 };
 
@@ -40,8 +35,8 @@ const Blog = defineDocumentType(() => ({
     authors: { type: "list", of: { type: "string" } },
     date: { type: "string" },
     description: { type: "string" },
-    referenceHref: { type: "list", of: { type: "string" } }, // 参考连接
-    reprintedHref: { type: "string" }, // 转载
+    referenceHref: { type: "list", of: { type: "string" } },
+    reprintedHref: { type: "string" },
   },
   computedFields: {
     ...computedFields,

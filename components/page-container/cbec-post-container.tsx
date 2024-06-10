@@ -1,21 +1,20 @@
 import {
   Box,
-  Container,
-  Text,
-  Heading,
-  VStack,
-  HStack,
-  Tag,
-  Link,
   Button,
+  Container,
   Flex,
+  Heading,
+  HStack,
+  Link,
+  Tag,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { ReactNode, useRef } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { CoreContent } from "utils/contentlayer";
 import type { CbecNote } from "contentlayer/generated";
-import SEO from "../seo";
 import PageTransition from "./page-transition";
 import ReadingIndicator from "../reading-indicator";
 
@@ -46,7 +45,6 @@ export default function CbecPostContainer({
 
   return (
     <>
-      <SEO title={title} description={description} />
       <ReadingIndicator progressViewTargetRef={progressViewBoxRef} />
       <Container
         ref={progressViewBoxRef}

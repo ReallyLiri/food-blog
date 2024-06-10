@@ -1,17 +1,16 @@
 import {
   Box,
-  Flex,
   chakra,
-  VStack,
-  HStack,
-  Text,
-  Tag,
+  Flex,
   Heading,
+  HStack,
+  Tag,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import * as React from "react";
 import PageTransition from "./page-transition";
-import SEO from "@/components/seo";
 import TableOfContent from "@/components/table-of-content";
 import BlogTags from "@/components/post-tags";
 import Sidebar from "@/components/sidebar/blog-sidebar";
@@ -75,7 +74,6 @@ function BlogPageContainer(props: BlogContainerProps) {
 
   return (
     <>
-      <SEO title={title} description={description} />
       {isPostDetail && (
         <ReadingIndicator progressViewTargetRef={progressViewTargetRef} />
       )}
