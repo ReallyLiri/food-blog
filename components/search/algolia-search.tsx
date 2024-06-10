@@ -1,12 +1,11 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
+  chakra,
   HStack,
   HTMLChakraProps,
   Kbd,
   Portal,
   Text,
-  VisuallyHidden,
-  chakra,
 } from "@chakra-ui/react";
 import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
 import type {
@@ -18,7 +17,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import SearchStyle from "./search.styles";
-import { t } from "utils/i18n";
 
 const ACTION_KEY_DEFAULT = ["Ctrl", "Control"];
 const ACTION_KEY_APPLE = ["⌘", "Command"];

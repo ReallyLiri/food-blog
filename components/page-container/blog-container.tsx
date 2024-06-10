@@ -110,7 +110,7 @@ function BlogPageContainer(props: BlogContainerProps) {
                         fontSize={{ base: "xl", md: "2xl" }}
                         textAlign={isPostDetail ? "left" : "center"}
                       >
-                        {convertBackticksToInlineCode(title)}
+                        {title}
                       </chakra.h1>
                       {isPostDetail && (
                         <VStack
