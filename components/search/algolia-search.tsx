@@ -77,9 +77,6 @@ export const SearchButton = React.forwardRef(function SearchButton(
           Search
         </Text>
         <HStack spacing="4px">
-          <VisuallyHidden>
-            {t("component.algolia-search.press")}{" "}
-          </VisuallyHidden>
           <Kbd rounded="2px">
             <chakra.div
               as="abbr"
@@ -89,7 +86,6 @@ export const SearchButton = React.forwardRef(function SearchButton(
               {actionKey[0]}
             </chakra.div>
           </Kbd>
-          <VisuallyHidden> {t("component.algolia-search.and")} </VisuallyHidden>
           <Kbd rounded="2px">{SECOND_KEY}</Kbd>
         </HStack>
       </HStack>

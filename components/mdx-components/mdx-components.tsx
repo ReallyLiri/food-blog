@@ -1,24 +1,18 @@
 import * as Chakra from "@chakra-ui/react";
 import * as React from "react";
-import PropsTable from "../props-table";
-import CodeBlock from "./codeblock/codeblock";
-import ComponentLinks from "./component-links";
-import IconsList from "./icons-list";
 import {
   ColorPalette,
   ColorPalettes,
   ColorWrapper,
 } from "components/color-palette";
-import { FrameworkLinks } from "components/framework-link";
 import { Anchor } from "components/mdx-components/anchor";
-import { InlineCode } from "components/mdx-components/inline-code";
 import { LinkedHeading } from "components/mdx-components/linked-heading";
-import { Pre } from "components/mdx-components/pre";
 import { Table, TData, THead } from "components/mdx-components/table";
 import { VideoPlayer } from "components/mdx-components/video-player";
-import { TutorialCodeBlock } from "@/components/tutorial/tutorial-code-block";
 
 const { Alert, AspectRatio, Box, chakra, Kbd } = Chakra;
+
+const notSupported = () => <div>Not supported</div>;
 
 export const MDXComponents = {
   ...Chakra,
@@ -29,24 +23,6 @@ export const MDXComponents = {
   h5: (props) => <LinkedHeading as="h5" apply="mdx.h5" {...props} />,
   hr: (props) => <chakra.hr apply="mdx.hr" {...props} />,
   strong: (props) => <Box as="strong" fontWeight="semibold" {...props} />,
-  code: InlineCode,
-  pre: (props) => {
-    if (typeof props.children === "string") return <Pre {...props} />;
-    if (props.children.props.type === "tutorial") {
-      const className = props.children.props.className || "";
-      const code = props.children.props.children.trim() || "";
-      const language = className.replace(/language-/, "");
-      return (
-        <TutorialCodeBlock
-          language={language}
-          code={code}
-          path={props.children.props.path}
-          showLineNumbers={props.showLineNumbers}
-        />
-      );
-    }
-    return <CodeBlock {...props} />;
-  },
   kbd: Kbd,
   br: ({ reset, ...props }) => (
     <Box
@@ -75,10 +51,12 @@ export const MDXComponents = {
       {...props}
     />
   ),
-  ComponentLinks,
-  IconsList,
-  PropsTable,
-  FrameworkLinks,
+  code: notSupported,
+  pre: notSupported,
+  ComponentLinks: notSupported,
+  IconsList: notSupported,
+  PropsTable: notSupported,
+  FrameworkLinks: notSupported,
   VideoPlayer,
   AspectRatio,
   ColorPalette,
