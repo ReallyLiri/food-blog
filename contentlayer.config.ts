@@ -17,11 +17,6 @@ const computedFields: ComputedFields = {
     type: "string",
     resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ""),
   },
-  blobUrl: {
-    type: "string",
-    resolve: (doc) =>
-      `broken/${doc._raw.flattenedPath.replace(/^.+?(\/)/, "")}`,
-  },
 };
 
 const Blog = defineDocumentType(() => ({
@@ -30,13 +25,11 @@ const Blog = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
-    tags: { type: "list", of: { type: "string" }, required: true },
-    categories: { type: "list", of: { type: "string" } },
+    tags: { type: "list", of: { type: "string" } },
+    categories: { type: "list", of: { type: "string" }, required: true },
     authors: { type: "list", of: { type: "string" } },
     date: { type: "string" },
     description: { type: "string" },
-    referenceHref: { type: "list", of: { type: "string" } },
-    reprintedHref: { type: "string" },
   },
   computedFields: {
     ...computedFields,
@@ -51,9 +44,7 @@ const Blog = defineDocumentType(() => ({
         description: doc.description,
         slug: doc._raw.flattenedPath.replace(/^.+?(\/)/, ""),
         path: `/${doc._raw.flattenedPath}`,
-        headings: getTableOfContents(doc.body.raw), // 生成的内容目录
-        referenceHref: doc.referenceHref, // 参考连接
-        reprintedHref: doc.reprintedHref, // 转载连接
+        headings: getTableOfContents(doc.body.raw),
       }),
     },
   },

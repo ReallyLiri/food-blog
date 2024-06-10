@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
-import { useScrollSpy } from "hooks/use-scrollspy";
+import { useScrollSpy } from "../utils/use-scrollspy";
 
 interface Heading {
   level: "h2" | "h3";
