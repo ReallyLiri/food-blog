@@ -22,6 +22,7 @@ import { t } from "utils/i18n";
 
 const ACTION_KEY_DEFAULT = ["Ctrl", "Control"];
 const ACTION_KEY_APPLE = ["⌘", "Command"];
+const SECOND_KEY = "K";
 
 interface HitProps {
   hit: InternalDocSearchHit | StoredDocSearchHit;
@@ -73,7 +74,7 @@ export const SearchButton = React.forwardRef(function SearchButton(
       <SearchIcon />
       <HStack w="full" ml="3" spacing="4px">
         <Text textAlign="left" flex="1">
-          {t("component.algolia-search.search-the-docs")}
+          Search
         </Text>
         <HStack spacing="4px">
           <VisuallyHidden>
@@ -89,11 +90,7 @@ export const SearchButton = React.forwardRef(function SearchButton(
             </chakra.div>
           </Kbd>
           <VisuallyHidden> {t("component.algolia-search.and")} </VisuallyHidden>
-          <Kbd rounded="2px">K</Kbd>
-          <VisuallyHidden>
-            {" "}
-            {t("component.algolia-search.to-search")}
-          </VisuallyHidden>
+          <Kbd rounded="2px">{SECOND_KEY}</Kbd>
         </HStack>
       </HStack>
     </chakra.button>

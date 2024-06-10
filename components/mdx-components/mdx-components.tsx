@@ -1,7 +1,6 @@
 import * as Chakra from "@chakra-ui/react";
 import * as React from "react";
 import PropsTable from "../props-table";
-import CarbonAd from "./carbon-ad";
 import CodeBlock from "./codeblock/codeblock";
 import ComponentLinks from "./component-links";
 import IconsList from "./icons-list";
@@ -15,9 +14,8 @@ import { Anchor } from "components/mdx-components/anchor";
 import { InlineCode } from "components/mdx-components/inline-code";
 import { LinkedHeading } from "components/mdx-components/linked-heading";
 import { Pre } from "components/mdx-components/pre";
-import { TData, THead, Table } from "components/mdx-components/table";
+import { Table, TData, THead } from "components/mdx-components/table";
 import { VideoPlayer } from "components/mdx-components/video-player";
-import SandpackEmbed from "components/sandpack-embed";
 import { TutorialCodeBlock } from "@/components/tutorial/tutorial-code-block";
 
 const { Alert, AspectRatio, Box, chakra, Kbd } = Chakra;
@@ -77,7 +75,6 @@ export const MDXComponents = {
       {...props}
     />
   ),
-  "carbon-ad": CarbonAd,
   ComponentLinks,
   IconsList,
   PropsTable,
@@ -87,9 +84,4 @@ export const MDXComponents = {
   ColorPalette,
   ColorPalettes,
   ColorWrapper,
-  SandpackEmbed: (props) => (
-    <Box my={6}>
-      <SandpackEmbed {...props} />
-    </Box>
-  ),
 };

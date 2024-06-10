@@ -14,7 +14,6 @@ import PageTransition from "./page-transition";
 import TableOfContent from "@/components/table-of-content";
 import BlogTags from "@/components/post-tags";
 import Sidebar from "@/components/sidebar/blog-sidebar";
-import Comments from "@/components/comments";
 import ReadingIndicator from "@/components/reading-indicator";
 import { convertBackticksToInlineCode } from "utils/convert-backticks-to-inline-code";
 
@@ -64,13 +63,14 @@ function BlogPageContainer(props: BlogContainerProps) {
     date,
     tags = [],
     categories = [],
-    description = "",
     headings = [],
   } = frontmatter;
 
   const progressViewTargetRef = React.useRef<HTMLDivElement>();
 
-  if (!frontmatter) return <></>;
+  if (!frontmatter) {
+    return <></>;
+  }
 
   return (
     <>
@@ -119,16 +119,16 @@ function BlogPageContainer(props: BlogContainerProps) {
                           mt={{ base: "0", md: "2" }}
                         >
                           <HStack display={{ base: "none", md: "flex" }}>
-                            <Text>分类：</Text>
+                            <Text>Categories：</Text>
                             <HStack spacing={8}>
                               <BlogTags tags={categories} />
                               <HStack spacing={4}>
-                                <Text>日期:</Text> <Tag>{date}</Tag>
+                                <Text>Published:</Text> <Tag>{date}</Tag>
                               </HStack>
                             </HStack>
                           </HStack>
                           <HStack>
-                            <Text>标签：</Text>
+                            <Text>Tags：</Text>
                             <BlogTags tags={tags} />
                           </HStack>
                         </VStack>
@@ -141,7 +141,6 @@ function BlogPageContainer(props: BlogContainerProps) {
                     >
                       {children}
                       <Box mt="40px">{pagination || null}</Box>
-                      {isPostDetail && <Comments />}
                     </Box>
                   </PageTransition>
                 </Box>

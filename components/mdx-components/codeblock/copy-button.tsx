@@ -1,7 +1,6 @@
 import { Button, ButtonProps, useClipboard } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
 import React from "react";
-import { t } from "utils/i18n";
 
 interface CopyButtonProps extends ButtonProps {
   code: string;
@@ -26,11 +25,7 @@ function CopyButton({ code, ...props }: CopyButtonProps) {
       {...props}
       onClick={onCopy}
     >
-      {hasCopied ? (
-        t("component.mdx-components.copy-button.copied")
-      ) : (
-        <CopyIcon color="white" />
-      )}
+      {hasCopied ? "Copied" : <CopyIcon color="white" />}
     </Button>
   );
 }

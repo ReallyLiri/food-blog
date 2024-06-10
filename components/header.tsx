@@ -3,12 +3,9 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   CloseIcon,
-  EditIcon,
   HamburgerIcon,
-  RepeatIcon,
 } from "@chakra-ui/icons";
 import {
-  Avatar,
   Box,
   Button,
   chakra,
@@ -20,11 +17,6 @@ import {
   Link,
   LinkBox,
   LinkOverlay,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -42,7 +34,7 @@ import { useRouter } from "next/router";
 import { memo, useEffect, useRef, useState } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BsFillMoonStarsFill, BsSunFill } from "react-icons/bs";
-import useSound from "use-sound";
+import { ROUTE_ABOUT, ROUTE_BLOG } from "../layout/routes";
 
 interface INavItem {
   label: string;
@@ -61,7 +53,7 @@ interface INavItem {
 const DeskTopNavItems: INavItem[] = [
   {
     label: "Blog",
-    href: "/blog/overview/all",
+    href: ROUTE_BLOG,
     activeUnderLine: {
       w: "38",
       h: "7",
@@ -71,7 +63,7 @@ const DeskTopNavItems: INavItem[] = [
   },
   {
     label: "About",
-    href: "/about",
+    href: ROUTE_ABOUT,
     activeUnderLine: {
       w: "58",
       h: "5",

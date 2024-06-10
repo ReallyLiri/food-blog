@@ -33,7 +33,7 @@ export default function BlogPagination({ previous, next, ...rest }: Props) {
           <Box as="a" rel="previous" flex="1" textAlign="start">
             <HStack spacing="1">
               <ChevronLeftIcon fontSize="1.2em" />
-              <span>上一篇</span>
+              <span>Previous</span>
             </HStack>
             <Box
               color="teal.400"
@@ -60,7 +60,7 @@ export default function BlogPagination({ previous, next, ...rest }: Props) {
         <NextLink href={next.path} passHref>
           <Box as="a" rel="next" flex="1" textAlign="end">
             <HStack spacing="1" justify="flex-end">
-              <span>下一篇</span>
+              <span>Next</span>
               <ChevronRightIcon fontSize="1.2em" />
             </HStack>
             <Box

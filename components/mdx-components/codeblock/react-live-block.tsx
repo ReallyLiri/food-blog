@@ -37,7 +37,7 @@ const EditableNotice = (props: BoxProps) => {
       pointerEvents="none"
       {...props}
     >
-      {t("component.mdx-components.react-live-block.editable-example")}
+      Editable Example
     </Box>
   );
 };

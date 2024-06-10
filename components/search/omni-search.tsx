@@ -266,7 +266,7 @@ function OmniSearch() {
                 bg: "white",
                 ".chakra-ui-dark &": { bg: "gray.700" },
               }}
-              placeholder="请输入关键词"
+              placeholder="Search anything"
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);

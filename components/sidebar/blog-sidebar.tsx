@@ -14,13 +14,12 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { ReactElement, ReactNode } from "react";
-import { DiJavascript } from "react-icons/di";
-import { FaCss3Alt, FaNodeJs, FaReact, FaVuejs } from "react-icons/fa";
-import { FiPenTool } from "react-icons/fi";
-import { SiWebpack } from "react-icons/si";
 import useSound from "use-sound";
 import { getPostsCategoriesGroup } from "utils/contentlayer";
-import { routeBlogCategory } from "../../layout/routes";
+import {
+  ROUTE_OVERVIEW_SEPARATOR,
+  routeBlogCategory,
+} from "../../layout/routes";
 
 type MainNavLinkProps = {
   href: string;
@@ -30,12 +29,10 @@ type MainNavLinkProps = {
 };
 
 export const isMainNavLinkActive = (href: string, path: string) => {
-  // const [_, blog, category] = path.split('/');
-  const [blog, category] = path.split("/").slice(1);
-  const isMain = path.includes("overview")
+  const [_, category] = path.split("/").slice(1);
+  const isMain = path.includes(ROUTE_OVERVIEW_SEPARATOR)
     ? path.includes(href)
-    : href.includes(`${blog}/overview/${category}`);
-
+    : href.includes(routeBlogCategory(category));
   return isMain;
 };
 
