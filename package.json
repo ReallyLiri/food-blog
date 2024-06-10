@@ -8,7 +8,7 @@
     "cache:clean": "rm -rf .next .contentlayer",
     "dev": "next dev",
     "lint": "next lint",
-    "search-meta:gen": "ts-node scripts/get-search-meta.ts",
+    "search-meta:gen": "ts-node scripts/gen-search-meta.ts",
     "start": "next start"
   },
   "dependencies": {

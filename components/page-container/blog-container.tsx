@@ -15,7 +15,6 @@ import TableOfContent from "@/components/table-of-content";
 import BlogTags from "@/components/post-tags";
 import Sidebar from "@/components/sidebar/blog-sidebar";
 import ReadingIndicator from "@/components/reading-indicator";
-import { convertBackticksToInlineCode } from "utils/convert-backticks-to-inline-code";
 
 function useHeadingFocusOnRouteChange() {
   const router = useRouter();

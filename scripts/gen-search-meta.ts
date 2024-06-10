@@ -94,7 +94,7 @@ async function getSearchMeta() {
     }
   }
 
-  json = prettier.format(JSON.stringify(json), { parser: "json" });
+  json = await prettier.format(JSON.stringify(json), { parser: "json" });
   const outPath = path.join(process.cwd(), "configs", "search-meta.json");
   fs.writeFileSync(outPath, json);
   console.log("Search meta is ready ✅");

@@ -14,7 +14,6 @@ import NextLink from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { ReactElement, ReactNode } from "react";
-import useSound from "use-sound";
 import { getPostsCategoriesGroup } from "utils/contentlayer";
 import {
   ROUTE_OVERVIEW_SEPARATOR,
@@ -81,17 +80,11 @@ export const mainNavLinks = sortBy(getPostsCategoriesGroup(), (_) =>
 }));
 
 export const MainNavLinkGroup = (props: ListProps) => {
-  const [playHover] = useSound("/sounds/plunger-immediate.mp3", {
-    volume: 0.1,
-  });
   return (
     <List spacing="4" styleType="none" {...props}>
       {mainNavLinks.map((item) => (
         <ListItem
           key={item.label}
-          onMouseEnter={() => {
-            playHover();
-          }}
           padding="1"
           _hover={{
             bgColor: "teal.50",
