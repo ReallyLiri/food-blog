@@ -4,3 +4,7 @@
     outline: none !important;
     border-color: inherit !important;
 }
+
+body {
+    overscroll-behavior: none;
+}
