@@ -34,6 +34,7 @@ const About = () => {
             _dark={{
               color: "gray.100",
             }}
+            userSelect="none"
           >
             Hello,{" "}
             <Text

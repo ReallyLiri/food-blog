@@ -1,8 +1,8 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
 const customTheme = extendTheme({
-  config: {},
+  config: {} as ThemeConfig,
   fonts: {
     heading: "dengxian, Inter, sans-serif",
     body: "dengxian, Inter, sans-serif",

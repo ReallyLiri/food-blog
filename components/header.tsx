@@ -22,6 +22,7 @@ import {
   PopoverTrigger,
   Stack,
   Text,
+  TextProps,
   useColorMode,
   useColorModeValue,
   useDisclosure,
@@ -80,7 +81,7 @@ const MobilNavItems: INavItem[] = [
   },
   {
     label: "About",
-    href: "/about",
+    href: ROUTE_ABOUT,
   },
 ];
 
@@ -302,6 +303,25 @@ const DesktopNav = memo(() => {
   );
 });
 
+const Title = (props: TextProps) => {
+  const color = useColorModeValue("purple", "violet");
+  return (
+    <Text
+      userSelect="none"
+      fontWeight={600}
+      fontSize="md"
+      color={color}
+      {...props}
+    >
+      Thyme{" "}
+      <Text color="teal.500" as="span">
+        &
+      </Text>{" "}
+      Again
+    </Text>
+  );
+};
+
 export default function Header(props: HTMLChakraProps<"header">) {
   const { maxW = "8xl", maxWidth = "8xl" } = props;
   const { colorMode, toggleColorMode } = useColorMode();
@@ -337,6 +357,8 @@ export default function Header(props: HTMLChakraProps<"header">) {
             flex={{ base: 1, md: "auto" }}
             ml={{ base: -2 }}
             display={{ base: "flex", md: "none" }}
+            alignItems="center"
+            gap={2}
           >
             <IconButton
               onClick={onToggle}
@@ -350,24 +372,38 @@ export default function Header(props: HTMLChakraProps<"header">) {
               variant={"ghost"}
               aria-label={"Toggle Navigation"}
             />
+            <Title width="100%" textAlign="center" />
           </Flex>
           {/* Home page icon */}
-          <Flex align={"center"} display={{ base: "none", md: "flex" }}>
-            <NextLink href="/" passHref>
-              <Link
-                colorScheme="teal"
-                _focus={{
-                  outline: "none",
-                }}
-                _hover={{
-                  textDecoration: "none",
-                  color: "teal",
-                }}
+          <NextLink href="/" passHref>
+            <Link
+              colorScheme="teal"
+              _focus={{
+                outline: "none",
+              }}
+              _hover={{
+                textDecoration: "none",
+              }}
+            >
+              <Flex
+                align={"center"}
+                justifyContent={"center"}
+                display={{ base: "none", md: "flex" }}
+                gap={2}
               >
-                <Icon as={AiOutlineHome} w={7} h={7} />
-              </Link>
-            </NextLink>
-          </Flex>
+                <Icon
+                  as={AiOutlineHome}
+                  w={7}
+                  h={7}
+                  color="teal.500"
+                  _hover={{
+                    color: colorMode === "light" ? "purple" : "violet",
+                  }}
+                />
+                <Title />
+              </Flex>
+            </Link>
+          </NextLink>
           {/* Menu */}
           <Flex display={{ base: "none", md: "flex" }}>
             <DesktopNav />

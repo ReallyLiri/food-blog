@@ -23,7 +23,7 @@ class Document extends NextDocument {
           ></script>
         </Head>
         <body>
-          <ColorModeScript />
+          <ColorModeScript initialColorMode="system" />
           <Main />
           <NextScript />
         </body>

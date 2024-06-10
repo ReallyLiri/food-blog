@@ -7,6 +7,7 @@ import ToTop from "@/components/ToTop";
 import theme from "theme";
 import Head from "next/head";
 import "public/css/pace-theme-default.min.css";
+import "public/css/app.css";
 
 function App({ Component, pageProps }: AppProps) {
   return (
