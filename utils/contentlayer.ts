@@ -83,15 +83,16 @@ interface ICategory {
 
 export function getPostsCategoriesGroup() {
   const categories = allBlogs.reduce((categories: ICategory[], blog) => {
-    const category = blog._raw.flattenedPath.split("/")[1];
-    const findCategory = categories.find((c) => c.category === category);
-    if (findCategory) {
-      findCategory.total++;
-    } else {
-      categories.push({ category, total: 1 });
-    }
+    blog.categories?.forEach((category) => {
+      const findCategory = categories.find((c) => c.category === category);
+      if (findCategory) {
+        findCategory.total++;
+      } else {
+        categories.push({ category, total: 1 });
+      }
+    });
     return categories;
   }, []);
-  categories.push({ category: "all", total: allBlogs.length });
+  categories.push({ category: "All", total: allBlogs.length });
   return categories;
 }

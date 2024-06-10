@@ -64,8 +64,8 @@ module.exports = withContentlayer(
       optimizeFonts: true,
       modern: true,
     },
-    redirects: require("./next-redirect"),
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+
     async headers() {
       return [
         {

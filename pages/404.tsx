@@ -3,9 +3,8 @@ import NextLink from "next/link";
 import * as React from "react";
 import { FaHome } from "react-icons/fa";
 import BaseLayout from "layout/base-layout";
-import { t } from "utils/i18n";
 
-const Main = () => {
+const NotFound = () => {
   return (
     <>
       <VStack
@@ -15,8 +14,10 @@ const Main = () => {
         mt={["10", null, "20"]}
         textAlign="center"
       >
-        <Heading>{t("notfound.heading")}</Heading>
-        <Text fontSize={{ md: "xl" }}>{t("notfound.message")}</Text>
+        <Heading>Not Found</Heading>
+        <Text fontSize={{ md: "xl" }}>
+          Unfortunately, this page does not exist
+        </Text>
         <NextLink href="/" passHref>
           <Button
             as="a"
@@ -25,7 +26,7 @@ const Main = () => {
             colorScheme="teal"
             size="lg"
           >
-            {t("notfound.back-to-home")}
+            Back to Home
           </Button>
         </NextLink>
       </VStack>
@@ -34,7 +35,7 @@ const Main = () => {
 };
 
 const NotFoundPage = () => {
-  return <BaseLayout main={<Main />} />;
+  return <BaseLayout main={<NotFound />} />;
 };
 
 export default NotFoundPage;

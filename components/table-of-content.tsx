@@ -34,17 +34,11 @@ function TableOfContent(props: TableOfContentProps) {
   useEffect(() => {
     const activeDom = document.getElementById(`li-${activeId}`);
     if (activeDom) {
-      // 获取可视窗口的高度。
       const viewHeight = tocRef.current.clientHeight;
-      // 获取滚动条滚动的高度
       const scrollTop = tocRef.current.scrollTop;
-      // 滚动内容总高度
       const scrollHeight = tocRef.current.scrollHeight;
-      // 获取元素偏移的高度。就是距离可视窗口的偏移量。
       const offsetTop = activeDom.offsetTop;
-      // 最大滚动距离
       const maxScrollTop = scrollHeight - viewHeight;
-      // 选中目录不在可视区，则滚动至可视区
       if (offsetTop - scrollTop >= viewHeight || offsetTop - scrollTop <= 0) {
         tocRef.current.scrollTo({
           top: offsetTop > maxScrollTop ? maxScrollTop : offsetTop,
@@ -86,7 +80,7 @@ function TableOfContent(props: TableOfContentProps) {
         _dark={{ color: "gray.400" }}
         letterSpacing="wide"
       >
-        目录
+        Table of Contents
       </Text>
       <OrderedList spacing={1} ml="0" mt="4" styleType="none">
         {headings.map(({ id, text, level }) => (

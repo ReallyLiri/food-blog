@@ -16,9 +16,6 @@ class Document extends NextDocument {
     return (
       <Html lang="zh">
         <Head>
-          {/* 页面加载进度条样式 */}
-          {/* <link rel="stylesheet" href="/css/pace-theme-default.min.css"></link> */}
-          {/* 页面加载进度条脚本 */}
           <script
             defer
             src="/js/pace.min.js"
@@ -26,7 +23,6 @@ class Document extends NextDocument {
           ></script>
         </Head>
         <body>
-          {/* 👇 Here's the script */}
           <ColorModeScript />
           <Main />
           <NextScript />

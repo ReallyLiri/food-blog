@@ -49,7 +49,7 @@ interface INavItem {
   subLabel?: string;
   children?: Array<INavItem>;
   href?: string;
-  navTaggle?: () => void;
+  navToggle?: () => void;
   activeUnderLine?: {
     w: string;
     h: string;
@@ -58,29 +58,9 @@ interface INavItem {
   };
 }
 
-// const dropAnimation = keyframes`
-// strokeDashoffset: 0;
-// `;
-// const PathCss = css`
-//   strokedasharray: 60;
-//   strokedashoffset: 60;
-//   animation: 500ms cubic-bezier(0.27, 0.22, 0.44, 1.03) 250ms 1 normal both
-//     running ${dropAnimation};
-// `;
-// const ChakraSvg = chakra('svg', {
-//   baseStyle: {
-//     pos: 'absolute',
-//     display: 'block',
-//     left: '0px',
-//     right: '0px',
-//     bottom: '0px',
-//     margin: 'auto',
-//   },
-// });
-
 const DeskTopNavItems: INavItem[] = [
   {
-    label: "文章",
+    label: "Blog",
     href: "/blog/overview/all",
     activeUnderLine: {
       w: "38",
@@ -90,57 +70,7 @@ const DeskTopNavItems: INavItem[] = [
     },
   },
   {
-    label: "小作品",
-    href: "#",
-    activeUnderLine: {
-      w: "58",
-      h: "5",
-      d: "M1 3.18471C4.34436 3.18471 7.48008 1 10.8705 1C13.2525 1 15.1058 1.72336 17.3165 2.34614C20.3083 3.18891 22.9386 4.09106 26.1351 3.62607C28.8438 3.23203 31.8901 3.01248 34.5396 3.59297C35.6272 3.83127 36.5433 3.92663 37.55 3.29505C38.1957 2.88991 39.4841 3.07684 39.6651 3.87985C39.809 4.51858 43.0217 2.41818 43.6827 2.09236C44.6745 1.60342 45.105 1.98753 46.0216 2.48958C47.7503 3.43649 49.2982 3.62537 51.259 3.19575C51.6076 3.11937 52.011 3.20318 52.3669 3.18471C52.8876 3.1577 53.3662 2.78749 53.8777 2.78749C54.9479 2.78749 55.8858 2.39027 57 2.39027",
-      dash: 60,
-    },
-  },
-  {
-    label: "跨境笔记",
-    href: "/cbec-note",
-    activeUnderLine: {
-      w: "83",
-      h: "7",
-      d: "M1.36658 3.43961C5.25984 2.21819 9.10198 2.35113 13.042 1.74498C16.5973 1.19801 20.2829 1.33594 23.9226 1.33594C27.3725 1.33594 30.9056 1.5463 34.2891 1.5463C35.5441 1.5463 37.2693 2.05276 38.3912 2.55139C39.6341 3.10379 41.4642 3.25919 42.8089 3.4513C44.602 3.70745 46.3029 3.86034 48.1616 3.86034C49.0606 3.86034 49.9761 3.43961 50.9081 3.43961C51.4475 3.43961 52.841 3.17686 53.3273 2.97213C55.1318 2.21235 56.3597 3.3818 57.5346 4.49145C58.2657 5.18187 59.2379 3.46932 60.0123 3.18249C60.9779 2.82484 61.679 2.53519 62.4783 3.33443C62.7994 3.65557 63.8588 5.51258 64.3716 5.22773C65.485 4.60917 66.7235 4.15447 67.7258 3.33443C69.0587 2.24383 71.3278 2.48068 73 2.38777C74.4626 2.30652 75.525 2.05998 77 2.38777C77.7415 2.55256 78.7556 2.38777 79.518 2.38777C80.2804 2.38777 81.1728 1.74498 82 1.74498",
-      dash: 84,
-    },
-  },
-  {
-    label: "站点导航",
-    href: "/site-map",
-    activeUnderLine: {
-      w: "83",
-      h: "7",
-      d: "M1.36658 3.43961C5.25984 2.21819 9.10198 2.35113 13.042 1.74498C16.5973 1.19801 20.2829 1.33594 23.9226 1.33594C27.3725 1.33594 30.9056 1.5463 34.2891 1.5463C35.5441 1.5463 37.2693 2.05276 38.3912 2.55139C39.6341 3.10379 41.4642 3.25919 42.8089 3.4513C44.602 3.70745 46.3029 3.86034 48.1616 3.86034C49.0606 3.86034 49.9761 3.43961 50.9081 3.43961C51.4475 3.43961 52.841 3.17686 53.3273 2.97213C55.1318 2.21235 56.3597 3.3818 57.5346 4.49145C58.2657 5.18187 59.2379 3.46932 60.0123 3.18249C60.9779 2.82484 61.679 2.53519 62.4783 3.33443C62.7994 3.65557 63.8588 5.51258 64.3716 5.22773C65.485 4.60917 66.7235 4.15447 67.7258 3.33443C69.0587 2.24383 71.3278 2.48068 73 2.38777C74.4626 2.30652 75.525 2.05998 77 2.38777C77.7415 2.55256 78.7556 2.38777 79.518 2.38777C80.2804 2.38777 81.1728 1.74498 82 1.74498",
-      dash: 84,
-    },
-  },
-  {
-    label: "留言板",
-    href: "/message-board",
-    activeUnderLine: {
-      w: "58",
-      h: "5",
-      d: "M1 3.18471C4.34436 3.18471 7.48008 1 10.8705 1C13.2525 1 15.1058 1.72336 17.3165 2.34614C20.3083 3.18891 22.9386 4.09106 26.1351 3.62607C28.8438 3.23203 31.8901 3.01248 34.5396 3.59297C35.6272 3.83127 36.5433 3.92663 37.55 3.29505C38.1957 2.88991 39.4841 3.07684 39.6651 3.87985C39.809 4.51858 43.0217 2.41818 43.6827 2.09236C44.6745 1.60342 45.105 1.98753 46.0216 2.48958C47.7503 3.43649 49.2982 3.62537 51.259 3.19575C51.6076 3.11937 52.011 3.20318 52.3669 3.18471C52.8876 3.1577 53.3662 2.78749 53.8777 2.78749C54.9479 2.78749 55.8858 2.39027 57 2.39027",
-      dash: 60,
-    },
-  },
-  {
-    label: "Goodies",
-    href: "#",
-    activeUnderLine: {
-      w: "83",
-      h: "7",
-      d: "M1.36658 3.43961C5.25984 2.21819 9.10198 2.35113 13.042 1.74498C16.5973 1.19801 20.2829 1.33594 23.9226 1.33594C27.3725 1.33594 30.9056 1.5463 34.2891 1.5463C35.5441 1.5463 37.2693 2.05276 38.3912 2.55139C39.6341 3.10379 41.4642 3.25919 42.8089 3.4513C44.602 3.70745 46.3029 3.86034 48.1616 3.86034C49.0606 3.86034 49.9761 3.43961 50.9081 3.43961C51.4475 3.43961 52.841 3.17686 53.3273 2.97213C55.1318 2.21235 56.3597 3.3818 57.5346 4.49145C58.2657 5.18187 59.2379 3.46932 60.0123 3.18249C60.9779 2.82484 61.679 2.53519 62.4783 3.33443C62.7994 3.65557 63.8588 5.51258 64.3716 5.22773C65.485 4.60917 66.7235 4.15447 67.7258 3.33443C69.0587 2.24383 71.3278 2.48068 73 2.38777C74.4626 2.30652 75.525 2.05998 77 2.38777C77.7415 2.55256 78.7556 2.38777 79.518 2.38777C80.2804 2.38777 81.1728 1.74498 82 1.74498",
-      dash: 84,
-    },
-  },
-  {
-    label: "关于",
+    label: "About",
     href: "/about",
     activeUnderLine: {
       w: "58",
@@ -153,36 +83,16 @@ const DeskTopNavItems: INavItem[] = [
 
 const MobilNavItems: INavItem[] = [
   {
-    label: "文章",
+    label: "Blog",
     children: mainNavLinks,
   },
   {
-    label: "小作品",
-    href: "#",
-  },
-  {
-    label: "跨境笔记",
-    href: "/cbec-note",
-  },
-  {
-    label: "站点导航",
-    href: "/site-map",
-  },
-  {
-    label: "留言板",
-    href: "/message-board",
-  },
-  {
-    label: "Goodies",
-    href: "#",
-  },
-  {
-    label: "关于",
+    label: "About",
     href: "/about",
   },
 ];
 
-const MobileNavItem = ({ label, children, href, navTaggle }: INavItem) => {
+const MobileNavItem = ({ label, children, href, navToggle }: INavItem) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -197,7 +107,7 @@ const MobileNavItem = ({ label, children, href, navTaggle }: INavItem) => {
             textDecoration: "none",
           }}
           onClick={() => {
-            !children && navTaggle && navTaggle();
+            !children && navToggle && navToggle();
           }}
         >
           <Text fontWeight={600} fontSize="md">
@@ -233,7 +143,7 @@ const MobileNavItem = ({ label, children, href, navTaggle }: INavItem) => {
                   fontSize="md"
                   w="full"
                   onClick={() => {
-                    navTaggle && navTaggle();
+                    navToggle && navToggle();
                   }}
                 >
                   {child.label}
@@ -246,7 +156,7 @@ const MobileNavItem = ({ label, children, href, navTaggle }: INavItem) => {
   );
 };
 
-const MobileNav = ({ navTaggle }: { navTaggle: () => void }) => {
+const MobileNav = ({ navToggle }: { navToggle: () => void }) => {
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
@@ -263,7 +173,7 @@ const MobileNav = ({ navTaggle }: { navTaggle: () => void }) => {
           <MobileNavItem
             key={navItem.label}
             {...navItem}
-            navTaggle={navTaggle}
+            navToggle={navToggle}
           />
         );
       })}
@@ -349,32 +259,6 @@ const ActiveUnderLine = memo(
   },
 );
 
-// const dropAnimation = keyframes`
-//   100% {
-//     stroke-dashoffset: 0;
-//   }
-// `;
-
-// const MySvg = styled.svg({
-//   position: 'absolute',
-//   display: 'block',
-//   left: '0px',
-//   right: '0px',
-//   bottom: '-8px',
-//   margin: 'auto',
-// });
-
-// const MyPath = styled.path({
-//   stroke: '#38B2AC',
-//   strokeWidth: 2,
-//   strokeLinecap: 'round',
-//   strokeLinejoin: 'round',
-//   strokeDasharray: 60,
-//   strokeDashoffset: 60,
-//   animation: `500ms cubic-bezier(0.27, 0.22, 0.44, 1.03) 250ms 1 normal both
-//     running ${dropAnimation}`,
-// });
-
 const DesktopNav = memo(() => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
@@ -418,14 +302,6 @@ const DesktopNav = memo(() => {
             )}
           </Popover>
           {asPath.includes(navItem.href) && (
-            // <MySvg
-            //   width={navItem.activeUnderLine.w}
-            //   height={navItem.activeUnderLine.h}
-            //   viewBox={`0 0 ${navItem.activeUnderLine.w} ${navItem.activeUnderLine.h}`}
-            //   fill="none"
-            // >
-            //   <MyPath d={navItem.activeUnderLine.d}></MyPath>
-            // </MySvg>
             <ActiveUnderLine underLine={navItem.activeUnderLine} />
           )}
         </Box>
@@ -447,9 +323,6 @@ export default function Header(props: HTMLChakraProps<"header">) {
     return scrollY.onChange(() => setY(scrollY.get()));
   }, [scrollY]);
 
-  const [playOn] = useSound("/sounds/switch-on.mp3", { volume: 0.5 });
-  const [playOff] = useSound("/sounds/switch-off.mp3", { volume: 0.5 });
-
   return (
     <chakra.header
       ref={ref}
@@ -467,7 +340,7 @@ export default function Header(props: HTMLChakraProps<"header">) {
     >
       <chakra.div height="4.5rem" mx="auto" maxW={maxW} maxWidth={maxWidth}>
         <Flex w="100%" h="100%" px="6" align="center" justify="space-between">
-          {/* 移动端 汉堡菜单图片 */}
+          {/* Mobile hamburger menu */}
           <Flex
             flex={{ base: 1, md: "auto" }}
             ml={{ base: -2 }}
@@ -486,7 +359,7 @@ export default function Header(props: HTMLChakraProps<"header">) {
               aria-label={"Toggle Navigation"}
             />
           </Flex>
-          {/* 左侧首页图标 文字 */}
+          {/* Home page icon */}
           <Flex align={"center"} display={{ base: "none", md: "flex" }}>
             <NextLink href="/" passHref>
               <Link
@@ -503,73 +376,24 @@ export default function Header(props: HTMLChakraProps<"header">) {
               </Link>
             </NextLink>
           </Flex>
-          {/* 中间菜单选项 */}
+          {/* Menu */}
           <Flex display={{ base: "none", md: "flex" }}>
             <DesktopNav />
           </Flex>
-          {/* 右侧用户选项 */}
+          {/* User options */}
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              <Button
-                onClick={() => {
-                  colorMode === "light" ? playOff() : playOn();
-                  toggleColorMode();
-                }}
-              >
+              <Button onClick={() => toggleColorMode()}>
                 {colorMode === "light" ? (
                   <BsFillMoonStarsFill />
                 ) : (
                   <BsSunFill />
                 )}
               </Button>
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                  _focus={{
-                    outline: "none",
-                  }}
-                >
-                  <Avatar
-                    name="molin"
-                    size={"sm"}
-                    src={
-                      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                    }
-                  />
-                </MenuButton>
-                <MenuList>
-                  <MenuItem
-                    icon={<RepeatIcon />}
-                    onClick={() => {
-                      //location.href = 'https://abcjs123.vip/service/discuss';
-                      window.open(
-                        "https://abcjs123.vip/service/discuss",
-                        "_blank",
-                      );
-                    }}
-                  >
-                    评论管理
-                  </MenuItem>
-                  <MenuDivider />
-                  <MenuItem
-                    icon={<EditIcon />}
-                    onClick={() => {
-                      window.open("https://wiki.abcjs123.vip", "_blank");
-                      //location.href = 'https://wiki.abcjs123.vip';
-                    }}
-                  >
-                    My WiKi
-                  </MenuItem>
-                </MenuList>
-              </Menu>
             </Stack>
           </Flex>
         </Flex>
-        {/* 移动端菜单 */}
+        {/* Mobile menu */}
         <Collapse in={isOpen} animateOpacity>
           <Box
             bg="blackAlpha.600"
@@ -579,7 +403,7 @@ export default function Header(props: HTMLChakraProps<"header">) {
             w="full"
             minH="100vh"
           >
-            <MobileNav navTaggle={onToggle} />
+            <MobileNav navToggle={onToggle} />
           </Box>
         </Collapse>
       </chakra.div>

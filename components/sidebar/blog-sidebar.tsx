@@ -9,6 +9,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { sortBy } from "lodash";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -19,6 +20,7 @@ import { FiPenTool } from "react-icons/fi";
 import { SiWebpack } from "react-icons/si";
 import useSound from "use-sound";
 import { getPostsCategoriesGroup } from "utils/contentlayer";
+import { routeBlogCategory } from "../../layout/routes";
 
 type MainNavLinkProps = {
   href: string;
@@ -72,73 +74,14 @@ const MainNavLink = ({ href, icon, children }: MainNavLinkProps) => {
   );
 };
 
-export const mainNavLinks = [
-  {
-    icon: <CalendarIcon />,
-    href: "/blog/overview/all",
-    label: "全部文章",
-    postsCount:
-      getPostsCategoriesGroup().find((c) => "/blog/all".includes(c.category))
-        ?.total || 0,
-  },
-  {
-    icon: <DiJavascript />,
-    href: "/blog/overview/javascript",
-    label: "JavaScript",
-    postsCount:
-      getPostsCategoriesGroup().find((c) =>
-        "/blog/overview/javascript".includes(c.category),
-      )?.total || 0,
-  },
-  {
-    icon: <FaCss3Alt />,
-    href: "/blog/overview/css",
-    label: "CSS",
-    postsCount:
-      getPostsCategoriesGroup().find((c) => "/blog/css".includes(c.category))
-        ?.total || 0,
-  },
-  {
-    icon: <FaReact />,
-    href: "/blog/overview/react",
-    label: "React",
-    postsCount:
-      getPostsCategoriesGroup().find((c) => "/blog/react".includes(c.category))
-        ?.total || 0,
-  },
-  {
-    icon: <FaVuejs />,
-    href: "/blog/overview/vue",
-    label: "Vue",
-    postsCount:
-      getPostsCategoriesGroup().find((c) => "/blog/vue".includes(c.category))
-        ?.total || 0,
-  },
-  {
-    icon: <SiWebpack />,
-    href: "/blog/overview/module",
-    label: "工程 & 模块化",
-    postsCount:
-      getPostsCategoriesGroup().find((c) => "/blog/module".includes(c.category))
-        ?.total || 0,
-  },
-  {
-    icon: <FaNodeJs />,
-    href: "/blog/overview/node",
-    label: "node后端",
-    postsCount:
-      getPostsCategoriesGroup().find((c) => "/blog/node".includes(c.category))
-        ?.total || 0,
-  },
-  {
-    icon: <FiPenTool />,
-    href: "/blog/overview/other",
-    label: "其他",
-    postsCount:
-      getPostsCategoriesGroup().find((c) => "/blog/other".includes(c.category))
-        ?.total || 0,
-  },
-];
+export const mainNavLinks = sortBy(getPostsCategoriesGroup(), (_) =>
+  _.category.toLocaleLowerCase(),
+).map((category) => ({
+  icon: <CalendarIcon />,
+  href: routeBlogCategory(category.category.toLocaleLowerCase()),
+  label: category.category,
+  postsCount: category.total,
+}));
 
 export const MainNavLinkGroup = (props: ListProps) => {
   const [playHover] = useSound("/sounds/plunger-immediate.mp3", {

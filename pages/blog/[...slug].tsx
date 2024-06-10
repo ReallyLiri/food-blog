@@ -10,7 +10,6 @@ import BaseLayout from "layout/base-layout";
 import { allBlogs } from "contentlayer/generated";
 import { sortedBlogPost, coreContent } from "utils/contentlayer";
 
-// 目录锚点路由点击，跳转至锚点
 function useHeadingFocusOnRouteChange() {
   const router = useRouter();
 

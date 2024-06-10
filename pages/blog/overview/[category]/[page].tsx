@@ -19,7 +19,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postsCategoriesGroup.reduce((paths, categoryObj) => {
     const categoryTotalPage = Math.ceil(categoryObj.total / POSTS_PER_PAGE);
     const subPaths = Array.from({ length: categoryTotalPage }, (_, i) => ({
-      params: { category: categoryObj.category, page: (i + 1).toString() },
+      params: {
+        category: categoryObj.category.toLocaleLowerCase(),
+        page: (i + 1).toString(),
+      },
     }));
     return [...paths, ...subPaths];
   }, []);
@@ -42,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           post.slug.startsWith(category as string) && posts.push(post);
           return posts;
         }, []);
-  const contianerTitle = mainNavLinks.find((nav) =>
+  const containerTitle = mainNavLinks.find((nav) =>
     nav.href.includes(category as string),
   ).label;
 
@@ -62,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       initialDisplayPosts: allCoreContent(initialDisplayPosts),
       pagination,
-      contianerTitle,
+      containerTitle,
     },
   };
 };
@@ -70,12 +73,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export default function PostsPage({
   initialDisplayPosts,
   pagination,
-  contianerTitle,
+  containerTitle,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <BaseLayout>
       <PostsListPage
-        pageContainerTitle={contianerTitle}
+        pageContainerTitle={containerTitle}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
       />

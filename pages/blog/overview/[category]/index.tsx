@@ -30,6 +30,10 @@ import {
 } from "utils/contentlayer";
 import { allBlogs, type Blog } from "contentlayer/generated";
 import { mainNavLinks } from "@/components/sidebar/blog-sidebar";
+import {
+  routeBlogCategoryPage,
+  routeBlogPost,
+} from "../../../../layout/routes";
 
 interface PostsListProps {
   pageContainerTitle: string;
@@ -37,7 +41,7 @@ interface PostsListProps {
   pagination?: ComponentProps<typeof Pagination>;
 }
 
-const NotMore: React.ReactNode = (
+const NoMorePosts: React.ReactNode = (
   <Box textAlign="center" py={10} px={6}>
     <Heading
       display="inline-block"
@@ -46,7 +50,7 @@ const NotMore: React.ReactNode = (
       bgGradient="linear(to-r, teal.400, teal.600)"
       backgroundClip="text"
     >
-      暂无更多数据
+      Nothing to see here
     </Heading>
     <Text
       fontSize={{ base: "14px", md: "18px" }}
@@ -54,23 +58,8 @@ const NotMore: React.ReactNode = (
       mt={3}
       mb={6}
     >
-      空空如也, 什么也没找到
+      Empty
     </Text>
-    <NextLink href="/home" passHref>
-      <Link
-        colorScheme="teal"
-        bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
-        color="white"
-        variant="solid"
-        fontSize="sm"
-        size={{ base: "sm", md: "md" }}
-        p="2"
-        borderRadius="md"
-        _hover={{ textDecoration: "none" }}
-      >
-        回首页看看
-      </Link>
-    </NextLink>
   </Box>
 );
 
@@ -84,8 +73,9 @@ export const PostsListPage: FC<PostsListProps> = ({
 
   const changePageCallback = (currentPage?: number) => {
     const { category } = router.query;
-    router.push(`/blog/overview/${category}/${currentPage}`);
+    router.push(routeBlogCategoryPage(category as string, currentPage || 1));
   };
+
   const PostsPagination = (
     <>
       {pagination && pagination.total > 1 && (
@@ -120,14 +110,14 @@ export const PostsListPage: FC<PostsListProps> = ({
         spacing={{ base: "3", md: "5" }}
         align="stretch"
       >
-        {!initialDisplayPosts.length && NotMore}
+        {!initialDisplayPosts.length && NoMorePosts}
         {initialDisplayPosts.map((post) => (
           <PostItem
             key={post.slug}
             title={post.title}
             publishDate={post.date}
             tags={post.tags}
-            href={`/blog/${post.slug}`}
+            href={routeBlogPost(post.slug)}
           />
         ))}
       </VStack>
@@ -142,7 +132,7 @@ export const postsCategoriesGroup = getPostsCategoriesGroup();
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postsCategoriesGroup.map((c) => ({
-    params: { category: c.category },
+    params: { category: c.category.toLocaleLowerCase() },
   }));
 
   return {
@@ -165,7 +155,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }, []);
 
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE);
-  const contianerTitle = mainNavLinks.find((nav) =>
+  const containerTitle = mainNavLinks.find((nav) =>
     nav.href.includes(category as string),
   ).label;
 
@@ -179,7 +169,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       initialDisplayPosts: allCoreContent(initialDisplayPosts),
       pagination,
-      contianerTitle,
+      containerTitle,
     },
   };
 };
@@ -187,12 +177,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export default function PostsPage({
   initialDisplayPosts,
   pagination,
-  contianerTitle,
+  containerTitle,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <BaseLayout>
       <PostsListPage
-        pageContainerTitle={contianerTitle}
+        pageContainerTitle={containerTitle}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
       />

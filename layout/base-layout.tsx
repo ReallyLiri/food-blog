@@ -18,9 +18,11 @@ const BaseLayout = ({
 }: Props) => {
   return (
     <Grid
-      templateAreas={`"header header"
-                  "main main"
-                  "footer footer"`}
+      templateAreas={`
+      "header header"
+      "main main"
+      "footer footer"
+      `}
       gridTemplateRows={"4.5rem 1fr auto"}
       minH="100vh"
       gap="1"
