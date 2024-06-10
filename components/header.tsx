@@ -304,13 +304,13 @@ const DesktopNav = memo(() => {
 });
 
 const Title = (props: TextProps) => {
-  const color = useColorModeValue("purple", "violet");
   return (
     <Text
       userSelect="none"
       fontWeight={600}
       fontSize="md"
-      color={color}
+      color="purple"
+      _dark={{ color: "violet" }}
       {...props}
     >
       Thyme{" "}

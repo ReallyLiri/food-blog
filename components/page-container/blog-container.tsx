@@ -117,18 +117,21 @@ function BlogPageContainer(props: BlogContainerProps) {
                           align="stretch"
                           mt={{ base: "0", md: "2" }}
                         >
-                          <HStack display={{ base: "none", md: "flex" }}>
-                            <Text>Categories：</Text>
-                            <HStack spacing={8}>
-                              <BlogTags tags={categories} />
-                              <HStack spacing={4}>
-                                <Text>Published:</Text> <Tag>{date}</Tag>
-                              </HStack>
+                          <HStack
+                            display={{ base: "none", md: "flex" }}
+                            spacing={8}
+                          >
+                            <HStack spacing={4}>
+                              <Text>Categories：</Text>
+                              <BlogTags tags={categories} color="teal" />
+                            </HStack>
+                            <HStack spacing={4}>
+                              <Text>Published:</Text> <Tag>{date}</Tag>
                             </HStack>
                           </HStack>
                           <HStack>
                             <Text>Tags：</Text>
-                            <BlogTags tags={tags} />
+                            <BlogTags tags={tags} color="orange" />
                           </HStack>
                         </VStack>
                       )}

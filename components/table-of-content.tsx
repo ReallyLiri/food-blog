@@ -73,11 +73,9 @@ function TableOfContent(props: TableOfContentProps) {
       <Text
         as="h2"
         id="toc-title"
-        textTransform="uppercase"
         fontWeight="bold"
         fontSize="xl"
-        color="gray.700"
-        _dark={{ color: "gray.400" }}
+        color="teal.400"
         letterSpacing="wide"
       >
         Table of Contents
