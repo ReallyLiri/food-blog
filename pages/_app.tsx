@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
-import { SessionProvider } from "next-auth/react";
 
 import FontFace from "@/components/font-face";
 import ToTop from "@/components/ToTop";
@@ -19,9 +18,7 @@ function App({ Component, pageProps }: AppProps) {
         <title>Food Blog</title>
       </Head>
       <ChakraProvider theme={theme}>
-        <SessionProvider session={pageProps.session} refetchInterval={0}>
-          <Component {...pageProps} />
-        </SessionProvider>
+        <Component {...pageProps} />
         <ToTop />
       </ChakraProvider>
       <FontFace />
