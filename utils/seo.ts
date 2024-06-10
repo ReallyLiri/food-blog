@@ -1,13 +1,13 @@
-import siteConfig from 'configs/site-config'
+import siteConfig from "configs/site-config";
 
 type GetSeoOptions = {
-  omitOpenGraphImage?: boolean
-}
+  omitOpenGraphImage?: boolean;
+};
 
 export function getSeo(options: GetSeoOptions = {}) {
-  const { omitOpenGraphImage } = options
-  const { seo } = siteConfig
-  const { images, ...openGraph } = seo.openGraph
+  const { omitOpenGraphImage } = options;
+  const { seo } = siteConfig;
+  const { images, ...openGraph } = seo.openGraph;
 
   return {
     ...seo,
@@ -15,5 +15,5 @@ export function getSeo(options: GetSeoOptions = {}) {
       ...openGraph,
       images: omitOpenGraphImage ? undefined : images,
     },
-  }
+  };
 }

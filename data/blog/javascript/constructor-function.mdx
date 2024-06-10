@@ -1,9 +1,9 @@
 ---
 title: JavaScript 构造函数由浅入深理解
-authors: ['mutongxiao']
-tags: ['JavaScript', '构造函数']
-categories: ['JavaScript']
-date: '2022-5-19'
+authors: ["mutongxiao"]
+tags: ["JavaScript", "构造函数"]
+categories: ["JavaScript"]
+date: "2022-5-19"
 description: JavaScript构造函数的理解。
 ---
 
@@ -17,17 +17,17 @@ description: JavaScript构造函数的理解。
 
 ```js
 let obj = {
-  name: 'lnj',
+  name: "lnj",
   age: 33,
   say: function () {
-    console.log('hello world');
+    console.log("hello world");
   },
 };
 let obj = {
-  name: 'zs',
+  name: "zs",
   age: 44,
   say: function () {
-    console.log('hello world');
+    console.log("hello world");
   },
 };
 ```
@@ -40,12 +40,12 @@ function createPerson(myName, myAge) {
   obj.name = myName;
   obj.age = myAge;
   obj.say = function () {
-    console.log('hello world');
+    console.log("hello world");
   };
   return obj;
 }
-let obj1 = createPerson('lnj', 34);
-let obj2 = createPerson('zs', 44);
+let obj1 = createPerson("lnj", 34);
+let obj2 = createPerson("zs", 44);
 console.log(obj1);
 console.log(obj2);
 ```
@@ -74,7 +74,7 @@ function Person(myName, myAge) {
   this.say = function () {
     // 方法中的this谁调用就是谁, 所以当前是obj1调用, 所以当前的this就是obj1
     // console.log(this.name, this.age);
-    console.log('hello world');
+    console.log("hello world");
   };
   // return this; // 系统自动添加的
 }
@@ -87,8 +87,8 @@ function Person(myName, myAge) {
 3. 会在构造函数的最后自动添加 return this;
 
 ```js
-let obj1 = new Person('lnj', 34);
-let obj2 = new Person('zs', 44);
+let obj1 = new Person("lnj", 34);
+let obj2 = new Person("zs", 44);
 console.log(obj1);
 console.log(obj2);
 // 由于两个对象中的say方法的实现都是一样的, 但是保存到了不同的存储空间中
@@ -108,7 +108,7 @@ console.log(obj1.say === obj2.say); // false
 
 ```js
 function mySay() {
-  console.log('hello world');
+  console.log("hello world");
 }
 function Person(myName, myAge) {
   // let obj = new Object();  // 系统自动添加的
@@ -118,8 +118,8 @@ function Person(myName, myAge) {
   this.say = mySay;
   // return this; // 系统自动添加的
 }
-let obj1 = new Person('lnj', 34);
-let obj2 = new Person('zs', 44);
+let obj1 = new Person("lnj", 34);
+let obj2 = new Person("zs", 44);
 console.log(obj1.say === obj2.say); // true
 ```
 
@@ -136,7 +136,7 @@ console.log(obj1.say === obj2.say); // true
 // }
 let fns = {
   mySay: function () {
-    console.log('hello world');
+    console.log("hello world");
   },
 };
 function Person(myName, myAge) {
@@ -147,8 +147,8 @@ function Person(myName, myAge) {
   this.say = fns.mySay;
   // return this; // 系统自动添加的
 }
-let obj1 = new Person('lnj', 34);
-let obj2 = new Person('zs', 44);
+let obj1 = new Person("lnj", 34);
+let obj2 = new Person("zs", 44);
 console.log(obj1.say === obj2.say); // true
 /*
 let fns = {
@@ -183,12 +183,12 @@ function Person(myName, myAge) {
 }
 Person.prototype = {
   say: function () {
-    console.log('hello world');
+    console.log("hello world");
   },
 };
-let obj1 = new Person('lnj', 34);
+let obj1 = new Person("lnj", 34);
 obj1.say();
-let obj2 = new Person('zs', 44);
+let obj2 = new Person("zs", 44);
 obj2.say();
 console.log(obj1.say === obj2.say); // true
 console.log(Person.prototype);
@@ -211,21 +211,21 @@ Person 构造函数本质也是一个对象，所以通过 prototype 属性保�
 function Person(myName, myAge) {
   this.name = myName;
   this.age = myAge;
-  this.currentType = '构造函数中的type';
+  this.currentType = "构造函数中的type";
   this.say = function () {
-    console.log('构造函数中的say');
+    console.log("构造函数中的say");
   };
 }
 Person.prototype = {
-  currentType: '人',
+  currentType: "人",
   say: function () {
-    console.log('prototype中的say');
+    console.log("prototype中的say");
   },
 };
-let obj1 = new Person('lnj', 34);
+let obj1 = new Person("lnj", 34);
 obj1.say();
 console.log(obj1.currentType);
-let obj2 = new Person('zs', 44);
+let obj2 = new Person("zs", 44);
 obj2.say();
 console.log(obj2.currentType);
 ```

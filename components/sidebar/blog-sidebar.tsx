@@ -1,4 +1,4 @@
-import { CalendarIcon } from '@chakra-ui/icons';
+import { CalendarIcon } from "@chakra-ui/icons";
 import {
   Box,
   Center,
@@ -8,17 +8,17 @@ import {
   ListProps,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import * as React from 'react';
-import { ReactElement, ReactNode } from 'react';
-import { DiJavascript } from 'react-icons/di';
-import { FaCss3Alt, FaNodeJs, FaReact, FaVuejs } from 'react-icons/fa';
-import { FiPenTool } from 'react-icons/fi';
-import { SiWebpack } from 'react-icons/si';
-import useSound from 'use-sound';
-import { getPostsCategoriesGroup } from 'utils/contentlayer';
+} from "@chakra-ui/react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import * as React from "react";
+import { ReactElement, ReactNode } from "react";
+import { DiJavascript } from "react-icons/di";
+import { FaCss3Alt, FaNodeJs, FaReact, FaVuejs } from "react-icons/fa";
+import { FiPenTool } from "react-icons/fi";
+import { SiWebpack } from "react-icons/si";
+import useSound from "use-sound";
+import { getPostsCategoriesGroup } from "utils/contentlayer";
 
 type MainNavLinkProps = {
   href: string;
@@ -29,8 +29,8 @@ type MainNavLinkProps = {
 
 export const isMainNavLinkActive = (href: string, path: string) => {
   // const [_, blog, category] = path.split('/');
-  const [blog, category] = path.split('/').slice(1);
-  const isMain = path.includes('overview')
+  const [blog, category] = path.split("/").slice(1);
+  const isMain = path.includes("overview")
     ? path.includes(href)
     : href.includes(`${blog}/overview/${category}`);
 
@@ -40,7 +40,7 @@ export const isMainNavLinkActive = (href: string, path: string) => {
 const MainNavLink = ({ href, icon, children }: MainNavLinkProps) => {
   const { asPath } = useRouter();
   const active = isMainNavLinkActive(href, asPath);
-  const linkColor = useColorModeValue('gray.900', 'whiteAlpha.900');
+  const linkColor = useColorModeValue("gray.900", "whiteAlpha.900");
 
   return (
     <NextLink href={href} passHref>
@@ -50,18 +50,18 @@ const MainNavLink = ({ href, icon, children }: MainNavLinkProps) => {
         fontSize="md"
         transitionProperty="colors"
         transitionDuration="200ms"
-        fontWeight={active ? 'extrabold' : 'normal'}
-        color={active ? 'teal.500' : linkColor}
-        _hover={{ color: active ? undefined : 'teal.500' }}
+        fontWeight={active ? "extrabold" : "normal"}
+        color={active ? "teal.500" : linkColor}
+        _hover={{ color: active ? undefined : "teal.500" }}
       >
         <Center
           w="6"
           h="6"
           borderWidth="1px"
-          bg={active ? 'teal.500' : 'transparent'}
-          borderColor={active ? 'teal.500' : undefined}
+          bg={active ? "teal.500" : "transparent"}
+          borderColor={active ? "teal.500" : undefined}
           rounded="base"
-          color={active ? 'white' : 'teal.500'}
+          color={active ? "white" : "teal.500"}
           mr="3"
         >
           {icon}
@@ -75,78 +75,78 @@ const MainNavLink = ({ href, icon, children }: MainNavLinkProps) => {
 export const mainNavLinks = [
   {
     icon: <CalendarIcon />,
-    href: '/blog/overview/all',
-    label: '全部文章',
+    href: "/blog/overview/all",
+    label: "全部文章",
     postsCount:
-      getPostsCategoriesGroup().find(c => '/blog/all'.includes(c.category))
+      getPostsCategoriesGroup().find((c) => "/blog/all".includes(c.category))
         ?.total || 0,
   },
   {
     icon: <DiJavascript />,
-    href: '/blog/overview/javascript',
-    label: 'JavaScript',
+    href: "/blog/overview/javascript",
+    label: "JavaScript",
     postsCount:
-      getPostsCategoriesGroup().find(c =>
-        '/blog/overview/javascript'.includes(c.category),
+      getPostsCategoriesGroup().find((c) =>
+        "/blog/overview/javascript".includes(c.category),
       )?.total || 0,
   },
   {
     icon: <FaCss3Alt />,
-    href: '/blog/overview/css',
-    label: 'CSS',
+    href: "/blog/overview/css",
+    label: "CSS",
     postsCount:
-      getPostsCategoriesGroup().find(c => '/blog/css'.includes(c.category))
+      getPostsCategoriesGroup().find((c) => "/blog/css".includes(c.category))
         ?.total || 0,
   },
   {
     icon: <FaReact />,
-    href: '/blog/overview/react',
-    label: 'React',
+    href: "/blog/overview/react",
+    label: "React",
     postsCount:
-      getPostsCategoriesGroup().find(c => '/blog/react'.includes(c.category))
+      getPostsCategoriesGroup().find((c) => "/blog/react".includes(c.category))
         ?.total || 0,
   },
   {
     icon: <FaVuejs />,
-    href: '/blog/overview/vue',
-    label: 'Vue',
+    href: "/blog/overview/vue",
+    label: "Vue",
     postsCount:
-      getPostsCategoriesGroup().find(c => '/blog/vue'.includes(c.category))
+      getPostsCategoriesGroup().find((c) => "/blog/vue".includes(c.category))
         ?.total || 0,
   },
   {
     icon: <SiWebpack />,
-    href: '/blog/overview/module',
-    label: '工程 & 模块化',
+    href: "/blog/overview/module",
+    label: "工程 & 模块化",
     postsCount:
-      getPostsCategoriesGroup().find(c => '/blog/module'.includes(c.category))
+      getPostsCategoriesGroup().find((c) => "/blog/module".includes(c.category))
         ?.total || 0,
   },
   {
     icon: <FaNodeJs />,
-    href: '/blog/overview/node',
-    label: 'node后端',
+    href: "/blog/overview/node",
+    label: "node后端",
     postsCount:
-      getPostsCategoriesGroup().find(c => '/blog/node'.includes(c.category))
+      getPostsCategoriesGroup().find((c) => "/blog/node".includes(c.category))
         ?.total || 0,
   },
   {
     icon: <FiPenTool />,
-    href: '/blog/overview/other',
-    label: '其他',
+    href: "/blog/overview/other",
+    label: "其他",
     postsCount:
-      getPostsCategoriesGroup().find(c => '/blog/other'.includes(c.category))
+      getPostsCategoriesGroup().find((c) => "/blog/other".includes(c.category))
         ?.total || 0,
   },
 ];
 
 export const MainNavLinkGroup = (props: ListProps) => {
-  const [playHover] = useSound('/sounds/plunger-immediate.mp3', {
+  const [playHover] = useSound("/sounds/plunger-immediate.mp3", {
     volume: 0.1,
   });
   return (
     <List spacing="4" styleType="none" {...props}>
-      {mainNavLinks.map(item => (
+      {mainNavLinks.map((item) => (
         <ListItem
           key={item.label}
           onMouseEnter={() => {
@@ -154,7 +154,7 @@ export const MainNavLinkGroup = (props: ListProps) => {
           }}
           padding="1"
           _hover={{
-            bgColor: 'teal.50',
+            bgColor: "teal.50",
           }}
         >
           <MainNavLink icon={item.icon} href={item.href} label={item.label}>
@@ -186,7 +186,7 @@ const Sidebar = () => {
       overflowY="auto"
       className="sidebar-content"
       flexShrink={0}
-      display={{ base: 'none', md: 'block' }}
+      display={{ base: "none", md: "block" }}
     >
       <MainNavLinkGroup mb="10" />
     </Box>

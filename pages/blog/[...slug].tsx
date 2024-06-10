@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import type { GetStaticPaths, InferGetStaticPropsType } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import { useRouter } from 'next/router';
+import React, { useEffect } from "react";
+import type { GetStaticPaths, InferGetStaticPropsType } from "next";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import { useRouter } from "next/router";
 
-import BlogContainer from '@/components/page-container/blog-container';
-import BlogPagination from '@/components/pagination/blog-pagination';
-import { MDXComponents } from '@/components/mdx-components';
-import BaseLayout from 'layout/base-layout';
-import { allBlogs } from 'contentlayer/generated';
-import { sortedBlogPost, coreContent } from 'utils/contentlayer';
+import BlogContainer from "@/components/page-container/blog-container";
+import BlogPagination from "@/components/pagination/blog-pagination";
+import { MDXComponents } from "@/components/mdx-components";
+import BaseLayout from "layout/base-layout";
+import { allBlogs } from "contentlayer/generated";
+import { sortedBlogPost, coreContent } from "utils/contentlayer";
 
 // 目录锚点路由点击，跳转至锚点
 function useHeadingFocusOnRouteChange() {
@@ -16,12 +16,12 @@ function useHeadingFocusOnRouteChange() {
 
   useEffect(() => {
     const onRouteChange = () => {
-      const [heading] = Array.from(document.getElementsByTagName('h1'));
+      const [heading] = Array.from(document.getElementsByTagName("h1"));
       heading?.focus();
     };
-    router.events.on('routeChangeComplete', onRouteChange);
+    router.events.on("routeChangeComplete", onRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', onRouteChange);
+      router.events.off("routeChangeComplete", onRouteChange);
     };
   }, [router.events]);
 }
@@ -54,19 +54,19 @@ export default function PostDetail({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: allBlogs.map(p => ({ params: { slug: p.slug.split('/') } })),
+    paths: allBlogs.map((p) => ({ params: { slug: p.slug.split("/") } })),
     fallback: false,
   };
 };
 
-export const getStaticProps = async ctx => {
+export const getStaticProps = async (ctx) => {
   const params = Array.isArray(ctx.params.slug)
     ? ctx.params.slug
     : [ctx.params.slug];
   const sortedPosts = sortedBlogPost(allBlogs);
   let postIndex: number | null;
   const post = sortedPosts.find((p, i) => {
-    if (p.slug === params.join('/')) {
+    if (p.slug === params.join("/")) {
       postIndex = i;
       return true;
     }

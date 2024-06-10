@@ -1,9 +1,9 @@
 ---
 title: Input
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-1-27'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-1-27"
 description: Input component is a component that is used to get user input in a text field.
 ---
 
@@ -11,10 +11,10 @@ The `Input` component is a component that is used to get user input in a text
 field.
 
 <ComponentLinks
-  theme={{ componentName: 'input' }}
-  github={{ package: 'input' }}
-  npm={{ package: '@chakra-ui/input' }}
-  video={{ url: 'https://youtu.be/4y86kDy3Z2E' }}
+  theme={{ componentName: "input" }}
+  github={{ package: "input" }}
+  npm={{ package: "@chakra-ui/input" }}
+  video={{ url: "https://youtu.be/4y86kDy3Z2E" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -22,7 +22,7 @@ field.
 ## Import
 
 ```js
-import { Input } from '@chakra-ui/react';
+import { Input } from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -142,12 +142,12 @@ function PasswordInput() {
     <InputGroup size="md">
       <Input
         pr="4.5rem"
-        type={show ? 'text' : 'password'}
+        type={show ? "text" : "password"}
         placeholder="Enter password"
       />
       <InputRightElement width="4.5rem">
         <Button h="1.75rem" size="sm" onClick={handleClick}>
-          {show ? 'Hide' : 'Show'}
+          {show ? "Hide" : "Show"}
         </Button>
       </InputRightElement>
     </InputGroup>
@@ -159,8 +159,8 @@ function PasswordInput() {
 
 ```jsx
 function Example() {
-  const [value, setValue] = React.useState('');
-  const handleChange = event => setValue(event.target.value);
+  const [value, setValue] = React.useState("");
+  const handleChange = (event) => setValue(event.target.value);
 
   return (
     <>
@@ -214,17 +214,17 @@ opacity to 1 if you want the placeholder to have a specific color.
   <Input placeholder="default placeholder" />
   <Input
     placeholder="custom placeholder"
-    _placeholder={{ opacity: 1, color: 'gray.500' }}
+    _placeholder={{ opacity: 1, color: "gray.500" }}
   />
   <Input
     color="teal"
     placeholder="custom placeholder"
-    _placeholder={{ color: 'inherit' }}
+    _placeholder={{ color: "inherit" }}
   />
   <Input
     color="tomato"
     placeholder="custom placeholder"
-    _placeholder={{ opacity: 0.4, color: 'inherit' }}
+    _placeholder={{ opacity: 0.4, color: "inherit" }}
   />
 </Stack>
 ```

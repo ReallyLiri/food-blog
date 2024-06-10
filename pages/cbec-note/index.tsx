@@ -1,8 +1,8 @@
-import CbecListContainer from '@/components/page-container/cbec-list-container';
-import BaseLayout from 'layout/base-layout';
-import { allCbecNotes, CbecNote } from 'contentlayer/generated';
-import { GetStaticProps, InferGetStaticPropsType } from 'next/types';
-import { allCoreContent } from 'utils/contentlayer';
+import CbecListContainer from "@/components/page-container/cbec-list-container";
+import BaseLayout from "layout/base-layout";
+import { allCbecNotes, CbecNote } from "contentlayer/generated";
+import { GetStaticProps, InferGetStaticPropsType } from "next/types";
+import { allCoreContent } from "utils/contentlayer";
 
 export function dateSortDesc(a: string, b: string) {
   if (a > b) return -1;

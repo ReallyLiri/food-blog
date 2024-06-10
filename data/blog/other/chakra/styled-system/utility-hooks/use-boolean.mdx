@@ -1,10 +1,10 @@
 ---
 title: useBoolean
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-3-02'
-description: 'React hook to manage boolean (on - off) states'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-3-02"
+description: "React hook to manage boolean (on - off) states"
 ---
 
 `useBoolean` is a custom hook used to manage a boolean value with `on`, `off`
@@ -13,7 +13,7 @@ and `toggle` functions.
 ## Import
 
 ```js
-import { useBoolean } from '@chakra-ui/react';
+import { useBoolean } from "@chakra-ui/react";
 ```
 
 ## Return value
@@ -54,7 +54,7 @@ function Example() {
 
   return (
     <div onMouseEnter={setFlag.on} onMouseLeave={setFlag.off}>
-      {flag ? 'The flag is ON!' : 'Hover me to turn ON'}
+      {flag ? "The flag is ON!" : "Hover me to turn ON"}
     </div>
   );
 }

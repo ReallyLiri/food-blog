@@ -1,18 +1,18 @@
 ---
 title: Radio
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-05'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-05"
 description: Radios are used when only one choice may be selected in a series of options.
 ---
 
 Radios are used when only one choice may be selected in a series of options.
 
 <ComponentLinks
-  theme={{ componentName: 'radio' }}
-  github={{ package: 'radio' }}
-  npm={{ package: '@chakra-ui/radio' }}
+  theme={{ componentName: "radio" }}
+  github={{ package: "radio" }}
+  npm={{ package: "@chakra-ui/radio" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -24,14 +24,14 @@ to style the radio.
 ## Import
 
 ```js
-import { Radio, RadioGroup } from '@chakra-ui/react';
+import { Radio, RadioGroup } from "@chakra-ui/react";
 ```
 
 ### Usage
 
 ```jsx
 function RadioExample() {
-  const [value, setValue] = React.useState('1');
+  const [value, setValue] = React.useState("1");
   return (
     <RadioGroup onChange={setValue} value={value}>
       <Stack direction="row">
@@ -151,12 +151,12 @@ function RadioCard(props) {
         borderRadius="md"
         boxShadow="md"
         _checked={{
-          bg: 'teal.600',
-          color: 'white',
-          borderColor: 'teal.600',
+          bg: "teal.600",
+          color: "white",
+          borderColor: "teal.600",
         }}
         _focus={{
-          boxShadow: 'outline',
+          boxShadow: "outline",
         }}
         px={5}
         py={3}
@@ -169,11 +169,11 @@ function RadioCard(props) {
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
 function Example() {
-  const options = ['react', 'vue', 'svelte'];
+  const options = ["react", "vue", "svelte"];
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'framework',
-    defaultValue: 'react',
+    name: "framework",
+    defaultValue: "react",
     onChange: console.log,
   });
 
@@ -181,7 +181,7 @@ function Example() {
 
   return (
     <HStack {...group}>
-      {options.map(value => {
+      {options.map((value) => {
         const radio = getRadioProps({ value });
         return (
           <RadioCard key={value} {...radio}>

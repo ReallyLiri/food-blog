@@ -1,12 +1,12 @@
-import { Box, useBoolean } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
-import theme from 'prism-react-renderer/themes/nightOwl';
-import React, { useEffect } from 'react';
-import CodeContainer from './code-container';
-import CopyButton from './copy-button';
-import Highlight from './highlight';
+import { Box, useBoolean } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+import theme from "prism-react-renderer/themes/nightOwl";
+import React, { useEffect } from "react";
+import CodeContainer from "./code-container";
+import CopyButton from "./copy-button";
+import Highlight from "./highlight";
 
-const ReactLiveBlock = dynamic(() => import('./react-live-block'));
+const ReactLiveBlock = dynamic(() => import("./react-live-block"));
 
 function CodeBlock(props: any) {
   const [isMounted, { on }] = useBoolean();
@@ -28,9 +28,9 @@ function CodeBlock(props: any) {
     mountStylesheet = false,
   } = props.children.props;
 
-  const _live = live === 'true' || live === true;
+  const _live = live === "true" || live === true;
 
-  const language = className?.replace(/language-/, '');
+  const language = className?.replace(/language-/, "");
   const rawCode = children.trim();
 
   const reactLiveBlockProps = {
@@ -41,7 +41,7 @@ function CodeBlock(props: any) {
     mountStylesheet,
   };
 
-  if (isMounted && language === 'jsx' && _live === true) {
+  if (isMounted && language === "jsx" && _live === true) {
     return <ReactLiveBlock editable {...reactLiveBlockProps} />;
   }
 

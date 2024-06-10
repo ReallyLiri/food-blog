@@ -1,10 +1,10 @@
 ---
 title: The as prop and Custom component
-description: 'How to get the as prop working properly for your custom components'
-authors: ['segunadebayo']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-22'
+description: "How to get the as prop working properly for your custom components"
+authors: ["segunadebayo"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-22"
 ---
 
 By default, all Chakra components work with the `as` prop. There might be some
@@ -44,9 +44,9 @@ reference properly.
 > Note 🚨: You need to use forwardRef from chakra-ui not react.
 
 ```tsx live=false
-import { forwardRef, Box, BoxProps } from '@chakra-ui/react';
+import { forwardRef, Box, BoxProps } from "@chakra-ui/react";
 
-const Card = forwardRef<BoxProps, 'div'>((props, ref) => (
+const Card = forwardRef<BoxProps, "div">((props, ref) => (
   <Box px="4" py="5" rounded="sm" shadow="lg" ref={ref} {...props} />
 ));
 ```
@@ -63,9 +63,9 @@ element type, and adds chakra specific style props.
 etc), and any custom props (like `isOpen`, `isDisabled`, etc)
 
 ```tsx live=false
-import { ChakraComponent, Box, BoxProps } from '@chakra-ui/react';
+import { ChakraComponent, Box, BoxProps } from "@chakra-ui/react";
 
-type DivComponent = ChakraComponent<'div', {}>;
+type DivComponent = ChakraComponent<"div", {}>;
 
 const Card = ((props: BoxProps) => (
   <Box px="4" py="5" rounded="sm" shadow="lg" {...props} />
@@ -82,15 +82,15 @@ What you need to do is to call the `chakra` function and pass it any element or
 component type.
 
 ```jsx live=false
-import { chakra } from '@chakra-ui/react';
+import { chakra } from "@chakra-ui/react";
 
-const Card = chakra('div', {
+const Card = chakra("div", {
   // attach style props
   baseStyle: {
-    px: '4',
-    py: '5',
-    rounded: 'sm',
-    shadow: 'lg',
+    px: "4",
+    py: "5",
+    rounded: "sm",
+    shadow: "lg",
   },
 });
 ```

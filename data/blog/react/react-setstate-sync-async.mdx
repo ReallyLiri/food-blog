@@ -1,9 +1,9 @@
 ---
 title: React中关于setState同步与异步问题的详细剖析
-authors: ['mutongxiao']
-tags: ['React', 'setState']
-categories: ['React']
-date: '2022-6-26'
+authors: ["mutongxiao"]
+tags: ["React", "setState"]
+categories: ["React"]
+date: "2022-6-26"
 description: 关于在React中更新state状态是同步还是异步的问题剖析
 ---
 
@@ -12,7 +12,7 @@ description: 关于在React中更新state状态是同步还是异步的问题剖
 ## Import
 
 ```js
-import { Component } from 'react';
+import { Component } from "react";
 ```
 
 ## 问题举例
@@ -40,7 +40,7 @@ class Dong extends Component {
     });
   }
   render() {
-    console.log('render:', this.state.count);
+    console.log("render:", this.state.count);
     return <div>count值为：{this.state.count}</div>;
   }
 }
@@ -80,7 +80,7 @@ class Dong extends Component {
     console.log(this.state.count);
   }
   render() {
-    console.log('render:', this.state.count);
+    console.log("render:", this.state.count);
     return <div>count值为：{this.state.count}</div>;
   }
 }

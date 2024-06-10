@@ -1,10 +1,10 @@
 ---
 title: useCheckboxGroup
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-27'
-description: 'React hooks to manage checkbox groups.'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-27"
+description: "React hooks to manage checkbox groups."
 ---
 
 `useCheckboxGroup` is a custom hook that provides all the state management logic
@@ -13,7 +13,7 @@ for a group of checkboxes.
 ## Import
 
 ```js
-import { useCheckboxGroup } from '@chakra-ui/react';
+import { useCheckboxGroup } from "@chakra-ui/react";
 ```
 
 ## Return value
@@ -70,15 +70,15 @@ function Example() {
   }
 
   const { value, getCheckboxProps } = useCheckboxGroup({
-    defaultValue: ['2'],
+    defaultValue: ["2"],
   });
 
   return (
     <Stack>
-      <Text>The selected checkboxes are: {value.sort().join(' and ')}</Text>
-      <CustomCheckbox {...getCheckboxProps({ value: '1' })} />
-      <CustomCheckbox {...getCheckboxProps({ value: '2' })} />
-      <CustomCheckbox {...getCheckboxProps({ value: '3' })} />
+      <Text>The selected checkboxes are: {value.sort().join(" and ")}</Text>
+      <CustomCheckbox {...getCheckboxProps({ value: "1" })} />
+      <CustomCheckbox {...getCheckboxProps({ value: "2" })} />
+      <CustomCheckbox {...getCheckboxProps({ value: "3" })} />
     </Stack>
   );
 }

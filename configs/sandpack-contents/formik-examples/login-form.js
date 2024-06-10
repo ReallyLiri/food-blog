@@ -80,4 +80,4 @@ root.render(
     <App />
   </ChakraProvider>
 );`,
-}
+};

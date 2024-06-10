@@ -32,7 +32,7 @@ export default function Example() {
       </Box>
     </Center>
   );
-}`
+}`;
 
 export const Index = `import * as React from "react";
 import * as ReactDOM from "react-dom/client";
@@ -45,4 +45,4 @@ ReactDOM.createRoot(rootElement!).render(
   <ChakraProvider>
     <App />
   </ChakraProvider>
-);`
+);`;

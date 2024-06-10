@@ -1,11 +1,11 @@
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import CbecPostContainer from '@/components/page-container/cbec-post-container';
-import { MDXComponents } from '@/components/mdx-components';
-import BaseLayout from 'layout/base-layout';
-import { coreContent } from 'utils/contentlayer';
-import { allCbecNotes } from 'contentlayer/generated';
-import { GetStaticPaths, InferGetStaticPropsType } from 'next/types';
-import { sortedAllPosts } from './index';
+import { useMDXComponent } from "next-contentlayer/hooks";
+import CbecPostContainer from "@/components/page-container/cbec-post-container";
+import { MDXComponents } from "@/components/mdx-components";
+import BaseLayout from "layout/base-layout";
+import { coreContent } from "utils/contentlayer";
+import { allCbecNotes } from "contentlayer/generated";
+import { GetStaticPaths, InferGetStaticPropsType } from "next/types";
+import { sortedAllPosts } from "./index";
 
 export default function CbecPostDetail({
   post,
@@ -25,19 +25,19 @@ export default function CbecPostDetail({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: allCbecNotes.map(p => ({ params: { slug: p.slug.split('/') } })),
+    paths: allCbecNotes.map((p) => ({ params: { slug: p.slug.split("/") } })),
     fallback: false,
   };
 };
 
-export const getStaticProps = async ctx => {
+export const getStaticProps = async (ctx) => {
   const params = Array.isArray(ctx.params.slug)
     ? ctx.params.slug
     : [ctx.params.slug];
   const sortedPosts = sortedAllPosts(allCbecNotes);
   let postIndex: number | null;
   const post = sortedPosts.find((p, i) => {
-    if (p.slug === params.join('/')) {
+    if (p.slug === params.join("/")) {
       postIndex = i;
       return true;
     }

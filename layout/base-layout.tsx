@@ -1,7 +1,7 @@
-import { Grid, GridItem } from '@chakra-ui/react';
-import type { ReactNode } from 'react';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import { Grid, GridItem } from "@chakra-ui/react";
+import type { ReactNode } from "react";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 interface Props {
   header?: ReactNode;
   main?: ReactNode;
@@ -20,13 +20,13 @@ const BaseLayout = ({
       templateAreas={`"header header"
                   "main main"
                   "footer footer"`}
-      gridTemplateRows={'4.5rem 1fr auto'}
+      gridTemplateRows={"4.5rem 1fr auto"}
       minH="100vh"
       gap="1"
     >
-      <GridItem area={'header'}>{header}</GridItem>
-      <GridItem area={'main'}>{children || main}</GridItem>
-      <GridItem area={'footer'}>{footer}</GridItem>
+      <GridItem area={"header"}>{header}</GridItem>
+      <GridItem area={"main"}>{children || main}</GridItem>
+      <GridItem area={"footer"}>{footer}</GridItem>
     </Grid>
   );
 };

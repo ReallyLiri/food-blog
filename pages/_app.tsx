@@ -1,15 +1,15 @@
-import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
-import { SessionProvider } from 'next-auth/react';
+import type { AppProps } from "next/app";
+import { ChakraProvider } from "@chakra-ui/react";
+import { SessionProvider } from "next-auth/react";
 
-import FontFace from '@/components/font-face';
-import ToTop from '@/components/ToTop';
+import FontFace from "@/components/font-face";
+import ToTop from "@/components/ToTop";
 // import Analytics from '@/components/site-analytics'
 
-import theme from 'theme';
-import Head from 'next/head';
+import theme from "theme";
+import Head from "next/head";
 /* pace 进度条样式 */
-import 'public/css/pace-theme-default.min.css';
+import "public/css/pace-theme-default.min.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

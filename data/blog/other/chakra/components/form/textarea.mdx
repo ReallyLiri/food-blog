@@ -1,18 +1,18 @@
 ---
 title: Textarea
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-06'
-description: 'The Textarea component allows you to easily create multi-line text inputs.'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-06"
+description: "The Textarea component allows you to easily create multi-line text inputs."
 ---
 
 The `Textarea` component allows you to easily create multi-line text inputs.
 
 <ComponentLinks
-  theme={{ componentName: 'textarea' }}
-  github={{ package: 'textarea' }}
-  npm={{ package: '@chakra-ui/textarea' }}
+  theme={{ componentName: "textarea" }}
+  github={{ package: "textarea" }}
+  npm={{ package: "@chakra-ui/textarea" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -20,7 +20,7 @@ The `Textarea` component allows you to easily create multi-line text inputs.
 ## Import
 
 ```js
-import { Textarea } from '@chakra-ui/react';
+import { Textarea } from "@chakra-ui/react";
 ```
 
 ### Usage
@@ -33,9 +33,9 @@ import { Textarea } from '@chakra-ui/react';
 
 ```jsx
 function Example() {
-  let [value, setValue] = React.useState('');
+  let [value, setValue] = React.useState("");
 
-  let handleInputChange = e => {
+  let handleInputChange = (e) => {
     let inputValue = e.target.value;
     setValue(inputValue);
   };
@@ -59,7 +59,7 @@ You can add `resize` prop to change the `Textarea` resize behavior.
 
 ```jsx
 function ResizeExample() {
-  const [resize, setResize] = React.useState('horizontal');
+  const [resize, setResize] = React.useState("horizontal");
 
   return (
     <>

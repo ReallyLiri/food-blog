@@ -1,10 +1,10 @@
 ---
 title: useCheckbox
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-27'
-description: 'React hook to manage checkboxes.'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-27"
+description: "React hook to manage checkboxes."
 ---
 
 `useCheckbox` is a custom hook used to provide checkbox functionality, as well
@@ -13,7 +13,7 @@ as state and focus management to custom checkbox components when using it.
 ## Import
 
 ```js
-import { useCheckbox } from '@chakra-ui/react';
+import { useCheckbox } from "@chakra-ui/react";
 ```
 
 ## Return value
@@ -32,7 +32,7 @@ The `useCheckbox` hook returns following props
 
 ```jsx
 function Example() {
-  const CustomCheckbox = props => {
+  const CustomCheckbox = (props) => {
     const { state, getCheckboxProps, getInputProps, getLabelProps, htmlProps } =
       useCheckbox(props);
 

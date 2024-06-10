@@ -1,10 +1,10 @@
 ---
 title: 封装 axios 拦截器实现用户无感刷新 access_token
 description: 本文讲的是在登录后如何管理access_token和refresh_token，主要就是封装 axios拦截器，在此记录。
-authors: ['mutongxiao']
-tags: ['axios', 'token']
-categories: ['other']
-date: '2022-7-11'
+authors: ["mutongxiao"]
+tags: ["axios", "token"]
+categories: ["other"]
+date: "2022-7-11"
 ---
 
 ## 前言
@@ -72,10 +72,10 @@ date: '2022-7-11'
 - @utils/auth.js
 
 ```js
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
-const TOKEN_KEY = 'access_token';
-const REGRESH_TOKEN_KEY = 'refresh_token';
+const TOKEN_KEY = "access_token";
+const REGRESH_TOKEN_KEY = "refresh_token";
 
 export const getToken = () => Cookies.get(TOKEN_KEY);
 export const getRefreshToken = () => Cookies.get(REGRESH_TOKEN_KEY);
@@ -84,7 +84,7 @@ export const setToken = (token, params = {}) => {
   Cookies.set(TOKEN_KEY, token, params);
 };
 
-export const setRefreshToken = token => {
+export const setRefreshToken = (token) => {
   Cookies.set(REGRESH_TOKEN_KEY, token);
 };
 ```
@@ -92,23 +92,23 @@ export const setRefreshToken = token => {
 - request.js
 
 ```js
-import axios from 'axios';
-import { getToken, setToken, getRefreshToken } from '@utils/auth';
+import axios from "axios";
+import { getToken, setToken, getRefreshToken } from "@utils/auth";
 
 // 创建 axios 实例
 const instance = axios.create({
   baseURL: process.env.GATSBY_API_URL,
   timeout: 3000,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
 instance.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     if (!error.response) {
       return Promise.reject(error);
     }
@@ -118,12 +118,12 @@ instance.interceptors.response.use(
 );
 
 // 给请求头添加 access_token
-const setHeaderToken = isNeedToken => {
+const setHeaderToken = (isNeedToken) => {
   const accessToken = isNeedToken ? getToken() : null;
   if (isNeedToken) {
     // api 请求需要携带 access_token
     if (!accessToken) {
-      console.log('不存在 access_token 则跳转回登录页');
+      console.log("不存在 access_token 则跳转回登录页");
     }
     instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   }
@@ -134,7 +134,7 @@ const setHeaderToken = isNeedToken => {
 export const get = (url, params = {}, isNeedToken = false) => {
   setHeaderToken(isNeedToken);
   return instance({
-    method: 'get',
+    method: "get",
     url,
     params,
   });
@@ -143,7 +143,7 @@ export const get = (url, params = {}, isNeedToken = false) => {
 export const post = (url, params = {}, isNeedToken = false) => {
   setHeaderToken(isNeedToken);
   return instance({
-    method: 'post',
+    method: "post",
     url,
     data: params,
   });
@@ -156,31 +156,31 @@ export const post = (url, params = {}, isNeedToken = false) => {
 // 刷新 access_token 的接口
 const refreshToken = () => {
   return instance.post(
-    '/auth/refresh',
+    "/auth/refresh",
     { refresh_token: getRefreshToken() },
     true,
   );
 };
 
 instance.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     if (!error.response) {
       return Promise.reject(error);
     }
     if (error.response.status === 401) {
       const { config } = error;
       return refreshToken()
-        .then(res => {
+        .then((res) => {
           const { access_token } = res.data;
           setToken(access_token);
           config.headers.Authorization = `Bearer ${access_token}`;
           return instance(config);
         })
-        .catch(err => {
-          console.log('抱歉，您的登录状态已失效，请重新登录！');
+        .catch((err) => {
+          console.log("抱歉，您的登录状态已失效，请重新登录！");
           return Promise.reject(err);
         });
     }
@@ -196,7 +196,7 @@ instance.interceptors.response.use(
 ```js
 if (
   error.response.status === 401 &&
-  !error.config.url.includes('/auth/refresh')
+  !error.config.url.includes("/auth/refresh")
 ) {
   //......
 }
@@ -213,29 +213,29 @@ if (
 ```js
 let isRefreshing = false; // 标记是否正在刷新 token
 instance.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     if (!error.response) {
       return Promise.reject(error);
     }
     if (
       error.response.status === 401 &&
-      !error.config.url.includes('/auth/refresh')
+      !error.config.url.includes("/auth/refresh")
     ) {
       const { config } = error;
       if (!isRefreshing) {
         isRefreshing = true;
         return refreshToken()
-          .then(res => {
+          .then((res) => {
             const { access_token } = res.data;
             setToken(access_token);
             config.headers.Authorization = `Bearer ${access_token}`;
             return instance(config);
           })
-          .catch(err => {
-            console.log('抱歉，您的登录状态已失效，请重新登录！');
+          .catch((err) => {
+            console.log("抱歉，您的登录状态已失效，请重新登录！");
             return Promise.reject(err);
           })
           .finally(() => {
@@ -261,32 +261,32 @@ let isRefreshing = false; // 标记是否正在刷新 token
 let requests = []; // 存储待重发请求的数组
 
 instance.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     if (!error.response) {
       return Promise.reject(error);
     }
     if (
       error.response.status === 401 &&
-      !error.config.url.includes('/auth/refresh')
+      !error.config.url.includes("/auth/refresh")
     ) {
       const { config } = error;
       if (!isRefreshing) {
         isRefreshing = true;
         return refreshToken()
-          .then(res => {
+          .then((res) => {
             const { access_token } = res.data;
             setToken(access_token);
             config.headers.Authorization = `Bearer ${access_token}`;
             // token 刷新后将数组的方法重新执行
-            requests.forEach(cb => cb(access_token));
+            requests.forEach((cb) => cb(access_token));
             requests = []; // 重新请求完清空
             return instance(config);
           })
-          .catch(err => {
-            console.log('抱歉，您的登录状态已失效，请重新登录！');
+          .catch((err) => {
+            console.log("抱歉，您的登录状态已失效，请重新登录！");
             return Promise.reject(err);
           })
           .finally(() => {
@@ -294,9 +294,9 @@ instance.interceptors.response.use(
           });
       } else {
         // 返回未执行 resolve 的 Promise
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
           // 用函数形式将 resolve 存入，等待刷新后再执行
-          requests.push(token => {
+          requests.push((token) => {
             config.headers.Authorization = `Bearer ${token}`;
             resolve(instance(config));
           });
@@ -311,13 +311,13 @@ instance.interceptors.response.use(
 最终 request.js 代码
 
 ```js
-import axios from 'axios';
-import { getToken, setToken, getRefreshToken } from '@utils/auth';
+import axios from "axios";
+import { getToken, setToken, getRefreshToken } from "@utils/auth";
 
 // 刷新 access_token 的接口
 const refreshToken = () => {
   return instance.post(
-    '/auth/refresh',
+    "/auth/refresh",
     { refresh_token: getRefreshToken() },
     true,
   );
@@ -328,7 +328,7 @@ const instance = axios.create({
   baseURL: process.env.GATSBY_API_URL,
   timeout: 30000,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -336,32 +336,32 @@ let isRefreshing = false; // 标记是否正在刷新 token
 let requests = []; // 存储待重发请求的数组
 
 instance.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     if (!error.response) {
       return Promise.reject(error);
     }
     if (
       error.response.status === 401 &&
-      !error.config.url.includes('/auth/refresh')
+      !error.config.url.includes("/auth/refresh")
     ) {
       const { config } = error;
       if (!isRefreshing) {
         isRefreshing = true;
         return refreshToken()
-          .then(res => {
+          .then((res) => {
             const { access_token } = res.data;
             setToken(access_token);
             config.headers.Authorization = `Bearer ${access_token}`;
             // token 刷新后将数组的方法重新执行
-            requests.forEach(cb => cb(access_token));
+            requests.forEach((cb) => cb(access_token));
             requests = []; // 重新请求完清空
             return instance(config);
           })
-          .catch(err => {
-            console.log('抱歉，您的登录状态已失效，请重新登录！');
+          .catch((err) => {
+            console.log("抱歉，您的登录状态已失效，请重新登录！");
             return Promise.reject(err);
           })
           .finally(() => {
@@ -369,9 +369,9 @@ instance.interceptors.response.use(
           });
       } else {
         // 返回未执行 resolve 的 Promise
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
           // 用函数形式将 resolve 存入，等待刷新后再执行
-          requests.push(token => {
+          requests.push((token) => {
             config.headers.Authorization = `Bearer ${token}`;
             resolve(instance(config));
           });
@@ -383,12 +383,12 @@ instance.interceptors.response.use(
 );
 
 // 给请求头添加 access_token
-const setHeaderToken = isNeedToken => {
+const setHeaderToken = (isNeedToken) => {
   const accessToken = isNeedToken ? getToken() : null;
   if (isNeedToken) {
     // api 请求需要携带 access_token
     if (!accessToken) {
-      console.log('不存在 access_token 则跳转回登录页');
+      console.log("不存在 access_token 则跳转回登录页");
     }
     instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   }
@@ -399,7 +399,7 @@ const setHeaderToken = isNeedToken => {
 export const get = (url, params = {}, isNeedToken = false) => {
   setHeaderToken(isNeedToken);
   return instance({
-    method: 'get',
+    method: "get",
     url,
     params,
   });
@@ -408,7 +408,7 @@ export const get = (url, params = {}, isNeedToken = false) => {
 export const post = (url, params = {}, isNeedToken = false) => {
   setHeaderToken(isNeedToken);
   return instance({
-    method: 'post',
+    method: "post",
     url,
     data: params,
   });

@@ -5,16 +5,16 @@ import {
   HStack,
   Text,
   ButtonGroup,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import {
   SandpackCodeViewer,
   SandpackThemeProvider,
   useSandpack,
   useSandpackTheme,
-} from '@codesandbox/sandpack-react';
-import * as React from 'react';
-import { RiFileEditLine, RiFileTransferLine } from 'react-icons/ri';
-import { formatFilePath, SandpackLanguageSupport } from './utils';
+} from "@codesandbox/sandpack-react";
+import * as React from "react";
+import { RiFileEditLine, RiFileTransferLine } from "react-icons/ri";
+import { formatFilePath, SandpackLanguageSupport } from "./utils";
 
 interface CodeBlockProps {
   path: string;

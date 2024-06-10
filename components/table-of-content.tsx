@@ -6,12 +6,12 @@ import {
   Text,
   chakra,
   useColorModeValue,
-} from '@chakra-ui/react';
-import { useEffect, useRef } from 'react';
-import { useScrollSpy } from 'hooks/use-scrollspy';
+} from "@chakra-ui/react";
+import { useEffect, useRef } from "react";
+import { useScrollSpy } from "hooks/use-scrollspy";
 
 interface Heading {
-  level: 'h2' | 'h3';
+  level: "h2" | "h3";
   text: string;
   id: string;
 }
@@ -25,7 +25,7 @@ function TableOfContent(props: TableOfContentProps) {
   const activeId = useScrollSpy(
     headings.map(({ id }) => `[id="${id}"]`),
     {
-      rootMargin: '0% 0% -24% 0%',
+      rootMargin: "0% 0% -24% 0%",
     },
   );
 
@@ -48,14 +48,14 @@ function TableOfContent(props: TableOfContentProps) {
       if (offsetTop - scrollTop >= viewHeight || offsetTop - scrollTop <= 0) {
         tocRef.current.scrollTo({
           top: offsetTop > maxScrollTop ? maxScrollTop : offsetTop,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
       }
     }
   }, [activeId]);
 
-  const linkColor = useColorModeValue('gray.600', 'gray.400');
-  const linkHoverColor = useColorModeValue('gray.900', 'gray.600');
+  const linkColor = useColorModeValue("gray.600", "gray.400");
+  const linkHoverColor = useColorModeValue("gray.900", "gray.600");
   return (
     <Box
       ref={tocRef}
@@ -63,7 +63,7 @@ function TableOfContent(props: TableOfContentProps) {
       aria-labelledby="toc-title"
       width="16rem"
       flexShrink={0}
-      display={{ base: 'none', xl: 'block' }}
+      display={{ base: "none", xl: "block" }}
       position="sticky"
       py="10"
       pr="4"
@@ -73,7 +73,7 @@ function TableOfContent(props: TableOfContentProps) {
       alignSelf="start"
       maxHeight="calc(100vh - 8rem)"
       overflowY="auto"
-      sx={{ overscrollBehavior: 'contain' }}
+      sx={{ overscrollBehavior: "contain" }}
       {...rest}
     >
       <Text
@@ -83,7 +83,7 @@ function TableOfContent(props: TableOfContentProps) {
         fontWeight="bold"
         fontSize="xl"
         color="gray.700"
-        _dark={{ color: 'gray.400' }}
+        _dark={{ color: "gray.400" }}
         letterSpacing="wide"
       >
         目录
@@ -95,18 +95,18 @@ function TableOfContent(props: TableOfContentProps) {
             id={`li-${id}`}
             key={id}
             title={text}
-            ml={level === 'h3' ? '4' : undefined}
+            ml={level === "h3" ? "4" : undefined}
             _selected={{
-              textDecoration: 'underline',
-              textUnderlineOffset: '2px',
+              textDecoration: "underline",
+              textUnderlineOffset: "2px",
             }}
           >
             <chakra.a
               py="1"
               display="block"
-              fontWeight={id === activeId ? 'bold' : 'medium'}
+              fontWeight={id === activeId ? "bold" : "medium"}
               href={`#${id}`}
-              aria-current={id === activeId ? 'location' : undefined}
+              aria-current={id === activeId ? "location" : undefined}
               color={linkColor}
               _hover={{
                 color: linkHoverColor,

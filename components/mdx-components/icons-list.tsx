@@ -1,4 +1,4 @@
-import * as icons from '@chakra-ui/icons';
+import * as icons from "@chakra-ui/icons";
 import {
   Button,
   ComponentWithAs,
@@ -6,10 +6,10 @@ import {
   Text,
   useClipboard,
   useToast,
-} from '@chakra-ui/react';
-import React from 'react';
+} from "@chakra-ui/react";
+import React from "react";
 
-const iconList: Record<string, ComponentWithAs<'svg', icons.IconProps>> = {
+const iconList: Record<string, ComponentWithAs<"svg", icons.IconProps>> = {
   AddIcon: icons.AddIcon,
   ArrowBackIcon: icons.ArrowBackIcon,
   ArrowDownIcon: icons.ArrowDownIcon,
@@ -89,7 +89,7 @@ const IconsList = () => {
 
           toast({
             title: `'${key}' copied to clipboard`,
-            status: 'success',
+            status: "success",
             duration: 2000,
             isClosable: false,
           });

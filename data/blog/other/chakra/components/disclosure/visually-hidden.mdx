@@ -1,9 +1,9 @@
 ---
 title: VisuallyHidden
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-1-19'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-1-19"
 description:
   VisuallyHidden is a common technique used in web accessibility to hide content
   from the visual client
@@ -13,8 +13,8 @@ VisuallyHidden is a common technique used in web accessibility to hide content
 from the visual client, but keep it readable for screen readers.
 
 <ComponentLinks
-  github={{ package: 'visually-hidden' }}
-  npm={{ package: '@chakra-ui/visually-hidden' }}
+  github={{ package: "visually-hidden" }}
+  npm={{ package: "@chakra-ui/visually-hidden" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -28,7 +28,7 @@ screen. `VisuallyHiddenInput`: Visually hidden input component used for
 designing custom input components using the html `input` as a proxy
 
 ```js
-import { VisuallyHidden, VisuallyHiddenInput } from '@chakra-ui/react';
+import { VisuallyHidden, VisuallyHiddenInput } from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -71,7 +71,7 @@ function Example() {
   return (
     <VisuallyHiddenInput
       defaultChecked
-      onChange={event => {
+      onChange={(event) => {
         console.log(event.target.checked);
       }}
     />

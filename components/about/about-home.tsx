@@ -1,4 +1,4 @@
-import { ChevronUpIcon, HamburgerIcon, Icon } from '@chakra-ui/icons';
+import { ChevronUpIcon, HamburgerIcon, Icon } from "@chakra-ui/icons";
 import {
   Box,
   Container,
@@ -7,35 +7,35 @@ import {
   Text,
   useDisclosure,
   VStack,
-} from '@chakra-ui/react';
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
-import { AiFillGithub, AiOutlineMail } from 'react-icons/ai';
-import { FaBlog } from 'react-icons/fa';
+} from "@chakra-ui/react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
+import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
+import { FaBlog } from "react-icons/fa";
 
-import AccessFormModal from '@/components/about/access-code-form';
-import wb_me_avatar from 'public/img/wb_me_avatar.png';
-import { $, randomNum } from 'utils/tools';
-import css from './about-home.module.css';
+import AccessFormModal from "@/components/about/access-code-form";
+import wb_me_avatar from "public/img/wb_me_avatar.png";
+import { $, randomNum } from "utils/tools";
+import css from "./about-home.module.css";
 
 // import {fullScreenAnimation} from 'utils/tools'
 
 const motto = [
-  'Bad Times Make A Good Man.',
-  'There Is No Royal Road To Learning.',
-  'Doubt Is The Key To Knowledge.',
-  'Sow Nothing, Reap Nothing.',
-  'Life Is Real, Life Is Earnest.',
-  'Life Is But A Hard And Tortuous Journey.',
-  'Sharp Tools Make Good Work.',
-  'Nurture Passes Nature.',
-  'All Rivers Run Into The Sea.',
-  'Home Is Where The Heart Is.',
-  'Never Say Die.',
-  'Cease To Struggle And You Cease To Live.',
+  "Bad Times Make A Good Man.",
+  "There Is No Royal Road To Learning.",
+  "Doubt Is The Key To Knowledge.",
+  "Sow Nothing, Reap Nothing.",
+  "Life Is Real, Life Is Earnest.",
+  "Life Is But A Hard And Tortuous Journey.",
+  "Sharp Tools Make Good Work.",
+  "Nurture Passes Nature.",
+  "All Rivers Run Into The Sea.",
+  "Home Is Where The Heart Is.",
+  "Never Say Die.",
+  "Cease To Struggle And You Cease To Live.",
 ];
 
 // function AccessFormModal(props: { isOpen: boolean; onClose: () => void }) {
@@ -70,8 +70,8 @@ function AboutHome() {
   const [needAccessCode, setNeedAccessCode] = useState(true);
 
   const [descData, setDescData] = useState({
-    hitokoto: '如何得与凉风约，不共尘沙一并来!',
-    from: '中牟道中',
+    hitokoto: "如何得与凉风约，不共尘沙一并来!",
+    from: "中牟道中",
   });
   const [mottoText, setMottoText] = useState(motto[3]);
 
@@ -90,14 +90,14 @@ function AboutHome() {
     if (
       window
         .getComputedStyle(navigationWrapperEl)
-        .getPropertyValue('display') === 'block'
+        .getPropertyValue("display") === "block"
     ) {
       const onAnimationend = () => {
         const toggleClassStr = `${css.visible} ${css.animated} ${css.bounceOutUp}`;
         $.toggleClass(navigationWrapperEl, toggleClassStr);
-        navigationWrapperEl.removeEventListener('animationend', onAnimationend);
+        navigationWrapperEl.removeEventListener("animationend", onAnimationend);
       };
-      navigationWrapperEl.addEventListener('animationend', onAnimationend);
+      navigationWrapperEl.addEventListener("animationend", onAnimationend);
 
       const toggleClassStr = `${css.animated} ${css.bounceInDown} ${css.animated} ${css.bounceOutUp}`;
       $.toggleClass(navigationWrapperEl, toggleClassStr);
@@ -114,7 +114,7 @@ function AboutHome() {
   useEffect(() => {
     setMottoText(motto[randomNum(0, motto.length - 1)]);
     // 获取一言数据
-    fetch('https://v1.hitokoto.cn')
+    fetch("https://v1.hitokoto.cn")
       .then(function (res) {
         return res.json();
       })
@@ -130,33 +130,33 @@ function AboutHome() {
 
     // 背景一：加载图片背景
     // const getBgUrl = 'https://realwds-api.vercel.app/bing?count=8';
-    let imgUrls = JSON.parse(sessionStorage.getItem('imgUrls')) as string[];
+    let imgUrls = JSON.parse(sessionStorage.getItem("imgUrls")) as string[];
     if (!imgUrls || imgUrls.length === 0) {
-      fetch('/api/getBgImg?rand=true')
-        .then(res => {
+      fetch("/api/getBgImg?rand=true")
+        .then((res) => {
           return res.json();
         })
-        .then(result => {
+        .then((result) => {
           imgUrls = result.data as string[];
           const imgUrl = imgUrls[0];
           panelRef.current.style.background =
             "url('" + imgUrl + "') center center no-repeat #666";
-          panelRef.current.style.backgroundSize = 'cover';
-          sessionStorage.setItem('imgUrls', JSON.stringify(imgUrls));
-          sessionStorage.setItem('imgIndex', '0');
+          panelRef.current.style.backgroundSize = "cover";
+          sessionStorage.setItem("imgUrls", JSON.stringify(imgUrls));
+          sessionStorage.setItem("imgIndex", "0");
         })
-        .catch(err => {
+        .catch((err) => {
           return err;
         });
     } else {
-      let index = parseInt(sessionStorage.getItem('imgIndex'));
+      let index = parseInt(sessionStorage.getItem("imgIndex"));
       if (index == 7) index = 0;
       else index++;
       const imgUrl = imgUrls[index];
       panelRef.current.style.background =
         "url('" + imgUrl + "') center center no-repeat #666";
-      panelRef.current.style.backgroundSize = 'cover';
-      sessionStorage.setItem('imgIndex', index.toString());
+      panelRef.current.style.backgroundSize = "cover";
+      sessionStorage.setItem("imgIndex", index.toString());
     }
 
     // 背景2：加载动画背景
@@ -169,9 +169,9 @@ function AboutHome() {
     const iUpElements = document.querySelectorAll(`.${css.iUp}`);
     let t = 60;
     const d = 150;
-    iUpElements.forEach(el => {
+    iUpElements.forEach((el) => {
       setTimeout(() => {
-        el.className = el.className + ' ' + css.up;
+        el.className = el.className + " " + css.up;
       }, t);
       t += d;
     });
@@ -199,10 +199,10 @@ function AboutHome() {
       <Box className={css.btnMobileMenu}>
         <Icon
           as={showCloseIcon ? ChevronUpIcon : HamburgerIcon}
-          fontSize={showCloseIcon ? '4xl' : '2xl'}
+          fontSize={showCloseIcon ? "4xl" : "2xl"}
           color="white"
           mt="1px"
-          onClick={e => {
+          onClick={(e) => {
             e.preventDefault();
             setShowCloseIcon(!showCloseIcon);
             mobileIconClickShow();
@@ -231,8 +231,8 @@ function AboutHome() {
               ref={profilepicRef}
               className={css.profilepic}
               sx={{
-                '.avatar-box:hover &': {
-                  transform: 'rotate3d(0, 1, 0, -180deg)',
+                ".avatar-box:hover &": {
+                  transform: "rotate3d(0, 1, 0, -180deg)",
                 },
               }}
               position="relative"
@@ -242,13 +242,13 @@ function AboutHome() {
               w="full"
               h="full"
               _before={{
-                position: 'absolute',
-                display: 'block',
+                position: "absolute",
+                display: "block",
                 content: '""',
-                width: '100%',
-                height: '100%',
-                borderRadius: '50%',
-                transition: 'all 0.35s ease-in-out',
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                transition: "all 0.35s ease-in-out",
               }}
             >
               <Image src={wb_me_avatar} alt="hwcong" layout="fill" priority />
@@ -264,8 +264,8 @@ function AboutHome() {
               borderRadius="50%"
               textAlign="center"
               sx={{
-                transformStyle: 'preserve-3d',
-                backfaceVisibility: 'hidden',
+                transformStyle: "preserve-3d",
+                backfaceVisibility: "hidden",
               }}
             >
               <Box
@@ -287,10 +287,10 @@ function AboutHome() {
                   textShadow="0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3)"
                   _hover={{
                     textShadow:
-                      '0 0 1px #0ebeff, 0 0 2px #0ebeff, 0 0 4px #0ebeff',
+                      "0 0 1px #0ebeff, 0 0 2px #0ebeff, 0 0 4px #0ebeff",
                   }}
                   onClick={() => {
-                    needAccessCode ? onOpen() : router.push('/about/profile');
+                    needAccessCode ? onOpen() : router.push("/about/profile");
                   }}
                 >
                   Hwcong
@@ -324,7 +324,7 @@ function AboutHome() {
             color="#cccccc"
             textAlign="center"
             sx={{
-              fontSmooth: 'antialiased',
+              fontSmooth: "antialiased",
             }}
           >
             {mottoText}
@@ -332,14 +332,14 @@ function AboutHome() {
           <hr
             className={css.iUp}
             style={{
-              width: '50%',
-              margin: '20px auto',
-              borderTop: '1px solid rgba(255, 255, 255, 0.14)',
+              width: "50%",
+              margin: "20px auto",
+              borderTop: "1px solid rgba(255, 255, 255, 0.14)",
             }}
           />
           <Text className={css.iUp} textAlign="center" color="white">
             {descData.hitokoto}
-            <br /> - <Text as={'strong'}>「{descData.from}」</Text>
+            <br /> - <Text as={"strong"}>「{descData.from}」</Text>
           </Text>
           <div
             ref={navigationWrapperRef}
@@ -356,7 +356,7 @@ function AboutHome() {
                       onClick={() => {
                         needAccessCode
                           ? onOpen()
-                          : router.push('/about/profile');
+                          : router.push("/about/profile");
                       }}
                     >
                       简历
@@ -420,14 +420,14 @@ function AboutHome() {
         </VStack>
         <Box
           className={`${css.remark} ${css.iUp}`}
-          display={{ base: 'none', md: 'block' }}
+          display={{ base: "none", md: "block" }}
         >
           <p className={css.power}>
             © 2022 Powered By
             <NextLink href="/" passHref>
               <Link target="_blank" color="#4e97d8">
-                {' '}
-                Hwcong{' '}
+                {" "}
+                Hwcong{" "}
               </Link>
             </NextLink>
           </p>

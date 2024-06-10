@@ -1,12 +1,12 @@
 ---
 title: Range Slider
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-05'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-05"
 description:
-  'The RangeSlider is a multi thumb slider used to select a range of related
-  values.'
+  "The RangeSlider is a multi thumb slider used to select a range of related
+  values."
 ---
 
 The `RangeSlider` is a multi thumb slider used to select a range of related
@@ -14,10 +14,10 @@ values. A common use-case of this component is a price range picker that allows
 a user to set the minimum and maximum price.
 
 <ComponentLinks
-  theme={{ componentName: 'slider' }}
-  github={{ package: 'slider' }}
-  npm={{ package: '@chakra-ui/slider' }}
-  video={{ url: 'https://youtu.be/yt0F8srvg_Q' }}
+  theme={{ componentName: "slider" }}
+  github={{ package: "slider" }}
+  npm={{ package: "@chakra-ui/slider" }}
+  video={{ url: "https://youtu.be/yt0F8srvg_Q" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -38,7 +38,7 @@ import {
   RangeSliderTrack,
   RangeSliderFilledTrack,
   RangeSliderThumb,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -47,7 +47,7 @@ import {
 > provide an accessible label for the Slider.
 
 ```jsx
-<RangeSlider aria-label={['min', 'max']} defaultValue={[10, 30]}>
+<RangeSlider aria-label={["min", "max"]} defaultValue={[10, 30]}>
   <RangeSliderTrack>
     <RangeSliderFilledTrack />
   </RangeSliderTrack>
@@ -63,7 +63,7 @@ You can override the color scheme of the slider to any color key specified in
 
 ```jsx
 <RangeSlider
-  aria-label={['min', 'max']}
+  aria-label={["min", "max"]}
   colorScheme="pink"
   defaultValue={[10, 30]}
 >
@@ -82,7 +82,7 @@ it vertical, pass the `orientation` prop and set its value to `vertical`.
 
 ```jsx
 <RangeSlider
-  aria-label={['min', 'max']}
+  aria-label={["min", "max"]}
   colorScheme="pink"
   defaultValue={[10, 30]}
   orientation="vertical"
@@ -102,7 +102,7 @@ it vertical, pass the `orientation` prop and set its value to `vertical`.
 customize its styles.
 
 ```jsx
-<RangeSlider aria-label={['min', 'max']} defaultValue={[30, 80]}>
+<RangeSlider aria-label={["min", "max"]} defaultValue={[30, 80]}>
   <RangeSliderTrack bg="red.100">
     <RangeSliderFilledTrack bg="tomato" />
   </RangeSliderTrack>
@@ -137,7 +137,10 @@ interested in the final result after sliding is complete. You can use
 `onChangeEnd` for this.
 
 ```jsx live=false
-<RangeSlider aria-label={['min', 'max']} onChangeEnd={val => console.log(val)}>
+<RangeSlider
+  aria-label={["min", "max"]}
+  onChangeEnd={(val) => console.log(val)}
+>
   <RangeSliderTrack>
     <RangeSliderFilledTrack />
   </RangeSliderTrack>

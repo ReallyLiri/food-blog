@@ -2,12 +2,12 @@
 function stripAndCollapse(value: string) {
   const rnothtmlwhite = /[^\x20\t\r\n\f]+/g;
   const tokens = value.match(rnothtmlwhite) || [];
-  return tokens.join(' ');
+  return tokens.join(" ");
 }
 
 function hasClass(el: HTMLElement, cls: string) {
-  const className = ' ' + cls.trim() + ' ';
-  const cur = ' ' + stripAndCollapse(el.className) + ' ';
+  const className = " " + cls.trim() + " ";
+  const cur = " " + stripAndCollapse(el.className) + " ";
   if (cur.indexOf(className) > -1) {
     return true;
   }
@@ -15,14 +15,14 @@ function hasClass(el: HTMLElement, cls: string) {
 }
 
 function addClass(el: HTMLElement, cls: string) {
-  const classes = cls.trim().split(' ');
-  let cur = ' ' + stripAndCollapse(el.className) + ' ';
+  const classes = cls.trim().split(" ");
+  let cur = " " + stripAndCollapse(el.className) + " ";
   if (classes.length) {
     let j = 0,
-      clazz = '';
+      clazz = "";
     while ((clazz = classes[j++])) {
-      if (cur.indexOf(' ' + clazz + ' ') < 0) {
-        cur += clazz + ' ';
+      if (cur.indexOf(" " + clazz + " ") < 0) {
+        cur += clazz + " ";
       }
     }
 
@@ -33,16 +33,16 @@ function addClass(el: HTMLElement, cls: string) {
 }
 
 function removeClass(el: HTMLElement, cls: string) {
-  const classes = cls.trim().split(' ');
-  let cur = ' ' + stripAndCollapse(el.className) + ' ';
+  const classes = cls.trim().split(" ");
+  let cur = " " + stripAndCollapse(el.className) + " ";
   if (classes.length) {
     let j = 0,
       clazz: string = null;
 
     while ((clazz = classes[j++])) {
       // 移除 *all* 匹配项
-      while (cur.indexOf(' ' + clazz + ' ') > -1) {
-        cur = cur.replace(' ' + clazz + ' ', ' ');
+      while (cur.indexOf(" " + clazz + " ") > -1) {
+        cur = cur.replace(" " + clazz + " ", " ");
       }
     }
 
@@ -53,7 +53,7 @@ function removeClass(el: HTMLElement, cls: string) {
 }
 
 function toggleClass(el: HTMLElement, cls: string) {
-  cls.split(' ').forEach(itemCls => {
+  cls.split(" ").forEach((itemCls) => {
     if (hasClass(el, itemCls)) {
       removeClass(el, itemCls);
     } else {
@@ -79,9 +79,9 @@ export function randomNum(min: number, max: number) {
 
 // 随机字符串
 export function randomString(strlen = 6) {
-  const t = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+  const t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678";
   const a = t.length;
-  let n = '';
+  let n = "";
   for (let i = 0; i < strlen; i++) n += t.charAt(Math.floor(Math.random() * a));
   return n;
 }
@@ -169,7 +169,7 @@ export const fullScreenAnimation = (ref_canvas: HTMLCanvasElement) => {
     let r = parseInt(((0.5 + Math.sin(col) * 0.5) * 16).toString());
     let g = parseInt(((0.5 + Math.cos(col) * 0.5) * 16).toString());
     let b = parseInt(((0.5 - Math.sin(col) * 0.5) * 16).toString());
-    return '#' + r.toString(16) + g.toString(16) + b.toString(16);
+    return "#" + r.toString(16) + g.toString(16) + b.toString(16);
   }
   function interpolateColors(RGB1: number[], RGB2: number[], degree: number) {
     let w2 = degree;
@@ -192,10 +192,10 @@ export const fullScreenAnimation = (ref_canvas: HTMLCanvasElement) => {
     let g = parseInt(arr[1].toString());
     let b = parseInt(arr[2].toString());
     return (
-      '#' +
-      ('0' + r.toString(16)).slice(-2) +
-      ('0' + g.toString(16)).slice(-2) +
-      ('0' + b.toString(16)).slice(-2)
+      "#" +
+      ("0" + r.toString(16)).slice(-2) +
+      ("0" + g.toString(16)).slice(-2) +
+      ("0" + b.toString(16)).slice(-2)
     );
   }
   function process(lets: letsOptions) {
@@ -264,7 +264,7 @@ export const fullScreenAnimation = (ref_canvas: HTMLCanvasElement) => {
         }
       }
     }
-    lets.ctx.fillStyle = '#82f';
+    lets.ctx.fillStyle = "#82f";
     for (let i = -25; i <= 25; i += 1) {
       for (let j = -25; j <= 25; j += 1) {
         x = i * 2;
@@ -300,7 +300,7 @@ export const fullScreenAnimation = (ref_canvas: HTMLCanvasElement) => {
   }
   function draw(lets: letsOptions) {
     lets.ctx.globalAlpha = 0.15;
-    lets.ctx.fillStyle = '#000';
+    lets.ctx.fillStyle = "#000";
     lets.ctx.fillRect(0, 0, lets.canvas.width, lets.canvas.height);
     drawFloor(lets);
     let point: pointOption, x: number, y: number, z: number;
@@ -345,11 +345,11 @@ export const fullScreenAnimation = (ref_canvas: HTMLCanvasElement) => {
     if (lets === undefined) {
       lets = {};
       lets.canvas = ref_canvas;
-      lets.ctx = lets.canvas.getContext('2d');
+      lets.ctx = lets.canvas.getContext("2d");
       lets.canvas.width = window.innerWidth;
       lets.canvas.height = window.innerHeight;
       window.addEventListener(
-        'resize',
+        "resize",
         function () {
           lets.canvas.width = window.innerWidth;
           lets.canvas.height = window.innerHeight;

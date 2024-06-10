@@ -1,11 +1,11 @@
-import { chakra } from '@chakra-ui/react';
+import { chakra } from "@chakra-ui/react";
 import BaseHighlight, {
   Language,
   PrismTheme,
   defaultProps,
-} from 'prism-react-renderer';
-import React from 'react';
-import { liveEditorStyle } from './styles';
+} from "prism-react-renderer";
+import React from "react";
+import { liveEditorStyle } from "./styles";
 
 const RE = /{([\d,-]+)}/;
 
@@ -15,7 +15,7 @@ const calculateLinesToHighlight = (meta?: string) => {
   }
   const lineNumbers = RE.exec(meta)![1]
     .split(`,`)
-    .map(v => v.split(`-`).map(x => parseInt(x, 10)));
+    .map((v) => v.split(`-`).map((x) => parseInt(x, 10)));
 
   return (index: number) => {
     const lineNumber = index + 1;
@@ -59,7 +59,7 @@ function Highlight({
                 <chakra.div
                   key={i}
                   px="5"
-                  bg={shouldHighlightLine(i) ? 'whiteAlpha.200' : undefined}
+                  bg={shouldHighlightLine(i) ? "whiteAlpha.200" : undefined}
                   {...lineProps}
                 >
                   {showLines && (

@@ -1,8 +1,8 @@
-import { NextSeo, NextSeoProps } from 'next-seo'
-import React from 'react'
-import siteConfig from 'configs/site-config'
+import { NextSeo, NextSeoProps } from "next-seo";
+import React from "react";
+import siteConfig from "configs/site-config";
 
-export type SEOProps = Pick<NextSeoProps, 'title' | 'description'>
+export type SEOProps = Pick<NextSeoProps, "title" | "description">;
 
 const SEO = ({ title, description }: SEOProps) => (
   <NextSeo
@@ -11,6 +11,6 @@ const SEO = ({ title, description }: SEOProps) => (
     openGraph={{ title, description }}
     titleTemplate={siteConfig.seo.titleTemplate}
   />
-)
+);
 
-export default SEO
+export default SEO;

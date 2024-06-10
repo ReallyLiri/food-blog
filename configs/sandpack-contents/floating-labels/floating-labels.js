@@ -75,4 +75,4 @@ root.render(
   </ChakraProvider>
 );
 `,
-}
+};

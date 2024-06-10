@@ -1,5 +1,5 @@
-import NextLink from 'next/link';
-import { Box, Button, Flex, Link, Text } from '@chakra-ui/react';
+import NextLink from "next/link";
+import { Box, Button, Flex, Link, Text } from "@chakra-ui/react";
 
 interface Props {
   totalPages: number;
@@ -32,7 +32,7 @@ export default function NotesPagination({ totalPages, currentPage }: Props) {
               colorScheme="teal"
               variant="link"
               _hover={{
-                textDecoration: 'none',
+                textDecoration: "none",
               }}
             >
               Previous
@@ -54,7 +54,7 @@ export default function NotesPagination({ totalPages, currentPage }: Props) {
               colorScheme="teal"
               variant="link"
               _hover={{
-                textDecoration: 'none',
+                textDecoration: "none",
               }}
             >
               Next

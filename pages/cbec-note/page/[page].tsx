@@ -1,9 +1,9 @@
-import CbecListContainer from '@/components/page-container/cbec-list-container';
-import BaseLayout from 'layout/base-layout';
-import { allCbecNotes } from 'contentlayer/generated';
-import { GetStaticPaths, InferGetStaticPropsType } from 'next/types';
-import { allCoreContent } from 'utils/contentlayer';
-import { POSTS_PER_PAGE, sortedAllPosts } from '../index';
+import CbecListContainer from "@/components/page-container/cbec-list-container";
+import BaseLayout from "layout/base-layout";
+import { allCbecNotes } from "contentlayer/generated";
+import { GetStaticPaths, InferGetStaticPropsType } from "next/types";
+import { allCoreContent } from "utils/contentlayer";
+import { POSTS_PER_PAGE, sortedAllPosts } from "../index";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const totalPosts = allCbecNotes;
@@ -18,7 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async context => {
+export const getStaticProps = async (context) => {
   const {
     params: { page },
   } = context;

@@ -1,9 +1,9 @@
 ---
 title: Popover
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-4-22'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-4-22"
 description: Popover is a non-modal dialog that floats around a trigger.
 ---
 
@@ -12,9 +12,9 @@ display contextual information to the user, and should be paired with a
 clickable trigger element.
 
 <ComponentLinks
-  theme={{ componentName: 'popover' }}
-  github={{ package: 'popover' }}
-  npm={{ package: '@chakra-ui/popover' }}
+  theme={{ componentName: "popover" }}
+  github={{ package: "popover" }}
+  npm={{ package: "@chakra-ui/popover" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -44,7 +44,7 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   PopoverAnchor,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 ```
 
 ## Basic Usage
@@ -297,7 +297,7 @@ action about popover.
 ```jsx
 function WithPopoverAnchor() {
   const [isEditing, setIsEditing] = useBoolean();
-  const [color, setColor] = React.useState('red');
+  const [color, setColor] = React.useState("red");
 
   return (
     <Popover
@@ -321,7 +321,7 @@ function WithPopoverAnchor() {
 
         <PopoverTrigger>
           <Button h="40px" colorScheme="pink">
-            {isEditing ? 'Save' : 'Edit'}
+            {isEditing ? "Save" : "Edit"}
           </Button>
         </PopoverTrigger>
       </HStack>
@@ -329,7 +329,7 @@ function WithPopoverAnchor() {
       <PopoverContent>
         <PopoverBody>
           Colors:
-          <RadioGroup value={color} onChange={newColor => setColor(newColor)}>
+          <RadioGroup value={color} onChange={(newColor) => setColor(newColor)}>
             <Radio value="red">red</Radio>
             <Radio value="blue">blue</Radio>
             <Radio value="green">green</Radio>
@@ -355,7 +355,7 @@ function InternalStateEx() {
       {({ isOpen, onClose }) => (
         <>
           <PopoverTrigger>
-            <Button>Click to {isOpen ? 'close' : 'open'}</Button>
+            <Button>Click to {isOpen ? "close" : "open"}</Button>
           </PopoverTrigger>
           <Portal>
             <PopoverContent>
@@ -515,7 +515,7 @@ happen when the component is displayed.
 
 ### Popover Props
 
-<PropsTable of="Popover" omit={['enabled']} />
+<PropsTable of="Popover" omit={["enabled"]} />
 
 ### Other Props
 

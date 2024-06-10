@@ -14,11 +14,11 @@ import {
   ModalBody,
   useClipboard,
   VStack,
-} from '@chakra-ui/react';
-import { signIn } from 'next-auth/react';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
-import { type Dispatch, type SetStateAction, useState } from 'react';
-import { useRouter } from 'next/router';
+} from "@chakra-ui/react";
+import { signIn } from "next-auth/react";
+import { Field, Form, Formik, FormikHelpers } from "formik";
+import { type Dispatch, type SetStateAction, useState } from "react";
+import { useRouter } from "next/router";
 
 interface Values {
   inputStr: string;
@@ -32,7 +32,7 @@ interface FormProps {
 function AccessCodeForm(props: FormProps) {
   const { isToGetAccessCode, setIsToGetAccessCode } = props;
 
-  const [accessCodeValue, setAccessCodeValue] = useState('');
+  const [accessCodeValue, setAccessCodeValue] = useState("");
   const { hasCopied, onCopy } = useClipboard(accessCodeValue);
 
   const toast = useToast();
@@ -41,9 +41,9 @@ function AccessCodeForm(props: FormProps) {
   const validateInputValue = (value: string) => {
     let error: string;
     if (!value) {
-      error = 'The input value is required';
-    } else if (isToGetAccessCode && value !== 'admin') {
-      error = 'Sorry! access password is error 😱';
+      error = "The input value is required";
+    } else if (isToGetAccessCode && value !== "admin") {
+      error = "Sorry! access password is error 😱";
     }
     return error;
   };
@@ -52,20 +52,20 @@ function AccessCodeForm(props: FormProps) {
     values: Values,
     actions: FormikHelpers<Values>,
   ) => {
-    const result = await signIn('credentials', {
+    const result = await signIn("credentials", {
       redirect: false,
       accessCode: values.inputStr,
     });
 
     if (result && result.ok) {
-      !isToGetAccessCode && router.replace('/about/profile');
+      !isToGetAccessCode && router.replace("/about/profile");
     }
 
     if (result.error) {
       toast({
         title: result.error,
-        position: 'top',
-        status: 'error',
+        position: "top",
+        status: "error",
         duration: 5000,
         isClosable: true,
       });
@@ -78,18 +78,18 @@ function AccessCodeForm(props: FormProps) {
     values: Values,
     actions: FormikHelpers<Values>,
   ) => {
-    const response = await fetch('/api/auth/generate-code', {
-      method: 'POST',
+    const response = await fetch("/api/auth/generate-code", {
+      method: "POST",
       body: JSON.stringify({ password: values.inputStr }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
     const result = await response.json();
 
     if (result.error) {
       toast({
         title: result.error,
-        position: 'top',
-        status: 'error',
+        position: "top",
+        status: "error",
         duration: 5000,
         isClosable: true,
       });
@@ -106,8 +106,8 @@ function AccessCodeForm(props: FormProps) {
   };
 
   return (
-    <Formik initialValues={{ inputStr: '' }} onSubmit={submitHandler}>
-      {props => (
+    <Formik initialValues={{ inputStr: "" }} onSubmit={submitHandler}>
+      {(props) => (
         <Form>
           <Field name="inputStr" validate={validateInputValue}>
             {({ field, form }) => (
@@ -117,7 +117,7 @@ function AccessCodeForm(props: FormProps) {
                 <Input
                   {...field}
                   placeholder={
-                    isToGetAccessCode ? '请输入密码 admin' : '请输入访问码'
+                    isToGetAccessCode ? "请输入密码 admin" : "请输入访问码"
                   }
                 />
                 <FormErrorMessage>{form.errors.inputStr}</FormErrorMessage>
@@ -132,7 +132,7 @@ function AccessCodeForm(props: FormProps) {
               <Flex mb={2} w="full">
                 <Input value={accessCodeValue} isReadOnly placeholder="" />
                 <Button onClick={onCopy} ml={2}>
-                  {hasCopied ? 'Copied' : 'Copy'}
+                  {hasCopied ? "Copied" : "Copy"}
                 </Button>
               </Flex>
             </VStack>
@@ -151,10 +151,10 @@ function AccessCodeForm(props: FormProps) {
               color="blue"
               onClick={() => {
                 setIsToGetAccessCode(!isToGetAccessCode);
-                props.setFieldValue('inputStr', '');
+                props.setFieldValue("inputStr", "");
               }}
             >
-              {isToGetAccessCode ? '访问Wcong_H的简历' : '获取访问码'}
+              {isToGetAccessCode ? "访问Wcong_H的简历" : "获取访问码"}
             </Text>
           </Flex>
         </Form>
@@ -172,7 +172,7 @@ function AccessFormModal(props: { isOpen: boolean; onClose: () => void }) {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
-          {isToGetAccessCode ? '获取访问码' : '访问Wcong_H的简历'}
+          {isToGetAccessCode ? "获取访问码" : "访问Wcong_H的简历"}
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>

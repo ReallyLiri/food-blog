@@ -1,10 +1,10 @@
 ---
 title: useRadioGroup
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-27'
-description: 'React hooks to manage radio groups.'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-27"
+description: "React hooks to manage radio groups."
 ---
 
 `useRadioGroup` is a custom hook that provides all the state management logic
@@ -13,7 +13,7 @@ for a group of radios.
 ## Import
 
 ```js
-import { useRadioGroup } from '@chakra-ui/react';
+import { useRadioGroup } from "@chakra-ui/react";
 ```
 
 ## Return value
@@ -48,7 +48,7 @@ function Example() {
         <input {...getInputProps({})} hidden />
         <Box
           {...getCheckboxProps()}
-          bg={state.isChecked ? 'green.200' : 'transparent'}
+          bg={state.isChecked ? "green.200" : "transparent"}
           w={12}
           p={1}
           rounded="full"
@@ -62,22 +62,22 @@ function Example() {
   const toast = useToast();
 
   const avatars = [
-    { name: 'Kat', image: 'https://randomuser.me/api/portraits/women/44.jpg' },
-    { name: 'Kevin', image: 'https://randomuser.me/api/portraits/men/86.jpg' },
-    { name: 'Andy', image: 'https://randomuser.me/api/portraits/men/29.jpg' },
-    { name: 'Jess', image: 'https://randomuser.me/api/portraits/women/95.jpg' },
+    { name: "Kat", image: "https://randomuser.me/api/portraits/women/44.jpg" },
+    { name: "Kevin", image: "https://randomuser.me/api/portraits/men/86.jpg" },
+    { name: "Andy", image: "https://randomuser.me/api/portraits/men/29.jpg" },
+    { name: "Jess", image: "https://randomuser.me/api/portraits/women/95.jpg" },
   ];
 
-  const handleChange = value => {
+  const handleChange = (value) => {
     toast({
       title: `The value got changed to ${value}!`,
-      status: 'success',
+      status: "success",
       duration: 2000,
     });
   };
 
   const { value, getRadioProps, getRootProps } = useRadioGroup({
-    defaultValue: 'Kevin',
+    defaultValue: "Kevin",
     onChange: handleChange,
   });
 
@@ -85,7 +85,7 @@ function Example() {
     <Stack {...getRootProps()}>
       <Text>The selected radio is: {value}</Text>
       <HStack>
-        {avatars.map(avatar => {
+        {avatars.map((avatar) => {
           return (
             <CustomRadio
               key={avatar.name}
@@ -126,7 +126,7 @@ function CustomRadioGroup(props) {
 
   return (
     <HStack {...group}>
-      {options.map(value => {
+      {options.map((value) => {
         const radio = getRadioProps({ value });
         return (
           <Radio isDisabled={isDisabled} key={value} {...radio}>
@@ -148,7 +148,7 @@ function Parent() {
       {/* Any components above */}
       <CustomRadioGroup
         isDisabled={isDisabled}
-        options={['react', 'vue', 'svelte']}
+        options={["react", "vue", "svelte"]}
       />
       {/* Any components below */}
     </>

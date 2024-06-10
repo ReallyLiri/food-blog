@@ -1,4 +1,4 @@
-import { CalendarIcon, StarIcon, UnlockIcon, ViewIcon } from '@chakra-ui/icons';
+import { CalendarIcon, StarIcon, UnlockIcon, ViewIcon } from "@chakra-ui/icons";
 import {
   Accordion,
   AccordionButton,
@@ -7,16 +7,16 @@ import {
   AccordionPanel,
   Box,
   Icon,
-} from '@chakra-ui/react';
-import Image from 'next/image';
-import NextLink from 'next/link';
-import { DiJavascript } from 'react-icons/di';
-import { FaCss3Alt, FaNodeJs, FaReact, FaVuejs } from 'react-icons/fa';
-import { SiWebpack } from 'react-icons/si';
+} from "@chakra-ui/react";
+import Image from "next/image";
+import NextLink from "next/link";
+import { DiJavascript } from "react-icons/di";
+import { FaCss3Alt, FaNodeJs, FaReact, FaVuejs } from "react-icons/fa";
+import { SiWebpack } from "react-icons/si";
 
-import me_picture from 'public/img/wb_me_avatar.png';
-import { useEffect, useRef } from 'react';
-import css from './index.module.css';
+import me_picture from "public/img/wb_me_avatar.png";
+import { useEffect, useRef } from "react";
+import css from "./index.module.css";
 
 function Profile() {
   const skillsContainerRef = useRef<HTMLDivElement>();
@@ -26,9 +26,9 @@ function Profile() {
       ev.preventDefault();
       skillsContainerDom.scrollLeft += ev.deltaY;
     };
-    skillsContainerDom.addEventListener('wheel', fn);
+    skillsContainerDom.addEventListener("wheel", fn);
     return () => {
-      skillsContainerDom.removeEventListener('wheel', fn);
+      skillsContainerDom.removeEventListener("wheel", fn);
     };
   }, []);
   return (
@@ -467,7 +467,7 @@ function Profile() {
         </section>
         <footer className={css.footer}>
           <p>
-            © {new Date().getFullYear()} By{' '}
+            © {new Date().getFullYear()} By{" "}
             <NextLink href="/" passHref>
               <a title="Wcong_H的博客" target="_blank">
                 Wcong_H

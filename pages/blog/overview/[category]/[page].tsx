@@ -2,18 +2,18 @@ import type {
   GetStaticPaths,
   GetStaticProps,
   InferGetStaticPropsType,
-} from 'next';
+} from "next";
 
-import { mainNavLinks } from '@/components/sidebar/blog-sidebar';
-import BaseLayout from 'layout/base-layout';
-import { allCoreContent } from 'utils/contentlayer';
+import { mainNavLinks } from "@/components/sidebar/blog-sidebar";
+import BaseLayout from "layout/base-layout";
+import { allCoreContent } from "utils/contentlayer";
 import {
   PostsListPage,
   POSTS_PER_PAGE,
   allSortedBlogPosts,
   postsCategoriesGroup,
-} from './index';
-import { type Blog } from 'contentlayer/generated';
+} from "./index";
+import { type Blog } from "contentlayer/generated";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postsCategoriesGroup.reduce((paths, categoryObj) => {
@@ -30,19 +30,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const {
     params: { page, category },
   } = context;
 
   const posts =
-    category === 'all'
+    category === "all"
       ? allSortedBlogPosts
       : allSortedBlogPosts.reduce((posts: Blog[], post) => {
           post.slug.startsWith(category as string) && posts.push(post);
           return posts;
         }, []);
-  const contianerTitle = mainNavLinks.find(nav =>
+  const contianerTitle = mainNavLinks.find((nav) =>
     nav.href.includes(category as string),
   ).label;
 

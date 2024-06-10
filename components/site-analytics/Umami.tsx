@@ -1,6 +1,6 @@
-import Script from 'next/script';
+import Script from "next/script";
 
-import siteConfig from 'configs/site-config';
+import siteConfig from "configs/site-config";
 
 const UmamiScript = () => {
   return (

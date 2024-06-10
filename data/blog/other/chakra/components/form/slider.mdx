@@ -1,18 +1,18 @@
 ---
 title: Slider
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-06'
-description: 'The Slider is used to allow users to make selections from a range of values.'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-06"
+description: "The Slider is used to allow users to make selections from a range of values."
 ---
 
 The `Slider` is used to allow users to make selections from a range of values.
 
 <ComponentLinks
-  theme={{ componentName: 'slider' }}
-  github={{ package: 'slider' }}
-  npm={{ package: '@chakra-ui/slider' }}
+  theme={{ componentName: "slider" }}
+  github={{ package: "slider" }}
+  npm={{ package: "@chakra-ui/slider" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -40,7 +40,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   SliderMark,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -124,14 +124,14 @@ function SliderMarkExample() {
   const [sliderValue, setSliderValue] = useState(50);
 
   const labelStyles = {
-    mt: '2',
-    ml: '-2.5',
-    fontSize: 'sm',
+    mt: "2",
+    ml: "-2.5",
+    fontSize: "sm",
   };
 
   return (
     <Box pt={6} pb={2}>
-      <Slider aria-label="slider-ex-6" onChange={val => setSliderValue(val)}>
+      <Slider aria-label="slider-ex-6" onChange={(val) => setSliderValue(val)}>
         <SliderMark value={25} {...labelStyles}>
           25%
         </SliderMark>
@@ -175,7 +175,7 @@ function SliderThumbWithTooltip() {
       min={0}
       max={100}
       colorScheme="teal"
-      onChange={v => setSliderValue(v)}
+      onChange={(v) => setSliderValue(v)}
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
@@ -213,7 +213,7 @@ interested in the final result after sliding is complete. You can use
 `onChangeEnd` for this.
 
 ```jsx live=false
-<Slider aria-label="slider-ex-5" onChangeEnd={val => console.log(val)}>
+<Slider aria-label="slider-ex-5" onChangeEnd={(val) => console.log(val)}>
   <SliderTrack>
     <SliderFilledTrack />
   </SliderTrack>

@@ -1,20 +1,20 @@
-import { Box, BoxProps, chakra } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import CodeContainer from './code-container';
-import CopyButton from './copy-button';
-import scope from './react-live-scope';
-import { liveEditorStyle, liveErrorStyle } from './styles';
-import { t } from 'utils/i18n';
+import { Box, BoxProps, chakra } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
+import CodeContainer from "./code-container";
+import CopyButton from "./copy-button";
+import scope from "./react-live-scope";
+import { liveEditorStyle, liveErrorStyle } from "./styles";
+import { t } from "utils/i18n";
 
 const LiveCodePreview = chakra(LivePreview, {
   baseStyle: {
-    fontFamily: 'body',
+    fontFamily: "body",
     mt: 5,
     p: 3,
     borderWidth: 1,
-    borderRadius: '12px',
-    overflowX: 'auto',
+    borderRadius: "12px",
+    overflowX: "auto",
   },
 });
 
@@ -37,7 +37,7 @@ const EditableNotice = (props: BoxProps) => {
       pointerEvents="none"
       {...props}
     >
-      {t('component.mdx-components.react-live-block.editable-example')}
+      {t("component.mdx-components.react-live-block.editable-example")}
     </Box>
   );
 };

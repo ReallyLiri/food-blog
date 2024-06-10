@@ -91,4 +91,4 @@ root.render(
     <App />
   </ChakraProvider>
 );`,
-}
+};

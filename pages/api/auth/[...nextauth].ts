@@ -1,12 +1,12 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import { verifyPassword, hashPassword } from 'utils/auth';
+import NextAuth, { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { verifyPassword, hashPassword } from "utils/auth";
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export const authOptions: NextAuthOptions = {
   // https://next-auth.js.org/configuration/providers/oauth
-  secret: 'LlKq6ZtYbr+hTC868mAmAh9/h4HwMfsFo4hrfCx5mLg=',
+  secret: "LlKq6ZtYbr+hTC868mAmAh9/h4HwMfsFo4hrfCx5mLg=",
   session: {
     // Choose how you want to save the user session.
     // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.
@@ -14,7 +14,7 @@ export const authOptions: NextAuthOptions = {
     // You can still force a JWT session by explicitly defining `"jwt"`.
     // When using `"database"`, the session cookie will only contain a `sessionToken` value,
     // which is used to look up the session in the database.
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 60 * 60, // 1 hour
   },
   providers: [
@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
         accessCode: {
-          type: 'password',
+          type: "password",
         },
       },
       async authorize(credentials) {
@@ -42,9 +42,9 @@ export const authOptions: NextAuthOptions = {
             hasAccessCode,
           );
 
-          if (isValid && process.env.ACCESS_CODE !== '') {
+          if (isValid && process.env.ACCESS_CODE !== "") {
             // the ACCESS_CODE is only used once, then set it as ''
-            process.env.ACCESS_CODE = '';
+            process.env.ACCESS_CODE = "";
             // Any object returned will be saved in `user` property of the JWT
             return {
               hasAccessCode,
@@ -52,10 +52,10 @@ export const authOptions: NextAuthOptions = {
           } else {
             // If you return null then an error will be displayed advising the user to check their details.
             // return null;
-            throw new Error('Access Code Error!');
+            throw new Error("Access Code Error!");
           }
         } catch (error) {
-          throw new Error('Access Code Error!');
+          throw new Error("Access Code Error!");
         }
       },
     }),

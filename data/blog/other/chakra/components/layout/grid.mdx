@@ -1,9 +1,9 @@
 ---
 title: Grid
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-09'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-09"
 description:
   Grid is Box with display set to grid and comes with helpful style shorthand.
   It renders a `div` element.
@@ -13,8 +13,8 @@ A primitive useful for grid layouts. Grid is `Box` with `display: grid` and it
 comes with helpful style shorthand. It renders a `div` element.
 
 <ComponentLinks
-  github={{ package: 'layout' }}
-  npm={{ package: '@chakra-ui/layout' }}
+  github={{ package: "layout" }}
+  npm={{ package: "@chakra-ui/layout" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -22,7 +22,7 @@ comes with helpful style shorthand. It renders a `div` element.
 ## Import
 
 ```js
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem } from "@chakra-ui/react";
 ```
 
 - **Grid:** The main wrapper with `display: grid`.
@@ -89,23 +89,23 @@ in the `<GridItem />` component.
   templateAreas={`"header header"
                   "nav main"
                   "nav footer"`}
-  gridTemplateRows={'50px 1fr 30px'}
-  gridTemplateColumns={'150px 1fr'}
+  gridTemplateRows={"50px 1fr 30px"}
+  gridTemplateColumns={"150px 1fr"}
   h="200px"
   gap="1"
   color="blackAlpha.700"
   fontWeight="bold"
 >
-  <GridItem pl="2" bg="orange.300" area={'header'}>
+  <GridItem pl="2" bg="orange.300" area={"header"}>
     Header
   </GridItem>
-  <GridItem pl="2" bg="pink.300" area={'nav'}>
+  <GridItem pl="2" bg="pink.300" area={"nav"}>
     Nav
   </GridItem>
-  <GridItem pl="2" bg="green.300" area={'main'}>
+  <GridItem pl="2" bg="green.300" area={"main"}>
     Main
   </GridItem>
-  <GridItem pl="2" bg="blue.300" area={'footer'}>
+  <GridItem pl="2" bg="blue.300" area={"footer"}>
     Footer
   </GridItem>
 </Grid>

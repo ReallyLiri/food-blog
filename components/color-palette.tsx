@@ -5,8 +5,8 @@ import {
   Grid,
   GridProps,
   useTheme,
-} from '@chakra-ui/react';
-import React from 'react';
+} from "@chakra-ui/react";
+import React from "react";
 
 type ColorPaletteProps = FlexProps & { color?: string; name?: string };
 
@@ -15,13 +15,13 @@ export const ColorPalette = (props: ColorPaletteProps) => {
 
   const theme = useTheme();
   let colorCode = color;
-  const [shade, hue] = color.split('.');
+  const [shade, hue] = color.split(".");
 
   if (shade && hue) {
     colorCode = theme.colors[shade][hue];
   }
 
-  if (color in theme.colors && typeof theme.colors[color] === 'string') {
+  if (color in theme.colors && typeof theme.colors[color] === "string") {
     colorCode = theme.colors[color];
   }
 
@@ -49,7 +49,7 @@ export const ColorPalettes = (props: { color: string }) => {
   const theme = useTheme();
   const keys = Object.keys(theme.colors[color]);
 
-  return keys.map(item => (
+  return keys.map((item) => (
     <ColorPalette
       key={`${color}.${item}`}
       color={`${color}.${item}`}

@@ -1,9 +1,9 @@
 ---
 title: TCP 数据粘包解决方案之数据封包与拆包
-authors: ['mutongxiao']
-tags: ['网络通信', 'TCP粘包']
-categories: ['node']
-date: '2022-6-12'
+authors: ["mutongxiao"]
+tags: ["网络通信", "TCP粘包"]
+categories: ["node"]
+date: "2022-6-12"
 description: 由于TCP传输协议面向流的，没有消息保护边界。一方发送的多个报文可能会被合并成一个大的报文进行传输，这就是粘包；也可能发送的一个报文，可能会被拆分成多个小报文，这就是拆包。
 ---
 
@@ -109,23 +109,23 @@ module.exports = MyTransformCode;
 在服务端中使用，通过 node 中的 net 模块启动一个服务，调用 MyTransformCode 进行数据的封包与拆包
 
 ```javascript
-const net = require('net');
-const MyTransform = require('./myTransform.js');
+const net = require("net");
+const MyTransform = require("./myTransform.js");
 
 const server = net.createServer();
 // 定义一个缓存区，用于存储可能未接收完的数据，这在实际的传输过程中是有可能发生的
 let overageBuffer = null;
 let ts = new MyTransform();
 
-server.listen('1234', 'localhost');
+server.listen("1234", "localhost");
 
-server.on('listening', () => {
-  console.log('服务端运行在 localhost:1234');
+server.on("listening", () => {
+  console.log("服务端运行在 localhost:1234");
 });
 
-server.on('connection', socket => {
+server.on("connection", (socket) => {
   // 监听数据接收
-  socket.on('data', chunk => {
+  socket.on("data", (chunk) => {
     if (overageBuffer) {
       // 每一次接收，判断缓冲区中是否有上次未读取处理的数据，有就和本次chunk拼接
       chunk = Buffer.concat([overageBuffer, chunk]);
@@ -155,14 +155,14 @@ server.on('connection', socket => {
 客户端同理，调用 MyTransformCode 进行数据的封包与拆包
 
 ```javascript
-const net = require('net');
-const MyTransform = require('./myTransform.js');
+const net = require("net");
+const MyTransform = require("./myTransform.js");
 
 let overageBuffer = null;
 let ts = new MyTransform();
 
 const client = net.createConnection({
-  host: 'localhost',
+  host: "localhost",
   port: 1234,
 });
 // 下面发送的数据，会存在数据粘包现象，即将所有数据合并再一起发送
@@ -173,13 +173,13 @@ const client = net.createConnection({
 // client.write('hello tom and jery 5')
 
 // 将数据转码后再发送，这样即使合并发送，服务端也可以通过解码得到每次发送的数据
-client.write(ts.encode('hello tom and jery 1'));
-client.write(ts.encode('hello tom and jery 2'));
-client.write(ts.encode('hello tom and jery 3'));
-client.write(ts.encode('hello tom and jery 4'));
-client.write(ts.encode('hello tom and jery 5'));
+client.write(ts.encode("hello tom and jery 1"));
+client.write(ts.encode("hello tom and jery 2"));
+client.write(ts.encode("hello tom and jery 3"));
+client.write(ts.encode("hello tom and jery 4"));
+client.write(ts.encode("hello tom and jery 5"));
 
-client.on('data', chunk => {
+client.on("data", (chunk) => {
   if (overageBuffer) {
     chunk = Buffer.concat([overageBuffer, chunk]);
   }

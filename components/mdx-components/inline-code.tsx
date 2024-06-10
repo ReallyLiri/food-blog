@@ -1,7 +1,7 @@
-import { Code, HTMLChakraProps, useDimensions } from '@chakra-ui/react';
-import React, { useRef } from 'react';
+import { Code, HTMLChakraProps, useDimensions } from "@chakra-ui/react";
+import React, { useRef } from "react";
 
-export const InlineCode = (props: HTMLChakraProps<'code'>) => {
+export const InlineCode = (props: HTMLChakraProps<"code">) => {
   const codeRef = useRef(null);
   const dimensions = useDimensions(codeRef);
 
@@ -19,9 +19,9 @@ export const InlineCode = (props: HTMLChakraProps<'code'>) => {
       apply="mdx.code"
       ref={codeRef}
       _dark={{
-        color: 'purple.200',
+        color: "purple.200",
       }}
-      whiteSpace={shouldWrap ? undefined : 'nowrap'}
+      whiteSpace={shouldWrap ? undefined : "nowrap"}
       {...props}
     />
   );

@@ -1,12 +1,12 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Box,
   HStack,
   SimpleGrid,
   type SimpleGridProps,
-} from '@chakra-ui/react';
-import NextLink from 'next/link';
-import React from 'react';
+} from "@chakra-ui/react";
+import NextLink from "next/link";
+import React from "react";
 interface Props extends SimpleGridProps {
   previous: {
     title: string;
@@ -41,12 +41,12 @@ export default function BlogPagination({ previous, next, ...rest }: Props) {
               fontSize="md"
               mt="1"
               css={{
-                wordBreak: 'break-all',
-                textOverflow: 'ellipsis',
-                display: '-webkit-box',
-                WebkitLineClamp: '3',
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
+                wordBreak: "break-all",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                WebkitLineClamp: "3",
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
               }}
             >
               {previous.title}
@@ -69,12 +69,12 @@ export default function BlogPagination({ previous, next, ...rest }: Props) {
               fontSize="md"
               mt="1"
               css={{
-                wordBreak: 'break-all',
-                textOverflow: 'ellipsis',
-                display: '-webkit-box',
-                WebkitLineClamp: '3',
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
+                wordBreak: "break-all",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                WebkitLineClamp: "3",
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
               }}
             >
               {next.title}

@@ -1,9 +1,9 @@
 ---
 title: Form Control
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-1-27'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-1-27"
 description:
   Form Control provides context such as isInvalid, isDisabled, and isRequired to
   form elements
@@ -16,9 +16,9 @@ It follows the [WAI specifications](https://www.w3.org/WAI/tutorials/forms/) for
 forms.
 
 <ComponentLinks
-  theme={{ componentName: 'form' }}
-  github={{ package: 'form-control' }}
-  npm={{ package: '@chakra-ui/form-control' }}
+  theme={{ componentName: "form" }}
+  github={{ package: "form-control" }}
+  npm={{ package: "@chakra-ui/form-control" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -41,7 +41,7 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -78,11 +78,11 @@ import {
 
 ```jsx
 function errorMessageExample() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
-  const handleInputChange = e => setInput(e.target.value);
+  const handleInputChange = (e) => setInput(e.target.value);
 
-  const isError = input === '';
+  const isError = input === "";
 
   return (
     <FormControl isInvalid={isError}>
@@ -157,8 +157,8 @@ function FormikExample() {
   function validateName(value) {
     let error;
     if (!value) {
-      error = 'Name is required';
-    } else if (value.toLowerCase() !== 'naruto') {
+      error = "Name is required";
+    } else if (value.toLowerCase() !== "naruto") {
       error = "Jeez! You're not a fan 😱";
     }
     return error;
@@ -166,7 +166,7 @@ function FormikExample() {
 
   return (
     <Formik
-      initialValues={{ name: 'Sasuke' }}
+      initialValues={{ name: "Sasuke" }}
       onSubmit={(values, actions) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -174,7 +174,7 @@ function FormikExample() {
         }, 1000);
       }}
     >
-      {props => (
+      {(props) => (
         <Form>
           <Field name="name" validate={validateName}>
             {({ field, form }) => (

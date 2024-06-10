@@ -1,8 +1,8 @@
-import { useSession } from 'next-auth/react';
-import { Button, VStack, Heading, Icon, Text } from '@chakra-ui/react';
-import dynamic from 'next/dynamic';
-import { WarningTwoIcon } from '@chakra-ui/icons';
-import Profile from '@/components/about/profile';
+import { useSession } from "next-auth/react";
+import { Button, VStack, Heading, Icon, Text } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
+import { WarningTwoIcon } from "@chakra-ui/icons";
+import Profile from "@/components/about/profile";
 
 function AccessDenied() {
   return (
@@ -13,9 +13,9 @@ function AccessDenied() {
         you must be got accsss code in to view this page!
       </Text>
       <Button
-        onClick={e => {
+        onClick={(e) => {
           e.preventDefault();
-          location.href = '/about';
+          location.href = "/about";
         }}
       >
         Go Back
@@ -26,11 +26,11 @@ function AccessDenied() {
 
 function ProfilePage() {
   const { data: session, status } = useSession();
-  const loading = status === 'loading';
+  const loading = status === "loading";
 
   // When rendering client side don't display anything until loading is complete
   // 客户端渲染不会显示任何内容，直到loading状态完成
-  if (typeof window !== 'undefined' && loading) return null;
+  if (typeof window !== "undefined" && loading) return null;
 
   // If no session exists, display access denied message
   // 如果获取不到session 或不可访问，返回拒绝访问消息

@@ -44,7 +44,7 @@
   padding: 1em;
   display: block;
   text-align: center;
-  transition: 'background 0.3s, box-shadow 0.3s';
+  transition: "background 0.3s, box-shadow 0.3s";
 }
 .sidebar .nav a:hover {
   background: rgba(0, 0, 0, 0.2);
@@ -251,7 +251,7 @@
 }
 
 .timeline li:before {
-  content: '';
+  content: "";
   left: -2.3em;
   width: 1.5em;
   height: 1.5em;
@@ -295,41 +295,41 @@
 }
 
 /* -- 网格间距 */
-.row [class*='col_'] {
+.row [class*="col_"] {
   position: relative;
   padding-left: 1.25em;
   padding-right: 1.25em;
 }
 
 /* -- 网格主体 */
-.row [class*='col_s_'],
-.row [class*='col_m_'],
-.row [class*='col_l_'] {
+.row [class*="col_s_"],
+.row [class*="col_m_"],
+.row [class*="col_l_"] {
   flex: 0 0 100%;
   max-width: 100%;
   margin-bottom: 2em;
 }
 
-.row [class*='col_s_']:last-child,
-.row [class*='col_m_']:last-child,
-.row [class*='col_l_']:last-child {
+.row [class*="col_s_"]:last-child,
+.row [class*="col_m_"]:last-child,
+.row [class*="col_l_"]:last-child {
   margin-bottom: 0;
 }
 
 @media screen and (min-width: 600px) {
-  .row [class*='col_s_'] {
+  .row [class*="col_s_"] {
     margin-bottom: 0;
   }
 }
 
 @media screen and (min-width: 900px) {
-  .row [class*='col_m_'] {
+  .row [class*="col_m_"] {
     margin-bottom: 0;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .row [class*='col_l_'] {
+  .row [class*="col_l_"] {
     margin-bottom: 0;
   }
 }

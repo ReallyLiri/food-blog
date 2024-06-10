@@ -1,9 +1,9 @@
 ---
 title: 搞懂这12个Hooks，让你玩转React
-authors: ['mutongxiao']
-tags: ['React', 'Hooks']
-categories: ['React']
-date: '2022-6-25'
+authors: ["mutongxiao"]
+tags: ["React", "Hooks"]
+categories: ["React"]
+date: "2022-6-25"
 description: React Hooks的发布已经有三年多了，它给函数式组件带来了生命周期，现如今，Hooks逐渐取代class组件，相信各位 React 开发的小伙伴已经深有体会，然而你真的完全掌握hooks了吗？知道如何去做一个好的自定义hooks吗？
 ---
 
@@ -101,7 +101,7 @@ export default Index;
 
 ```ts
 // usePow.ts
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
 const Index = (list: number[]) => {
   return useMemo(
@@ -320,7 +320,7 @@ function captureWrapperProps(
 经过上面的讲解我们知道 useRef 可以拿到最新值，我们可以进行简单的封装，这样做的好处是：**可以随时确保获取的是最新值，并且也可以解决闭包问题**
 
 ```ts
-import { useRef } from 'react';
+import { useRef } from "react";
 
 const useLatest = <T>(value: T) => {
   const ref = useRef(value);
@@ -358,8 +358,8 @@ const b = useCreation(() => new Subject(), []);
 明白了一上三点我们就可以自己实现一个 useCreation
 
 ```ts
-import { useRef } from 'react';
-import type { DependencyList } from 'react';
+import { useRef } from "react";
+import type { DependencyList } from "react";
 
 const depsAreSame = (
   oldDeps: DependencyList,
@@ -450,7 +450,7 @@ useEffect 相信各位小伙伴已经用的熟的不能再熟了，我们可以�
 这个钩子不必多说，只是简化了使用 useEffect 的第二个参数：
 
 ```ts
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const useMount = (fn: () => void) => {
   useEffect(() => {
@@ -466,7 +466,7 @@ export default useMount;
 这个需要注意一个点，就是使用 useRef 来确保所传入的函数为最新的状态，所以可以结合上述讲的**useLatest**结合使用
 
 ```ts
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const useUnmount = (fn: () => void) => {
   const ref = useRef(fn);
@@ -604,8 +604,8 @@ Proxy：接受的参数是对象，所以第一个问题也解决了，入参就
 #### 代码
 
 ```ts
-import { useRef } from 'react';
-import { useUpdate, useCreation } from '/hooks';
+import { useRef } from "react";
+import { useUpdate, useCreation } from "/hooks";
 
 const observer = <T extends Record<string, any>>(
   initialVal: T,
@@ -614,7 +614,7 @@ const observer = <T extends Record<string, any>>(
   const proxy = new Proxy<T>(initialVal, {
     get(target, key, receiver) {
       const res = Reflect.get(target, key, receiver);
-      return typeof res === 'object'
+      return typeof res === "object"
         ? observer(res, cb)
         : Reflect.get(target, key);
     },
@@ -812,7 +812,7 @@ export default Index;
 #### 代码
 
 ```ts
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const useEventListener = (
   event: string,
@@ -820,7 +820,7 @@ const useEventListener = (
   target: any = window,
 ) => {
   useEffect(() => {
-    const targetElement = 'current' in target ? target.current : window;
+    const targetElement = "current" in target ? target.current : window;
     const useEventListener = (event: Event) => {
       return handler(event);
     };
@@ -852,11 +852,11 @@ export default useEventListener;
 #### 详细代码
 
 ```ts
-import { useEffect } from 'react';
-import type { DependencyList } from 'react';
-import { useRef } from 'react';
-import useLatest from '../useLatest';
-import useUnmount from '../useUnmount';
+import { useEffect } from "react";
+import type { DependencyList } from "react";
+import { useRef } from "react";
+import useLatest from "../useLatest";
+import useUnmount from "../useUnmount";
 
 const depsAreSame = (
   oldDeps: DependencyList,
@@ -880,7 +880,7 @@ const useEffectTarget = (
 
   // 初始化 组件的初始化和更新都会执行
   useEffect(() => {
-    const targetElement = 'current' in target ? target.current : window;
+    const targetElement = "current" in target ? target.current : window;
 
     // 第一遍赋值
     if (!hasInitRef.current) {
@@ -920,7 +920,7 @@ const useEventListener = (
 
   useEffectTarget(
     () => {
-      const targetElement = 'current' in target ? target.current : window;
+      const targetElement = "current" in target ? target.current : window;
 
       //  防止没有 addEventListener 这个属性
       if (!targetElement?.addEventListener) return;
@@ -998,8 +998,8 @@ useHover：监听 DOM 元素是否有鼠标悬停
 这个就很简单了，只需要通过 useEventListener 来监听 mouseenter 和 mouseleave 即可，在返回布尔值就行了：
 
 ```ts
-import { useState } from 'react';
-import useEventListener from '../useEventListener';
+import { useState } from "react";
+import useEventListener from "../useEventListener";
 
 interface Options {
   onEnter?: () => void;
@@ -1011,7 +1011,7 @@ const useHover = (target: any, options?: Options): boolean => {
   const { onEnter, onLeave } = options || {};
 
   useEventListener(
-    'mouseenter',
+    "mouseenter",
     () => {
       onEnter?.();
       setFlag(true);
@@ -1020,7 +1020,7 @@ const useHover = (target: any, options?: Options): boolean => {
   );
 
   useEventListener(
-    'mouseleave',
+    "mouseleave",
     () => {
       onLeave?.();
       setFlag(false);
@@ -1049,8 +1049,8 @@ export default useHover;
 **详细代码：**
 
 ```ts
-import { useEffect } from 'react';
-import useLatest from '../useLatest';
+import { useEffect } from "react";
+import useLatest from "../useLatest";
 
 const useTimeout = (fn: () => void, delay?: number): void => {
   const fnRef = useLatest(fn);
@@ -1082,8 +1082,8 @@ export default useTimeout;
 **详细代码：**
 
 ```ts
-import { useEffect } from 'react';
-import useLatest from '../useLatest';
+import { useEffect } from "react";
+import useLatest from "../useLatest";
 
 const useInterval = (
   fn: () => void,
@@ -1123,9 +1123,9 @@ export default useInterval;
 **详细代码**
 
 ```ts
-import { useState, useEffect, useMemo } from 'react';
-import useLatest from '../useLatest';
-import dayjs from 'dayjs';
+import { useState, useEffect, useMemo } from "react";
+import useLatest from "../useLatest";
+import dayjs from "dayjs";
 
 type DTime = Date | number | string | undefined;
 

@@ -1,5 +1,5 @@
-import { Box, Progress } from '@chakra-ui/react';
-import { MutableRefObject, useEffect, useState } from 'react';
+import { Box, Progress } from "@chakra-ui/react";
+import { MutableRefObject, useEffect, useState } from "react";
 
 function ReadingIndicator({
   progressViewTargetRef,
@@ -20,7 +20,7 @@ function ReadingIndicator({
     setShowProgress(hasScrollbar());
 
     const targetElement =
-      progressViewTargetRef?.current || document.querySelector('body');
+      progressViewTargetRef?.current || document.querySelector("body");
 
     function handleSrcoll() {
       const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -41,12 +41,12 @@ function ReadingIndicator({
       handleSrcoll();
     }
 
-    window.addEventListener('scroll', handleSrcoll);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("scroll", handleSrcoll);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('scroll', handleSrcoll);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("scroll", handleSrcoll);
+      window.removeEventListener("resize", handleResize);
     };
   }, [progressViewTargetRef]);
 
@@ -59,7 +59,7 @@ function ReadingIndicator({
       h="0.35rem"
       mt="-1"
       textAlign="end"
-      display={showProgress ? 'block' : 'none'}
+      display={showProgress ? "block" : "none"}
     >
       <Progress colorScheme="green" size="xs" value={progressValue} />
     </Box>

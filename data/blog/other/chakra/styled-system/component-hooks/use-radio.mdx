@@ -1,10 +1,10 @@
 ---
 title: useRadio
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-27'
-description: 'React hook to manage radio.'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-27"
+description: "React hook to manage radio."
 ---
 
 `useRadio` is a custom hook used to provide radio functionality, as well as
@@ -13,7 +13,7 @@ state and focus management to custom radio components when using it.
 ## Import
 
 ```js
-import { useRadio } from '@chakra-ui/react';
+import { useRadio } from "@chakra-ui/react";
 ```
 
 ## Return value
@@ -37,7 +37,7 @@ The `useRadio` hook returns following props
 
 ```jsx
 function Example() {
-  const CustomRadio = props => {
+  const CustomRadio = (props) => {
     const { image, ...radioProps } = props;
     const { state, getInputProps, getCheckboxProps, htmlProps, getLabelProps } =
       useRadio(radioProps);
@@ -47,7 +47,7 @@ function Example() {
         <input {...getInputProps({})} hidden />
         <Box
           {...getCheckboxProps()}
-          bg={state.isChecked ? 'green.200' : 'transparent'}
+          bg={state.isChecked ? "green.200" : "transparent"}
           w={12}
           p={1}
           rounded="full"
@@ -60,7 +60,7 @@ function Example() {
 
   return (
     <div>
-      <CustomRadio image={'https://randomuser.me/api/portraits/men/86.jpg'} />
+      <CustomRadio image={"https://randomuser.me/api/portraits/men/86.jpg"} />
     </div>
   );
 }

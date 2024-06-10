@@ -1,9 +1,9 @@
 ---
 title: Menu
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-4-22'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-4-22"
 description:
   An accessible dropdown menu for the common dropdown menu button design
   pattern. Menu uses roving tabIndex for focus management.
@@ -13,10 +13,10 @@ An accessible dropdown menu for the common dropdown menu button design pattern.
 `Menu` uses roving `tabIndex` for focus management.
 
 <ComponentLinks
-  theme={{ componentName: 'menu' }}
-  github={{ package: 'menu' }}
-  npm={{ package: '@chakra-ui/menu' }}
-  video={{ url: 'https://youtu.be/Q-AMFseuFrk' }}
+  theme={{ componentName: "menu" }}
+  github={{ package: "menu" }}
+  npm={{ package: "@chakra-ui/menu" }}
+  video={{ url: "https://youtu.be/Q-AMFseuFrk" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -45,7 +45,7 @@ import {
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -76,11 +76,11 @@ To access the internal state of the `Menu`, use a function as `children`
   {({ isOpen }) => (
     <>
       <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
-        {isOpen ? 'Close' : 'Open'}
+        {isOpen ? "Close" : "Open"}
       </MenuButton>
       <MenuList>
         <MenuItem>Download</MenuItem>
-        <MenuItem onClick={() => alert('Kagebunshin')}>Create a Copy</MenuItem>
+        <MenuItem onClick={() => alert("Kagebunshin")}>Create a Copy</MenuItem>
       </MenuList>
     </>
   )}
@@ -121,9 +121,9 @@ the letter you typed.
     transition="all 0.2s"
     borderRadius="md"
     borderWidth="1px"
-    _hover={{ bg: 'gray.400' }}
-    _expanded={{ bg: 'blue.400' }}
-    _focus={{ boxShadow: 'outline' }}
+    _hover={{ bg: "gray.400" }}
+    _expanded={{ bg: "blue.400" }}
+    _focus={{ boxShadow: "outline" }}
   >
     File <ChevronDownIcon />
   </MenuButton>

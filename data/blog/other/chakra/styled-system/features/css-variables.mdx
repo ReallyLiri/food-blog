@@ -1,10 +1,10 @@
 ---
-title: 'CSS Variables'
+title: "CSS Variables"
 description: Working with color mode (light and dark mode) in Chakra UI
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-28'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-28"
 ---
 
 Chakra UI now converts theme tokens (colors, font sizes, etc) to CSS Custom
@@ -38,12 +38,12 @@ Given a theme object that looks like this:
 ```jsx live=false
 const theme = {
   fontSizes: {
-    lg: '18px',
+    lg: "18px",
   },
   colors: {
     gray: {
-      100: '#fafafa',
-      200: '#f7f7f7',
+      100: "#fafafa",
+      200: "#f7f7f7",
     },
   },
 };
@@ -54,9 +54,9 @@ CSS variables that look like:
 
 ```css
 :root {
-  --chakra-fontSizes-lg: '18px';
-  --chakra-colors-gray-100: '#fafafa';
-  --chakra-colors-gray-200: '#f7f7f7';
+  --chakra-fontSizes-lg: "18px";
+  --chakra-colors-gray-100: "#fafafa";
+  --chakra-colors-gray-200: "#f7f7f7";
 }
 ```
 
@@ -102,7 +102,7 @@ You can write custom CSS to style the components
 or wrap the component in `<Box/>` and style it with convenience.
 
 ```jsx live=false
-<Box sx={{ '.formium': { bg: 'gray.50', color: 'gray.700' } }}>
+<Box sx={{ ".formium": { bg: "gray.50", color: "gray.700" } }}>
   <FormiumForm />
 </Box>
 ```
@@ -135,11 +135,11 @@ based on breakpoint, or light/dark mode with ease.
 <Box
   sx={{
     // "colors.gray.100" is shorthand for `var(--chakra-colors-gray.100)`
-    '--banner-color': 'colors.gray.100',
-    '.external-banner': {
-      bg: 'var(--banner-color)',
-      '.button': {
-        borderColor: 'var(--banner-color)',
+    "--banner-color": "colors.gray.100",
+    ".external-banner": {
+      bg: "var(--banner-color)",
+      ".button": {
+        borderColor: "var(--banner-color)",
       },
     },
   }}

@@ -1,9 +1,9 @@
 ---
 title: node 中数据结构链表的实现&应用
-authors: ['mutongxiao']
-tags: ['数据结构', '链表']
-categories: ['node']
-date: '2022-5-08'
+authors: ["mutongxiao"]
+tags: ["数据结构", "链表"]
+categories: ["node"]
+date: "2022-5-08"
 description: 链表是一系列节点（元素）组成的列表集合，节点在存储空间上是可以不连续的，每个节点都具有指向下一个节点的属性，通过next指针连在一起。
 ---
 
@@ -57,7 +57,7 @@ class LinkedList {
   // 根据索引，获取节点
   _getNode(index) {
     if (index < 0 || index >= this.size) {
-      throw new Error('越界了');
+      throw new Error("越界了");
     }
     let currentNode = this.head;
     for (let i = 0; i < index; i++) {
@@ -72,7 +72,7 @@ class LinkedList {
       index = this.size;
     }
     if (index < 0 || index > this.size) {
-      throw new Error('cross the border');
+      throw new Error("cross the border");
     }
     if (index == 0) {
       let head = this.head; // 保存原有 head 的指向
@@ -118,11 +118,11 @@ class LinkedList {
 }
 
 const l1 = new LinkedList();
-l1.add('node1');
-l1.add('node2');
-l1.add(1, 'node3');
+l1.add("node1");
+l1.add("node2");
+l1.add(1, "node3");
 // l1.remove(1)
-l1.set(1, 'node3-3');
+l1.set(1, "node3-3");
 // let a = l1.get(0)
 l1.clear();
 console.log(l1);
@@ -147,8 +147,8 @@ class Queue {
 
 const q = new Queue();
 
-q.enQueue('node1');
-q.enQueue('node2');
+q.enQueue("node1");
+q.enQueue("node2");
 
 let a = q.deQueue();
 a = q.deQueue();
@@ -184,19 +184,19 @@ console.log(a);
 在了解了流的基本概念之后，下面利用链表队列来模拟实现可写流，这里链表队列的主要作用是充当可写流中的缓存区
 
 ```javascript
-const fs = require('fs');
-const EventsEmitter = require('events');
-const Queue = require('./linkedlist');
+const fs = require("fs");
+const EventsEmitter = require("events");
+const Queue = require("./linkedlist");
 
 class MyWriteStream extends EventsEmitter {
   constructor(path, options = {}) {
     super();
     this.path = path;
-    this.flags = options.flags || 'w';
+    this.flags = options.flags || "w";
     this.mode = options.mode || 438;
     this.autoClose = options.autoClose || true;
     this.start = options.start || 0;
-    this.encoding = options.encoding || 'utf8';
+    this.encoding = options.encoding || "utf8";
     this.highWaterMark = options.highWaterMark || 16 * 1024;
 
     this.open();
@@ -211,11 +211,11 @@ class MyWriteStream extends EventsEmitter {
     // 原生 fs.open
     fs.open(this.path, this.flags, (err, fd) => {
       if (err) {
-        this.emit('error', err);
+        this.emit("error", err);
       }
       // 正常打开文件
       this.fd = fd;
-      this.emit('open', fd);
+      this.emit("open", fd);
     });
   }
   write(chunk, encoding, cb) {
@@ -240,8 +240,8 @@ class MyWriteStream extends EventsEmitter {
     return flag;
   }
   _write(chunk, encoding, cb) {
-    if (typeof this.fd !== 'number') {
-      return this.once('open', () => {
+    if (typeof this.fd !== "number") {
+      return this.once("open", () => {
         return this._write(chunk, encoding, cb);
       });
     }
@@ -269,7 +269,7 @@ class MyWriteStream extends EventsEmitter {
     } else {
       if (this.needDrain) {
         this.needDrain = false;
-        this.emit('drain');
+        this.emit("drain");
       }
     }
   }
@@ -279,25 +279,25 @@ class MyWriteStream extends EventsEmitter {
 使用示例：
 
 ```js
-const ws = new MyWriteStream('./demo.txt', {});
+const ws = new MyWriteStream("./demo.txt", {});
 
-ws.on('open', fd => {
-  console.log('open---->', fd);
+ws.on("open", (fd) => {
+  console.log("open---->", fd);
 });
 
-let flag = ws.write('1', 'utf8', () => {
-  console.log('ok1');
+let flag = ws.write("1", "utf8", () => {
+  console.log("ok1");
 });
 
-flag = ws.write('10', 'utf8', () => {
-  console.log('ok1');
+flag = ws.write("10", "utf8", () => {
+  console.log("ok1");
 });
 
-flag = ws.write('我是一段输入数据', 'utf8', () => {
-  console.log('ok3');
+flag = ws.write("我是一段输入数据", "utf8", () => {
+  console.log("ok3");
 });
 
-ws.on('drain', () => {
-  console.log('drain');
+ws.on("drain", () => {
+  console.log("drain");
 });
 ```

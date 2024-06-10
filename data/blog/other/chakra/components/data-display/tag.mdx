@@ -1,9 +1,9 @@
 ---
 title: Tag
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-1-16'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-1-16"
 description: Tag component is used for items that need to be labeled.
 ---
 
@@ -11,9 +11,9 @@ description: Tag component is used for items that need to be labeled.
 organized using keywords that describe them.
 
 <ComponentLinks
-  theme={{ componentName: 'tag' }}
-  github={{ package: 'tag' }}
-  npm={{ package: '@chakra-ui/tag' }}
+  theme={{ componentName: "tag" }}
+  github={{ package: "tag" }}
+  npm={{ package: "@chakra-ui/tag" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -35,7 +35,7 @@ import {
   TagLeftIcon,
   TagRightIcon,
   TagCloseButton,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ import {
 
 ```jsx
 <HStack spacing={4}>
-  {['sm', 'md', 'lg'].map(size => (
+  {["sm", "md", "lg"].map((size) => (
     <Tag size={size} key={size} variant="solid" colorScheme="teal">
       Teal
     </Tag>
@@ -58,7 +58,7 @@ import {
 
 ```jsx
 <HStack spacing={4}>
-  {['sm', 'md', 'lg'].map(size => (
+  {["sm", "md", "lg"].map((size) => (
     <Tag size={size} key={size} variant="subtle" colorScheme="cyan">
       <TagLeftIcon boxSize="12px" as={AddIcon} />
       <TagLabel>Cyan</TagLabel>
@@ -71,7 +71,7 @@ import {
 
 ```jsx
 <HStack spacing={4}>
-  {['sm', 'md', 'lg'].map(size => (
+  {["sm", "md", "lg"].map((size) => (
     <Tag size={size} key={size} variant="outline" colorScheme="blue">
       <TagLabel>Blue</TagLabel>
       <TagRightIcon as={MdSettings} />
@@ -84,7 +84,7 @@ import {
 
 ```jsx
 <HStack spacing={4}>
-  {['sm', 'md', 'lg'].map(size => (
+  {["sm", "md", "lg"].map((size) => (
     <Tag
       size={size}
       key={size}

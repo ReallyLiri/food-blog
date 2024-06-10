@@ -35,4 +35,4 @@ export const packageJson = `
     "not op_mini all"
   ]
 }
-`
+`;

@@ -1,9 +1,9 @@
 ---
 title: Number Input
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-1-28'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-1-28"
 description:
   The NumberInput component is similar to the Input component, but it has
   controls for incrementing or decrementing numeric values.
@@ -14,9 +14,9 @@ The `NumberInput` component is similar to the
 incrementing or decrementing numeric values.
 
 <ComponentLinks
-  theme={{ componentName: 'number-input' }}
-  github={{ package: 'number-input' }}
-  npm={{ package: '@chakra-ui/number-input' }}
+  theme={{ componentName: "number-input" }}
+  github={{ package: "number-input" }}
+  npm={{ package: "@chakra-ui/number-input" }}
 />
 
 <carbon-ad></carbon-ad>
@@ -42,7 +42,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 ```
 
 ## Usage
@@ -158,14 +158,14 @@ support this use case.
 
 ```jsx
 function Example() {
-  const format = val => `$` + val;
-  const parse = val => val.replace(/^\$/, '');
+  const format = (val) => `$` + val;
+  const parse = (val) => val.replace(/^\$/, "");
 
-  const [value, setValue] = React.useState('1.53');
+  const [value, setValue] = React.useState("1.53");
 
   return (
     <NumberInput
-      onChange={valueString => setValue(parse(valueString))}
+      onChange={(valueString) => setValue(parse(valueString))}
       value={format(value)}
       max={50}
     >
@@ -231,12 +231,12 @@ can also change the icons used in the steppers.
   <NumberInputStepper>
     <NumberIncrementStepper
       bg="green.200"
-      _active={{ bg: 'green.300' }}
+      _active={{ bg: "green.300" }}
       children="+"
     />
     <NumberDecrementStepper
       bg="pink.200"
-      _active={{ bg: 'pink.300' }}
+      _active={{ bg: "pink.300" }}
       children="-"
     />
   </NumberInputStepper>
@@ -255,7 +255,7 @@ Here's an example of how to do that:
 ```jsx
 function SliderInput() {
   const [value, setValue] = React.useState(0);
-  const handleChange = value => setValue(value);
+  const handleChange = (value) => setValue(value);
 
   return (
     <Flex>

@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Box, Button, Text, Divider, Stack } from '@chakra-ui/react';
-import { ChatIcon } from '@chakra-ui/icons';
-import Discuss from 'scripts/discuss-comments';
+import { useState } from "react";
+import { Box, Button, Text, Divider, Stack } from "@chakra-ui/react";
+import { ChatIcon } from "@chakra-ui/icons";
+import Discuss from "scripts/discuss-comments";
 
 const DiscussComments = () => {
   const [pathname, setPathname] = useState(null);
-  const COMMENTS_ID = 'Discuss-Comments-Container';
+  const COMMENTS_ID = "Discuss-Comments-Container";
   const enableLoadComments = pathname !== location.pathname;
 
   const loadComments = () => {
@@ -14,7 +14,7 @@ const DiscussComments = () => {
     !!comments &&
       Discuss.init({
         el: `#${COMMENTS_ID}`,
-        serverURLs: '/service/discuss',
+        serverURLs: "/service/discuss",
       });
   };
 
@@ -33,7 +33,7 @@ const DiscussComments = () => {
         </Button>
       )}
       <Stack
-        display={!enableLoadComments ? 'block' : 'none'}
+        display={!enableLoadComments ? "block" : "none"}
         direction="column"
         mb="2rem"
         spacing="6"

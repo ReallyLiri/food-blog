@@ -1,10 +1,10 @@
 ---
 title: Responsive Styles
 description: Chakra UI supports responsive styles out of the box
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-28'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-28"
 ---
 
 Chakra UI supports responsive styles out of the box. Instead of manually adding
@@ -19,11 +19,11 @@ UI provides default breakpoints, here's what it looks like:
 
 ```js
 const breakpoints = {
-  sm: '30em',
-  md: '48em',
-  lg: '62em',
-  xl: '80em',
-  '2xl': '96em',
+  sm: "30em",
+  md: "48em",
+  lg: "62em",
+  xl: "80em",
+  "2xl": "96em",
 };
 ```
 
@@ -58,15 +58,15 @@ values defined in the array to the breakpoints
 ```js
 // These are the default breakpoints
 const breakpoints = {
-  sm: '30em',
-  md: '48em',
-  lg: '62em',
-  xl: '80em',
-  '2xl': '96em',
+  sm: "30em",
+  md: "48em",
+  lg: "62em",
+  xl: "80em",
+  "2xl": "96em",
 };
 
 // Internally, we transform to this
-const breakpoints = ['0em', '30em', '48em', '62em', '80em', '96em'];
+const breakpoints = ["0em", "30em", "48em", "62em", "80em", "96em"];
 ```
 
 Here's how to interpret this syntax:
@@ -93,7 +93,7 @@ To make the `fontSize` responsive using the object syntax, here's what you need
 to do:
 
 ```jsx live=false
-<Text fontSize={{ base: '24px', md: '40px', lg: '56px' }}>
+<Text fontSize={{ base: "24px", md: "40px", lg: "56px" }}>
   This is responsive text
 </Text>
 ```
@@ -116,20 +116,20 @@ change the style of most properties at a given breakpoint.
 <>
   <Box
     height={{
-      base: '100%', // 0-48em
-      md: '50%', // 48em-80em,
-      xl: '25%', // 80em+
+      base: "100%", // 0-48em
+      md: "50%", // 48em-80em,
+      xl: "25%", // 80em+
     }}
     bg="teal.400"
     width={[
-      '100%', // 0-30em
-      '50%', // 30em-48em
-      '25%', // 48em-62em
-      '15%', // 62em+
+      "100%", // 0-30em
+      "50%", // 30em-48em
+      "25%", // 48em-62em
+      "15%", // 62em+
     ]}
   />
   {/* responsive font size */}
-  <Box fontSize={['sm', 'md', 'lg', 'xl']}>Font Size</Box>
+  <Box fontSize={["sm", "md", "lg", "xl"]}>Font Size</Box>
   {/* responsive margin */}
   <Box mt={[2, 4, 6, 8]} width="full" height="24px" bg="tomato" />
   {/* responsive padding */}
@@ -183,15 +183,15 @@ To define custom breakpoints, just pass them as an object into the theme.
 
 ```jsx live=false
 // 1. Import the utilities
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme } from "@chakra-ui/react";
 
 // 2. Update the breakpoints as key-value pairs
 const breakpoints = {
-  sm: '320px',
-  md: '768px',
-  lg: '960px',
-  xl: '1200px',
-  '2xl': '1536px',
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+  "2xl": "1536px",
 };
 
 // 3. Extend the theme
@@ -199,7 +199,7 @@ const theme = extendTheme({ breakpoints });
 
 // 4. Now you can use the custom breakpoints
 function Example() {
-  return <Box width={{ base: '100%', sm: '50%', md: '25%' }} />;
+  return <Box width={{ base: "100%", sm: "50%", md: "25%" }} />;
 }
 ```
 
@@ -214,7 +214,7 @@ on small screens, and a side-by-side layout on larger screens **(resize your
 browser to see it in action)**:
 
 ```jsx
-<Box p={4} display={{ md: 'flex' }}>
+<Box p={4} display={{ md: "flex" }}>
   <Box flexShrink={0}>
     <Image
       borderRadius="lg"

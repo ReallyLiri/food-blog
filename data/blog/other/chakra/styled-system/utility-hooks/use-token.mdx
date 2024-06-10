@@ -1,10 +1,10 @@
 ---
-title: 'useToken'
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-3-02'
-description: 'Hook to resolve design tokens from the theme'
+title: "useToken"
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-3-02"
+description: "Hook to resolve design tokens from the theme"
 ---
 
 `useToken` is a custom hook used to resolve design tokens from the theme.
@@ -12,7 +12,7 @@ description: 'Hook to resolve design tokens from the theme'
 ## Import
 
 ```js
-import { useToken } from '@chakra-ui/react';
+import { useToken } from "@chakra-ui/react";
 ```
 
 ## Return value
@@ -25,15 +25,15 @@ The `useToken` hook retrieves whatever is in the theme at the given path(s).
 function Example() {
   const [red100, blue200] = useToken(
     // the key within the theme, in this case `theme.colors`
-    'colors',
+    "colors",
     // the subkey(s), resolving to `theme.colors.red.100`
-    ['red.100', 'blue.200'],
+    ["red.100", "blue.200"],
     // a single fallback or fallback array matching the length of the previous arg
   );
 
   return (
     <Box p={4} boxShadow={`inset 0 4px 0 ${red100}, 0 0 8px ${blue200}`}>
-      You can utilize <Code>useToken</Code> to create a <Code>boxShadow</Code>{' '}
+      You can utilize <Code>useToken</Code> to create a <Code>boxShadow</Code>{" "}
       with colors from your theme.
     </Box>
   );

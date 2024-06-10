@@ -1,5 +1,5 @@
-import SEO from '@/components/seo';
-import AboutHome from '@/components/about/about-home';
+import SEO from "@/components/seo";
+import AboutHome from "@/components/about/about-home";
 
 function AboutHomePage() {
   return (

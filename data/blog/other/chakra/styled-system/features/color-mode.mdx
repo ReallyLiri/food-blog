@@ -1,9 +1,9 @@
 ---
-title: 'Color Mode'
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-28'
+title: "Color Mode"
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-28"
 description: Working with color mode (light and dark mode) in Chakra UI
 ---
 
@@ -44,11 +44,11 @@ The theme config for color mode has 2 options:
 // theme.js
 
 // 1. import `extendTheme` function
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme } from "@chakra-ui/react";
 
 // 2. Add your color mode config
 const config = {
-  initialColorMode: 'light',
+  initialColorMode: "light",
   useSystemColorMode: false,
 };
 
@@ -65,11 +65,11 @@ For typescript, you need to explicitly describe the theme config type as
 // theme.ts
 
 // 1. import `extendTheme` function
-import { extendTheme, type ThemeConfig } from '@chakra-ui/react';
+import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
 
 // 2. Add your color mode config
 const config: ThemeConfig = {
-  initialColorMode: 'light',
+  initialColorMode: "light",
   useSystemColorMode: false,
 };
 
@@ -131,9 +131,9 @@ For Next.js, you need to add the `ColorModeScript` to the `_document.js` file.
 ```jsx live=false ln={14}
 // pages/_document.js
 
-import { ColorModeScript } from '@chakra-ui/react';
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
-import theme from './theme';
+import { ColorModeScript } from "@chakra-ui/react";
+import NextDocument, { Html, Head, Main, NextScript } from "next/document";
+import theme from "./theme";
 
 export default class Document extends NextDocument {
   render() {
@@ -160,12 +160,12 @@ file.
 ```jsx live=false ln={11}
 // index.js
 
-import { ColorModeScript } from '@chakra-ui/react';
-import * as ReactDOM from 'react-dom/client';
-import App from './App';
-import theme from './theme';
+import { ColorModeScript } from "@chakra-ui/react";
+import * as ReactDOM from "react-dom/client";
+import App from "./App";
+import theme from "./theme";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 ReactDOM.createRoot(rootElement).render(
   <>
     {/* 👇 Here's the script */}
@@ -196,7 +196,7 @@ function Example() {
   return (
     <header>
       <Button onClick={toggleColorMode}>
-        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+        Toggle {colorMode === "light" ? "Dark" : "Light"}
       </Button>
     </header>
   );
@@ -226,8 +226,8 @@ Here's an example that changes the `background-color` and `color` using the
 function StyleColorMode() {
   const { toggleColorMode } = useColorMode();
 
-  const bg = useColorModeValue('red.500', 'red.200');
-  const color = useColorModeValue('white', 'gray.800');
+  const bg = useColorModeValue("red.500", "red.200");
+  const color = useColorModeValue("white", "gray.800");
 
   return (
     <>
@@ -296,12 +296,12 @@ import {
   ChakraProvider,
   cookieStorageManager,
   localStorageManager,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 export function Chakra({ cookies, children }) {
   // b) Pass `colorModeManager` prop
   const colorModeManager =
-    typeof cookies === 'string'
+    typeof cookies === "string"
       ? cookieStorageManager(cookies)
       : localStorageManager;
 
@@ -318,7 +318,7 @@ export function getServerSideProps({ req }) {
     props: {
       // first time users will not have any cookies and you may not return
       // undefined here, hence ?? is necessary
-      cookies: req.headers.cookie ?? '',
+      cookies: req.headers.cookie ?? "",
     },
   };
 }
@@ -361,14 +361,14 @@ import {
   ChakraProvider,
   cookieStorageManager,
   localStorageManager,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 export default function App({ cookies }) {
   // 2. Pass `colorModeManager` prop - it finds the relevant cookie on its own
   return (
     <ChakraProvider
       colorModeManager={
-        typeof cookies === 'string'
+        typeof cookies === "string"
           ? cookieStorageManager(cookies)
           : localStorageManager
       }
@@ -382,7 +382,7 @@ App.getInitialProps = ({ req }) => {
   return {
     // first time users will not have any cookies and you may not return
     // undefined here, hence ?? is necessary
-    cookies: req.headers.cookie ?? '',
+    cookies: req.headers.cookie ?? "",
   };
 };
 ```

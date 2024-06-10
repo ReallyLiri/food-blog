@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export function useScrollSpy(
   selectors: string[],
@@ -7,18 +7,18 @@ export function useScrollSpy(
   const [activeId, setActiveId] = React.useState<string>();
   const observer = React.useRef<IntersectionObserver | null>(null);
   React.useEffect(() => {
-    const elements = selectors.map(selector =>
+    const elements = selectors.map((selector) =>
       document.querySelector(selector),
     );
     observer.current?.disconnect();
-    observer.current = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    observer.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry?.isIntersecting) {
-          setActiveId(entry.target.getAttribute('id'));
+          setActiveId(entry.target.getAttribute("id"));
         }
       });
     }, options);
-    elements.forEach(el => {
+    elements.forEach((el) => {
       if (el) observer.current?.observe(el);
     });
     return () => observer.current?.disconnect();

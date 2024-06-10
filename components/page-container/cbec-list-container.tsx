@@ -9,14 +9,14 @@ import {
   chakra,
   LinkBox,
   LinkOverlay,
-} from '@chakra-ui/react';
-import NextLink from 'next/link';
-import Search from '@/components/search/omni-search';
-import PageTransition from './page-transition';
-import NotesPagination from '../pagination/notes-pagination';
-import { CoreContent } from 'utils/contentlayer';
-import { CbecNote } from 'contentlayer/generated';
-import { ComponentProps } from 'react';
+} from "@chakra-ui/react";
+import NextLink from "next/link";
+import Search from "@/components/search/omni-search";
+import PageTransition from "./page-transition";
+import NotesPagination from "../pagination/notes-pagination";
+import { CoreContent } from "utils/contentlayer";
+import { CbecNote } from "contentlayer/generated";
+import { ComponentProps } from "react";
 
 interface Props {
   title: string;
@@ -26,11 +26,11 @@ interface Props {
 
 const formatDate = (date: string) => {
   const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   };
-  const now = new Date(date).toLocaleDateString('en-US', options);
+  const now = new Date(date).toLocaleDateString("en-US", options);
 
   return now;
 };
@@ -41,34 +41,34 @@ export default function CbecNotesContainer({
   pagination,
 }: Props) {
   return (
-    <Box maxW="6xl" w="100%" mx="auto" mb={{ base: '12', mb: '20' }} px="2rem">
+    <Box maxW="6xl" w="100%" mx="auto" mb={{ base: "12", mb: "20" }} px="2rem">
       <PageTransition>
         <Box maxW="lg" my="10">
-          <Heading mb="5" as="h1" fontSize={{ base: '2xl', md: '4xl' }}>
+          <Heading mb="5" as="h1" fontSize={{ base: "2xl", md: "4xl" }}>
             {title}
           </Heading>
           <Search />
         </Box>
-        <VStack spacing={{ base: '7', md: '10' }}>
-          {!initialDisplayPosts.length && 'No posts found.'}
-          {initialDisplayPosts.map(post => {
+        <VStack spacing={{ base: "7", md: "10" }}>
+          {!initialDisplayPosts.length && "No posts found."}
+          {initialDisplayPosts.map((post) => {
             const { slug, date, title, tags, description } = post;
             return (
               <Flex alignItems="start" key={slug} w="full">
-                <Text display={{ base: 'none', md: 'block' }} w="246px">
+                <Text display={{ base: "none", md: "block" }} w="246px">
                   <time dateTime={date}>{formatDate(date)}</time>
                 </Text>
                 <LinkBox as="article" flex="1">
                   <Heading
                     as="h2"
-                    fontSize={{ base: 'xl', md: '2xl' }}
+                    fontSize={{ base: "xl", md: "2xl" }}
                     style={{
-                      wordBreak: 'break-all',
-                      textOverflow: 'ellipsis',
-                      display: '-webkit-box',
-                      WebkitLineClamp: '2',
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
+                      wordBreak: "break-all",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "2",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
                     <NextLink href={`/cbec-note/${slug}`} passHref>
@@ -76,10 +76,10 @@ export default function CbecNotesContainer({
                     </NextLink>
                   </Heading>
                   <HStack my="2">
-                    {tags.map(tag => (
+                    {tags.map((tag) => (
                       <Tag
                         key={tag}
-                        size={{ base: 'sm', md: 'md' }}
+                        size={{ base: "sm", md: "md" }}
                         variant="subtle"
                         colorScheme="cyan"
                       >
@@ -90,12 +90,12 @@ export default function CbecNotesContainer({
                   <chakra.p
                     my="5"
                     style={{
-                      wordBreak: 'break-all',
-                      textOverflow: 'ellipsis',
-                      display: '-webkit-box',
-                      WebkitLineClamp: '2',
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
+                      wordBreak: "break-all",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      WebkitLineClamp: "2",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
                     {description}

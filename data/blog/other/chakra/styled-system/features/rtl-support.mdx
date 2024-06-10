@@ -1,9 +1,9 @@
 ---
 title: RTL Support
-authors: ['mutongxiao']
-tags: ['chakra']
-categories: ['other']
-date: '2022-2-28'
+authors: ["mutongxiao"]
+tags: ["chakra"]
+categories: ["other"]
+date: "2022-2-28"
 description:
   Chakra UI provides built-in support right-to-left (RTL) languages like arabic
   and hebrew, out of the box.
@@ -42,19 +42,19 @@ yarn add stylis stylis-plugin-rtl @emotion/cache
 ```jsx live=false
 // src/components/rtl-provider.js
 
-import { CacheProvider } from '@emotion/react';
-import createCache from '@emotion/cache';
-import rtl from 'stylis-plugin-rtl';
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+import rtl from "stylis-plugin-rtl";
 
 // NB: A unique `key` is important for it to work!
 const options = {
-  rtl: { key: 'css-ar', stylisPlugins: [rtl] },
-  ltr: { key: 'css-en' },
+  rtl: { key: "css-ar", stylisPlugins: [rtl] },
+  ltr: { key: "css-en" },
 };
 
 export function RtlProvider({ children }) {
   const { locale } = useRouter();
-  const dir = locale == 'ar' ? 'rtl' : 'ltr';
+  const dir = locale == "ar" ? "rtl" : "ltr";
   const cache = createCache(options[dir]);
   return <CacheProvider value={cache} children={children} />;
 }
@@ -65,8 +65,8 @@ export function RtlProvider({ children }) {
 ```jsx live=false ln={4,10-12}
 // pages/_app.js
 
-import { ChakraProvider } from '@chakra-ui/react';
-import { RtlProvider } from '@/components/rtl-provider';
+import { ChakraProvider } from "@chakra-ui/react";
+import { RtlProvider } from "@/components/rtl-provider";
 
 function App(props) {
   const { Component, pageProps } = props;
@@ -140,7 +140,7 @@ leveraging the built-in `useRouter` hook.
 
 function LangSwitcher() {
   const { locale, push, reload, pathname } = useRouter();
-  const nextLocale = locale === 'en' ? 'ar' : 'en';
+  const nextLocale = locale === "en" ? "ar" : "en";
 
   const onClick = async () => {
     await push(pathname, { locale: nextLocale });
@@ -183,7 +183,7 @@ You can use the `extendTheme` function or any other preferred approach to add
 
 function ChakraRTLProvider({ children }) {
   const { locale } = useRouter();
-  const direction = locale === 'ar' ? 'rtl' : 'ltr';
+  const direction = locale === "ar" ? "rtl" : "ltr";
 
   // 👇🏻 Here's the place we add direction to the theme
   const theme = extendTheme({ direction });
@@ -268,7 +268,7 @@ leveraging the built-in `useRouter` hook.
 
 function LangSwitcher() {
   const { locale, push, reload, pathname } = useRouter();
-  const nextLocale = locale === 'en' ? 'ar' : 'en';
+  const nextLocale = locale === "en" ? "ar" : "en";
 
   const onClick = async () => {
     await push(pathname, { locale: nextLocale });

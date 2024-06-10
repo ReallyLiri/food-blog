@@ -1,4 +1,4 @@
-import { SearchIcon } from '@chakra-ui/icons';
+import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Center,
@@ -11,16 +11,16 @@ import {
   useDisclosure,
   useEventListener,
   useUpdateEffect,
-} from '@chakra-ui/react';
-import { findAll } from 'highlight-words-core';
-import { matchSorter } from 'match-sorter';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import * as React from 'react';
-import MultiRef from 'react-multi-ref';
-import scrollIntoView from 'scroll-into-view-if-needed';
-import { SearchButton } from './algolia-search';
-import searchData from 'configs/search-meta.json';
+} from "@chakra-ui/react";
+import { findAll } from "highlight-words-core";
+import { matchSorter } from "match-sorter";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import * as React from "react";
+import MultiRef from "react-multi-ref";
+import scrollIntoView from "scroll-into-view-if-needed";
+import { SearchButton } from "./algolia-search";
+import searchData from "configs/search-meta.json";
 
 interface OptionTextProps {
   searchWords: string[];
@@ -34,7 +34,7 @@ function OptionText({ searchWords, textToHighlight }: OptionTextProps) {
     autoEscape: true,
   });
 
-  const highlightedText = chunks.map(chunk => {
+  const highlightedText = chunks.map((chunk) => {
     const { end, highlight, start } = chunk;
     const text = textToHighlight.substr(start, end - start);
     if (highlight) {
@@ -117,27 +117,27 @@ function HashIcon(props) {
 
 function OmniSearch() {
   const router = useRouter();
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState("");
   const [active, setActive] = React.useState(0);
   const [shouldCloseModal, setShouldCloseModal] = React.useState(true);
   const menu = useDisclosure();
   const modal = useDisclosure();
   const [menuNodes] = React.useState(() => new MultiRef<number, HTMLElement>());
   const menuRef = React.useRef<HTMLDivElement>(null);
-  const eventRef = React.useRef<'mouse' | 'keyboard'>(null);
+  const eventRef = React.useRef<"mouse" | "keyboard">(null);
 
   React.useEffect(() => {
-    router.events.on('routeChangeComplete', modal.onClose);
+    router.events.on("routeChangeComplete", modal.onClose);
     return () => {
-      router.events.off('routeChangeComplete', modal.onClose);
+      router.events.off("routeChangeComplete", modal.onClose);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEventListener('keydown', event => {
+  useEventListener("keydown", (event) => {
     const isMac = /(Mac|iPhone|iPod|iPad)/i.test(navigator?.platform);
-    const hotkey = isMac ? 'metaKey' : 'ctrlKey';
-    if (event?.key?.toLowerCase() === 'k' && event[hotkey]) {
+    const hotkey = isMac ? "metaKey" : "ctrlKey";
+    if (event?.key?.toLowerCase() === "k" && event[hotkey]) {
       event.preventDefault();
       modal.isOpen ? modal.onClose() : modal.onOpen();
     }
@@ -145,7 +145,7 @@ function OmniSearch() {
 
   React.useEffect(() => {
     if (modal.isOpen && query.length > 0) {
-      setQuery('');
+      setQuery("");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modal.isOpen]);
@@ -154,7 +154,7 @@ function OmniSearch() {
     function getResults() {
       if (query.length < 2) return [];
       return matchSorter(searchData, query, {
-        keys: ['hierarchy.lvl1', 'hierarchy.lvl2', 'hierarchy.lvl3', 'content'],
+        keys: ["hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "content"],
       }).slice(0, 20);
     },
     [query],
@@ -162,30 +162,30 @@ function OmniSearch() {
 
   const onKeyDown = React.useCallback(
     (e: React.KeyboardEvent) => {
-      eventRef.current = 'keyboard';
+      eventRef.current = "keyboard";
       switch (e.key) {
-        case 'ArrowDown': {
+        case "ArrowDown": {
           e.preventDefault();
           if (active + 1 < results.length) {
             setActive(active + 1);
           }
           break;
         }
-        case 'ArrowUp': {
+        case "ArrowUp": {
           e.preventDefault();
           if (active - 1 >= 0) {
             setActive(active - 1);
           }
           break;
         }
-        case 'Control':
-        case 'Alt':
-        case 'Shift': {
+        case "Control":
+        case "Alt":
+        case "Shift": {
           e.preventDefault();
           setShouldCloseModal(true);
           break;
         }
-        case 'Enter': {
+        case "Enter": {
           if (results?.length <= 0) {
             break;
           }
@@ -200,11 +200,11 @@ function OmniSearch() {
   );
 
   const onKeyUp = React.useCallback((e: React.KeyboardEvent) => {
-    eventRef.current = 'keyboard';
+    eventRef.current = "keyboard";
     switch (e.key) {
-      case 'Control':
-      case 'Alt':
-      case 'Shift': {
+      case "Control":
+      case "Alt":
+      case "Shift": {
         e.preventDefault();
         setShouldCloseModal(false);
       }
@@ -216,13 +216,13 @@ function OmniSearch() {
   }, [query]);
 
   useUpdateEffect(() => {
-    if (!menuRef.current || eventRef.current === 'mouse') return;
+    if (!menuRef.current || eventRef.current === "mouse") return;
     const node = menuNodes.map.get(active);
     if (!node) return;
     scrollIntoView(node, {
-      scrollMode: 'if-needed',
-      block: 'nearest',
-      inline: 'nearest',
+      scrollMode: "if-needed",
+      block: "nearest",
+      inline: "nearest",
       boundary: menuRef.current,
     });
   }, [active]);
@@ -258,17 +258,17 @@ function OmniSearch() {
               spellCheck="false"
               maxLength={64}
               sx={{
-                w: '100%',
-                h: '68px',
-                pl: '68px',
-                fontWeight: 'medium',
+                w: "100%",
+                h: "68px",
+                pl: "68px",
+                fontWeight: "medium",
                 outline: 0,
-                bg: 'white',
-                '.chakra-ui-dark &': { bg: 'gray.700' },
+                bg: "white",
+                ".chakra-ui-dark &": { bg: "gray.700" },
               }}
               placeholder="请输入关键词"
               value={query}
-              onChange={e => {
+              onChange={(e) => {
                 setQuery(e.target.value);
                 menu.onOpen();
               }}
@@ -284,14 +284,14 @@ function OmniSearch() {
               <Box
                 sx={{
                   px: 4,
-                  bg: 'white',
-                  '.chakra-ui-dark &': { bg: 'gray.700' },
+                  bg: "white",
+                  ".chakra-ui-dark &": { bg: "gray.700" },
                 }}
               >
                 <Box as="ul" role="listbox" borderTopWidth="1px" pt={2} pb={4}>
                   {results.map((item, index) => {
                     const selected = index === active;
-                    const isLvl1 = item.type === 'lvl1';
+                    const isLvl1 = item.type === "lvl1";
 
                     return (
                       <Link key={item.id} href={item.url} passHref>
@@ -302,7 +302,7 @@ function OmniSearch() {
                             aria-selected={selected ? true : undefined}
                             onMouseEnter={() => {
                               setActive(index);
-                              eventRef.current = 'mouse';
+                              eventRef.current = "mouse";
                             }}
                             onClick={() => {
                               if (shouldCloseModal) {
@@ -313,21 +313,21 @@ function OmniSearch() {
                             role="option"
                             key={item.id}
                             sx={{
-                              display: 'flex',
-                              alignItems: 'center',
+                              display: "flex",
+                              alignItems: "center",
                               minH: 16,
                               mt: 2,
                               px: 4,
                               py: 2,
-                              rounded: 'lg',
-                              bg: 'gray.100',
-                              '.chakra-ui-dark &': { bg: 'gray.600' },
+                              rounded: "lg",
+                              bg: "gray.100",
+                              ".chakra-ui-dark &": { bg: "gray.600" },
                               _selected: {
-                                bg: 'teal.500',
-                                color: 'white',
+                                bg: "teal.500",
+                                color: "white",
                                 mark: {
-                                  color: 'white',
-                                  textDecoration: 'underline',
+                                  color: "white",
+                                  textDecoration: "underline",
                                 },
                               },
                             }}

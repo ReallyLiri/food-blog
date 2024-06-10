@@ -9,21 +9,21 @@ import {
   Link,
   Button,
   Flex,
-} from '@chakra-ui/react';
-import { ReactNode, useRef } from 'react';
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import { CoreContent } from 'utils/contentlayer';
-import type { CbecNote } from 'contentlayer/generated';
-import SEO from '../seo';
-import PageTransition from './page-transition';
-import ReadingIndicator from '../reading-indicator';
+} from "@chakra-ui/react";
+import { ReactNode, useRef } from "react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { CoreContent } from "utils/contentlayer";
+import type { CbecNote } from "contentlayer/generated";
+import SEO from "../seo";
+import PageTransition from "./page-transition";
+import ReadingIndicator from "../reading-indicator";
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 };
 
 interface Props {
@@ -55,16 +55,16 @@ export default function CbecPostContainer({
         w="100vw"
         mx="auto"
         px="1rem"
-        my={{ base: '7', md: '14' }}
+        my={{ base: "7", md: "14" }}
       >
         <PageTransition>
           <Heading
             as="header"
-            mb={{ base: '7', md: '14' }}
+            mb={{ base: "7", md: "14" }}
             w="full"
             boxSizing="border-box"
             textAlign="center"
-            fontSize={{ base: '2xl', md: '4xl' }}
+            fontSize={{ base: "2xl", md: "4xl" }}
           >
             {title}
           </Heading>
@@ -79,14 +79,14 @@ export default function CbecPostContainer({
               as="nav"
               overscrollBehavior="contain"
               h="calc(100vh - 8.125rem)"
-              display={{ base: 'none', md: 'block' }}
+              display={{ base: "none", md: "block" }}
             >
               <Box w="full">
                 <Box my="4">
                   <Text>DATE</Text>
                   <Box as="time" color="teal" dateTime={date} my="1">
                     {new Date(date).toLocaleDateString(
-                      'en-US',
+                      "en-US",
                       postDateTemplate,
                     )}
                   </Box>
@@ -95,7 +95,7 @@ export default function CbecPostContainer({
                   <Box w="full">
                     <Text>TAGS</Text>
                     <HStack my="1">
-                      {tags.map(tag => (
+                      {tags.map((tag) => (
                         <Tag key={tag} variant="outline" colorScheme="teal">
                           {tag}
                         </Tag>
@@ -147,7 +147,7 @@ export default function CbecPostContainer({
                 textAlign="left"
                 color="teal"
                 variant="unstyled"
-                onClick={() => push('/cbec-note')}
+                onClick={() => push("/cbec-note")}
               >
                 &larr; Back to the list page
               </Button>

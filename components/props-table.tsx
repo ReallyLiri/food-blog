@@ -1,20 +1,20 @@
-import * as ComponentProps from '@chakra-ui/props-docs';
-import { Code, Flex, HStack, Stack, chakra, theme } from '@chakra-ui/react';
-import { isObject, isString } from '@chakra-ui/utils';
-import Link from 'next/link';
-import * as React from 'react';
-import { Anchor } from 'components/mdx-components/anchor';
-import { InlineCode } from 'components/mdx-components/inline-code';
-import { convertBackticksToInlineCode } from 'utils/convert-backticks-to-inline-code';
-import { t } from 'utils/i18n';
+import * as ComponentProps from "@chakra-ui/props-docs";
+import { Code, Flex, HStack, Stack, chakra, theme } from "@chakra-ui/react";
+import { isObject, isString } from "@chakra-ui/utils";
+import Link from "next/link";
+import * as React from "react";
+import { Anchor } from "components/mdx-components/anchor";
+import { InlineCode } from "components/mdx-components/inline-code";
+import { convertBackticksToInlineCode } from "utils/convert-backticks-to-inline-code";
+import { t } from "utils/i18n";
 
 /**
  * A map of components that use foreign theme key.
  * The key is name of the component and value is the theme key it uses.
  */
 const themeComponentKeyAliases = {
-  AlertDialog: 'Modal',
-  IconButton: 'Button',
+  AlertDialog: "Modal",
+  IconButton: "Button",
 };
 
 export type PropsTableProps = {
@@ -35,7 +35,7 @@ export type PropsTableProps = {
 
 const PropsTable = ({
   of,
-  omit = ['layerStyle', 'noOfLines', 'textStyle', 'orientation', 'styleConfig'],
+  omit = ["layerStyle", "noOfLines", "textStyle", "orientation", "styleConfig"],
   only,
 }: PropsTableProps) => {
   const propList = React.useMemo(
@@ -53,33 +53,33 @@ Remove the use of <PropsTable of="${of}" /> for this component in the docs.`,
 
   return (
     <Stack overflowX="auto" spacing="10" my="10">
-      {propList.map(prop => (
+      {propList.map((prop) => (
         <chakra.div
           key={prop.name}
           css={{
-            width: '100%',
-            fontSize: '0.95em',
-            borderCollapse: 'collapse',
-            '.row': {
+            width: "100%",
+            fontSize: "0.95em",
+            borderCollapse: "collapse",
+            ".row": {
               minWidth: 100,
-              width: '20%',
-              fontSize: '0.9em',
-              textAlign: 'start',
+              width: "20%",
+              fontSize: "0.9em",
+              textAlign: "start",
               fontWeight: 500,
-              padding: '4px 16px 4px 8px',
-              whiteSpace: 'nowrap',
-              verticalAlign: 'baseline',
+              padding: "4px 16px 4px 8px",
+              whiteSpace: "nowrap",
+              verticalAlign: "baseline",
             },
-            '.cell': {
-              padding: '4px 0px 4px 8px',
-              width: '100%',
+            ".cell": {
+              padding: "4px 0px 4px 8px",
+              width: "100%",
             },
           }}
         >
-          <chakra.div css={{ textAlign: 'start', fontSize: '1em' }}>
+          <chakra.div css={{ textAlign: "start", fontSize: "1em" }}>
             <chakra.h3
               css={{
-                fontSize: '0.8em',
+                fontSize: "0.8em",
                 paddingBottom: 16,
                 marginBottom: 16,
                 borderBottomWidth: 1,
@@ -89,7 +89,7 @@ Remove the use of <PropsTable of="${of}" /> for this component in the docs.`,
                 <Code colorScheme="purple">{prop.name}</Code>
                 {prop.required && (
                   <Code colorScheme="red">
-                    {t('component.props-table.required')}
+                    {t("component.props-table.required")}
                   </Code>
                 )}
               </HStack>
@@ -99,7 +99,7 @@ Remove the use of <PropsTable of="${of}" /> for this component in the docs.`,
             {prop.description && (
               <Flex>
                 <div className="row">
-                  {t('component.props-table.description')}
+                  {t("component.props-table.description")}
                 </div>
                 <div className="cell">
                   <p>{convertBackticksToInlineCode(prop.description)}</p>
@@ -107,7 +107,7 @@ Remove the use of <PropsTable of="${of}" /> for this component in the docs.`,
               </Flex>
             )}
             <Flex>
-              <div className="row">{t('component.props-table.type')}</div>
+              <div className="row">{t("component.props-table.type")}</div>
               <div className="cell">
                 <InlineCode whiteSpace="normal" fontSize="0.8em">
                   {prop.type}
@@ -116,7 +116,7 @@ Remove the use of <PropsTable of="${of}" /> for this component in the docs.`,
             </Flex>
             {prop.defaultValue && (
               <Flex>
-                <div className="row">{t('component.props-table.default')}</div>
+                <div className="row">{t("component.props-table.default")}</div>
                 <div className="cell">
                   <InlineCode whiteSpace="normal" fontSize="0.8em">
                     {prop.defaultValue}
@@ -134,9 +134,9 @@ Remove the use of <PropsTable of="${of}" /> for this component in the docs.`,
 export default PropsTable;
 
 const TYPE_GENERIC_THEMEABLE = [
-  'string',
-  'string | (string & {})',
-  '(string & {})',
+  "string",
+  "string | (string & {})",
+  "(string & {})",
 ];
 
 const isGenericThemeable = (type: string) =>
@@ -144,23 +144,23 @@ const isGenericThemeable = (type: string) =>
 
 const omitGenericThemeableType = (type: string) =>
   type
-    .split(' | ')
-    .filter(type => isGenericThemeable(type))
-    .join(' | ') || type;
+    .split(" | ")
+    .filter((type) => isGenericThemeable(type))
+    .join(" | ") || type;
 
 function toLiteralStringType(strings: string[]) {
   return (
     strings
-      .map(s => `"${s}"`)
-      .join(' | ')
-      .trim() || 'string'
+      .map((s) => `"${s}"`)
+      .join(" | ")
+      .trim() || "string"
   );
 }
 
 function isColorScheme(value: unknown): value is Record<string, string> {
   return (
     isObject(value) &&
-    ['50', '100', '200', '300', '400', '600', '700', '800', '900'].every(k =>
+    ["50", "100", "200", "300", "400", "600", "700", "800", "900"].every((k) =>
       isString(value[k]),
     )
   );
@@ -176,16 +176,16 @@ function makePropsTable({ of, omit, only }: MakePropsTableOptions) {
 
   const featNotImplemented = (feat: string) => (
     <>
-      {feat} {t('component.props-table.for')} <InlineCode>{of}</InlineCode>{' '}
-      {t('component.props-table.are-not-implemented-in-the-default-theme')}{' '}
-      {t('component.props-table.you-can')}{' '}
+      {feat} {t("component.props-table.for")} <InlineCode>{of}</InlineCode>{" "}
+      {t("component.props-table.are-not-implemented-in-the-default-theme")}{" "}
+      {t("component.props-table.you-can")}{" "}
       <Link
         href="/docs/theming/customize-theme#customizing-component-styles"
         passHref
       >
-        <Anchor>{t('component.props-table.extend-the-theme')}</Anchor>
-      </Link>{' '}
-      {t('component.props-table.to-implement-them')}
+        <Anchor>{t("component.props-table.extend-the-theme")}</Anchor>
+      </Link>{" "}
+      {t("component.props-table.to-implement-them")}
     </>
   );
 
@@ -212,37 +212,37 @@ function makePropsTable({ of, omit, only }: MakePropsTableOptions) {
         type: type.name,
       };
 
-      if (name === 'size') {
+      if (name === "size") {
         const defaultSize = componentTheme?.defaultProps?.size;
         const sizes = componentTheme?.sizes;
 
         if (sizes) {
           prop.type = toLiteralStringType(Object.keys(sizes));
         } else {
-          prop.description = featNotImplemented('Sizes');
+          prop.description = featNotImplemented("Sizes");
         }
 
         if (defaultSize != null) {
           prop.defaultValue = `"${defaultSize}"`;
         } else {
-          prop.type = 'string';
+          prop.type = "string";
         }
 
         if (isGenericThemeable(prop.type)) {
-          prop.type = 'string';
+          prop.type = "string";
         } else {
           prop.type = omitGenericThemeableType(prop.type);
         }
       }
 
-      if (name === 'variant') {
+      if (name === "variant") {
         const defaultVariant = componentTheme?.defaultProps?.variant;
         const variants = componentTheme?.variants;
 
         if (variants) {
           prop.type = toLiteralStringType(Object.keys(variants));
         } else {
-          prop.description = featNotImplemented('Variants');
+          prop.description = featNotImplemented("Variants");
         }
 
         if (defaultVariant != null) {
@@ -250,13 +250,13 @@ function makePropsTable({ of, omit, only }: MakePropsTableOptions) {
         }
 
         if (!defaultVariant) {
-          prop.type = 'string';
+          prop.type = "string";
         } else {
           prop.type = omitGenericThemeableType(prop.type);
         }
       }
 
-      if (name === 'colorScheme') {
+      if (name === "colorScheme") {
         prop.type = omitGenericThemeableType(prop.type);
 
         const defaultColorScheme = componentTheme?.defaultProps?.colorScheme;
@@ -268,7 +268,7 @@ function makePropsTable({ of, omit, only }: MakePropsTableOptions) {
           prop.defaultValue = `"${defaultColorScheme}"`;
           prop.type = toLiteralStringType(colorSchemes);
         } else {
-          prop.description = featNotImplemented('Color Schemes');
+          prop.description = featNotImplemented("Color Schemes");
         }
       }
 

@@ -1,8 +1,8 @@
 async function redirect() {
   return [
     {
-      source: '/blog',
-      destination: '/blog/overview/all',
+      source: "/blog",
+      destination: "/blog/overview/all",
       permanent: true,
     },
   ];
