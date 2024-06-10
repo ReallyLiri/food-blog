@@ -14,9 +14,9 @@ const NotFound = () => {
         mt={["10", null, "20"]}
         textAlign="center"
       >
-        <Heading>Not Found</Heading>
-        <Text fontSize={{ md: "xl" }}>
-          Unfortunately, this page does not exist
+        <Heading>Don't belong, don't exist</Heading>
+        <Text fontSize={{ md: "xl" }} paddingBottom={4}>
+          Unfortunately, this page has not yet materialized.
         </Text>
         <NextLink href="/" passHref>
           <Button

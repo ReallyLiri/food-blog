@@ -86,6 +86,7 @@ export const MainNavLinkGroup = (props: ListProps) => {
         <ListItem
           key={item.label}
           padding="1"
+          borderRadius={4}
           _hover={{
             bgColor: "teal.50",
           }}
