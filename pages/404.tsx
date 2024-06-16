@@ -14,19 +14,19 @@ const NotFound = () => {
         mt={["10", null, "20"]}
         textAlign="center"
       >
-        <Heading>Don't belong, don't exist</Heading>
+        <Heading>אין בנמצא</Heading>
         <Text fontSize={{ md: "xl" }} paddingBottom={4}>
-          Unfortunately, this page has not yet materialized.
+          לצערנו, הדף הזה אינו קיים עדיין
         </Text>
         <NextLink href="/" passHref>
           <Button
             as="a"
-            aria-label="Back to Home"
+            aria-label="בחזרה לדף הבית"
             leftIcon={<FaHome />}
             colorScheme="teal"
             size="lg"
           >
-            Back to Home
+            בחזרה לדף הבית
           </Button>
         </NextLink>
       </VStack>

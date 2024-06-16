@@ -1,10 +1,10 @@
 import {
   Box,
   BoxProps,
+  chakra,
   ListItem,
   OrderedList,
   Text,
-  chakra,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
@@ -78,7 +78,7 @@ function TableOfContent(props: TableOfContentProps) {
         color="teal.400"
         letterSpacing="wide"
       >
-        Table of Contents
+        תוכן העניינים
       </Text>
       <OrderedList spacing={1} ml="0" mt="4" styleType="none">
         {headings.map(({ id, text, level }) => (

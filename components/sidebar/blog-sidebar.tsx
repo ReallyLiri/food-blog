@@ -19,6 +19,7 @@ import {
   ROUTE_OVERVIEW_SEPARATOR,
   routeBlogCategory,
 } from "../../layout/routes";
+import { ALL_LABEL } from "../../utils/const";
 
 type MainNavLinkProps = {
   href: string;
@@ -70,9 +71,10 @@ const MainNavLink = ({ href, icon, children }: MainNavLinkProps) => {
   );
 };
 
-export const mainNavLinks = sortBy(getPostsCategoriesGroup(), (_) =>
+export const mainNavLinks = sortBy(getPostsCategoriesGroup(), (_) => [
+  _.category !== ALL_LABEL,
   _.category.toLocaleLowerCase(),
-).map((category) => ({
+]).map((category) => ({
   icon: <CalendarIcon />,
   href: routeBlogCategory(category.category.toLocaleLowerCase()),
   label: category.category,

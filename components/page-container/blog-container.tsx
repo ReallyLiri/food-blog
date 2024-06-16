@@ -122,15 +122,15 @@ function BlogPageContainer(props: BlogContainerProps) {
                             spacing={8}
                           >
                             <HStack spacing={4}>
-                              <Text>Categories：</Text>
+                              <Text>קטגוריות:</Text>
                               <BlogTags tags={categories} color="teal" />
                             </HStack>
                             <HStack spacing={4}>
-                              <Text>Published:</Text> <Tag>{date}</Tag>
+                              <Text>התפרסם:</Text> <Tag>{date}</Tag>
                             </HStack>
                           </HStack>
                           <HStack>
-                            <Text>Tags：</Text>
+                            <Text>תגיות:</Text>
                             <BlogTags tags={tags} color="orange" />
                           </HStack>
                         </VStack>

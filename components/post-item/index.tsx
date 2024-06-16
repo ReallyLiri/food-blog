@@ -1,4 +1,4 @@
-import { Heading, Text, Flex, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { Flex, Heading, LinkBox, LinkOverlay, Text } from "@chakra-ui/react";
 import React from "react";
 import NextLink from "next/link";
 
@@ -28,7 +28,7 @@ const ArticleItem: React.FC<Props> = ({
             <LinkOverlay>{title}</LinkOverlay>
           </NextLink>
         </Heading>
-        <BlogTags tags={tags} />
+        <BlogTags tags={tags} color="orange" />
       </LinkBox>
       <Text as="samp" display={{ base: "none", md: "block" }}>
         {publishDate}

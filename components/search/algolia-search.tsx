@@ -70,9 +70,9 @@ export const SearchButton = React.forwardRef(function SearchButton(
       {...props}
     >
       <SearchIcon />
-      <HStack w="full" ml="3" spacing="4px">
+      <HStack w="full" mr="3" spacing="4px">
         <Text textAlign="left" flex="1">
-          Search
+          חיפוש
         </Text>
         <HStack spacing="4px">
           <Kbd rounded="2px">

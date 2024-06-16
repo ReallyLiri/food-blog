@@ -36,7 +36,7 @@ const About = () => {
             }}
             userSelect="none"
           >
-            Hello,{" "}
+            שלום וברוכים הבאים{" "}
             <Text
               as={"span"}
               display={{
@@ -47,12 +47,12 @@ const About = () => {
               bgGradient="linear(to-r, green.400,purple.500)"
               fontWeight="extrabold"
             >
-              fellow traveler
+              למסע
             </Text>{" "}
-            and welcome.
+            אל היעד
           </Heading>
           <Text color={"gray.500"} maxW={"3xl"}>
-            This is some about text!
+            זהו טקסט
           </Text>
           <Stack spacing={6} direction={"row"}>
             <Button
@@ -69,12 +69,13 @@ const About = () => {
               justifyContent="center"
               cursor="pointer"
             >
-              {"To the blog"}
-              <Icon boxSize={4} ml={1} viewBox="0 0 20 20" fill="currentColor">
+              {"אל הבלוג"}
+              <Icon boxSize={4} mr={1} viewBox="0 0 20 20" fill="currentColor">
                 <path
                   fillRule="evenodd"
                   d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
                   clipRule="evenodd"
+                  transform="rotate(180deg) translate(-18px, -18px)"
                 />
               </Icon>
             </Button>

@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import React from "react";
+
 interface Props extends SimpleGridProps {
   previous: {
     title: string;
@@ -32,8 +33,8 @@ export default function BlogPagination({ previous, next, ...rest }: Props) {
         <NextLink href={previous.path} passHref>
           <Box as="a" rel="previous" flex="1" textAlign="start">
             <HStack spacing="1">
-              <ChevronLeftIcon fontSize="1.2em" />
-              <span>Previous</span>
+              <ChevronRightIcon fontSize="1.2em" />
+              <span>הקודם</span>
             </HStack>
             <Box
               color="teal.400"
@@ -60,8 +61,8 @@ export default function BlogPagination({ previous, next, ...rest }: Props) {
         <NextLink href={next.path} passHref>
           <Box as="a" rel="next" flex="1" textAlign="end">
             <HStack spacing="1" justify="flex-end">
-              <span>Next</span>
-              <ChevronRightIcon fontSize="1.2em" />
+              <span>הבא</span>
+              <ChevronLeftIcon fontSize="1.2em" />
             </HStack>
             <Box
               color="teal.400"

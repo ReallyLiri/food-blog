@@ -23,7 +23,7 @@ export default function SmallWithLogoLeft() {
         align={{ base: "center", md: "center" }}
       >
         <Text textAlign="center" width="100%">
-          ~ Food Blog ~
+          בלוג האוכל של ליר ומיש
         </Text>
       </Container>
     </Box>

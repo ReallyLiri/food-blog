@@ -8,12 +8,13 @@ import { mainNavLinks } from "@/components/sidebar/blog-sidebar";
 import BaseLayout from "layout/base-layout";
 import { allCoreContent } from "utils/contentlayer";
 import {
-  PostsListPage,
-  POSTS_PER_PAGE,
   allSortedBlogPosts,
+  POSTS_PER_PAGE,
   postsCategoriesGroup,
+  PostsListPage,
 } from "./index";
 import { type Blog } from "contentlayer/generated";
+import { ALL_LABEL } from "../../../../utils/const";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postsCategoriesGroup.reduce((paths, categoryObj) => {
@@ -39,7 +40,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } = context;
 
   const posts =
-    category === "all"
+    category === ALL_LABEL
       ? allSortedBlogPosts
       : allSortedBlogPosts.reduce((posts: Blog[], post) => {
           post.slug.startsWith(category as string) && posts.push(post);

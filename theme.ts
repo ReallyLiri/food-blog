@@ -84,11 +84,6 @@ const customTheme = extendTheme({
       "& + h3": {
         mt: "1.5rem",
       },
-      "&::before": {
-        content: '"✒️"',
-        fontSize: "1.25rem",
-        mr: "2px",
-      },
     },
     h3: {
       mt: "2.5rem",

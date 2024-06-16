@@ -2,12 +2,12 @@ import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Center,
+  chakra,
   Flex,
   Modal,
   ModalBody,
   ModalContent,
   ModalOverlay,
-  chakra,
   useDisclosure,
   useEventListener,
   useUpdateEffect,

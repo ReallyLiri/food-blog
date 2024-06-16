@@ -53,7 +53,7 @@ interface INavItem {
 
 const DeskTopNavItems: INavItem[] = [
   {
-    label: "Blog",
+    label: "בלוג",
     href: ROUTE_BLOG,
     activeUnderLine: {
       w: "38",
@@ -63,7 +63,7 @@ const DeskTopNavItems: INavItem[] = [
     },
   },
   {
-    label: "About",
+    label: "אודות",
     href: ROUTE_ABOUT,
     activeUnderLine: {
       w: "58",
@@ -76,11 +76,11 @@ const DeskTopNavItems: INavItem[] = [
 
 const MobilNavItems: INavItem[] = [
   {
-    label: "Blog",
+    label: "בלוג",
     children: mainNavLinks,
   },
   {
-    label: "About",
+    label: "אודות",
     href: ROUTE_ABOUT,
   },
 ];
@@ -215,10 +215,10 @@ const DesktopSubNav = ({ label, href, subLabel }: INavItem) => {
 const ActiveUnderLine = memo(
   ({ underLine }: { underLine: INavItem["activeUnderLine"] }) => {
     const dropAnimation = keyframes`
-    100% {
-      stroke-dashoffset: 0;
-    }
-  `;
+            100% {
+                stroke-dashoffset: 0;
+            }
+        `;
 
     const MySvg = styled.svg({
       position: "absolute",
@@ -313,11 +313,11 @@ const Title = (props: TextProps) => {
       _dark={{ color: "violet" }}
       {...props}
     >
-      Thyme{" "}
+      תימין{" "}
       <Text color="teal.500" as="span">
         &
       </Text>{" "}
-      Again
+      לימונית
     </Text>
   );
 };
@@ -355,7 +355,7 @@ export default function Header(props: HTMLChakraProps<"header">) {
           {/* Mobile hamburger menu */}
           <Flex
             flex={{ base: 1, md: "auto" }}
-            ml={{ base: -2 }}
+            mr={{ base: -2 }}
             display={{ base: "flex", md: "none" }}
             alignItems="center"
             gap={2}

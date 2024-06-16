@@ -1,9 +1,9 @@
 import NextDocument, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
   NextScript,
-  DocumentContext,
 } from "next/document";
 import { ColorModeScript } from "@chakra-ui/react";
 import React from "react";
@@ -12,9 +12,10 @@ class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
     return NextDocument.getInitialProps(ctx);
   }
+
   render() {
     return (
-      <Html lang="zh">
+      <Html dir="rtl" lang="he">
         <Head>
           <script
             defer

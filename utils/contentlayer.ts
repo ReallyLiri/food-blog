@@ -1,5 +1,6 @@
 import type { Blog, DocumentTypes } from "contentlayer/generated";
 import { allBlogs } from "contentlayer/generated";
+import { ALL_LABEL } from "./const";
 
 export function dateSortDesc(a: string, b: string) {
   if (a > b) return -1;
@@ -49,6 +50,6 @@ export function getPostsCategoriesGroup() {
     });
     return categories;
   }, []);
-  categories.push({ category: "All", total: allBlogs.length });
+  categories.push({ category: ALL_LABEL, total: allBlogs.length });
   return categories;
 }
