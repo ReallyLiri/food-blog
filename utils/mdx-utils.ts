@@ -7,7 +7,7 @@ export function getTableOfContents(mdxContent: string) {
   // @ts-ignore
   const headings = [...mdxContent.matchAll(regexp)];
   let tableOfContents = [];
-
+  
   if (headings.length) {
     tableOfContents = headings.map((heading) => {
       const headingText = heading[2].trim();
@@ -21,6 +21,8 @@ export function getTableOfContents(mdxContent: string) {
       };
     });
   }
+
+  console.error(tableOfContents)
 
   return tableOfContents;
 }
