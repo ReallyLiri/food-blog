@@ -76,15 +76,30 @@ function BlogPageContainer(props: BlogContainerProps) {
       {isPostDetail && (
         <ReadingIndicator progressViewTargetRef={progressViewTargetRef} />
       )}
-      <Box w="100vw" maxW="8xl" mx="auto">
+      <Box w="100vw" maxW="6xl" mx="auto">
         <Box display={{ md: "flex" }}>
           <Sidebar />
           <Box flex="1" minW="0" mb={{ base: "8", md: "12" }}>
+            <Box w="full" mb="2">
+              <Box
+                as="img"
+                src="/img/banner/banner-lim-cut.png"
+                alt="Blog Banner"
+                w="100%"
+                maxH="320px"
+                objectFit="cover"
+                mx="auto"
+                display="block"
+                borderBottomLeftRadius="lg"
+                borderBottomRightRadius="lg"
+              />
+            </Box>
             <Box
               id="content"
               mx="auto"
               minH="76vh"
               ref={isPostDetail ? progressViewTargetRef : null}
+              w="100%"
             >
               <Flex>
                 <Box
@@ -93,7 +108,7 @@ function BlogPageContainer(props: BlogContainerProps) {
                   px={{ base: "4", sm: "6", xl: "8" }}
                   pt={{ base: "2", sm: "4", md: "8", xl: "10" }}
                 >
-                  <PageTransition style={{ maxWidth: "48rem" }}>
+                  <PageTransition>
                     <Box
                       minH="20"
                       w="full"
@@ -146,10 +161,13 @@ function BlogPageContainer(props: BlogContainerProps) {
                     </Box>
                   </PageTransition>
                 </Box>
-                <TableOfContent
-                  visibility={headings.length === 0 ? "hidden" : "initial"}
+                {
+                  headings.length > 0 && (
+                    <TableOfContent
                   headings={headings}
                 />
+                  )
+                }
               </Flex>
             </Box>
           </Box>
