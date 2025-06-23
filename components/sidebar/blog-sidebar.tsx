@@ -51,6 +51,7 @@ const MainNavLink = ({ href, icon, children }: MainNavLinkProps) => {
         transitionDuration="200ms"
         fontWeight={active ? "extrabold" : "normal"}
         color={active ? "teal.500" : linkColor}
+        className="nav-link-text"
         _hover={{ color: active ? undefined : "teal.500" }}
       >
         <Center
@@ -87,10 +88,15 @@ export const MainNavLinkGroup = (props: ListProps) => {
       {mainNavLinks.map((item) => (
         <ListItem
           key={item.label}
-          padding="1"
+          padding="2"
           borderRadius={4}
-          _hover={{
-            bgColor: "teal.50",
+          sx={{
+            '&:hover': {
+              bgColor: 'teal.50',
+              '& .nav-link-text': {
+                color: 'teal.500'
+              }
+            }
           }}
         >
           <MainNavLink icon={item.icon} href={item.href} label={item.label}>

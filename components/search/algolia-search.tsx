@@ -71,7 +71,7 @@ export const SearchButton = React.forwardRef(function SearchButton(
     >
       <SearchIcon />
       <HStack w="full" mr="3" spacing="4px">
-        <Text textAlign="left" flex="1">
+        <Text textAlign="left" flex="1" ml="3">
           חיפוש
         </Text>
         <HStack spacing="4px">
