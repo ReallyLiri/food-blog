@@ -29,7 +29,7 @@ type MainNavLinkProps = {
 };
 
 export const isMainNavLinkActive = (href: string, path: string) => {
-  const [_, category] = path.split("/").slice(1);
+  const [, category] = path.split("/").slice(1);
   const isMain = path.includes(ROUTE_OVERVIEW_SEPARATOR)
     ? path.includes(href)
     : href.includes(routeBlogCategory(category));
@@ -72,9 +72,9 @@ const MainNavLink = ({ href, icon, children }: MainNavLinkProps) => {
   );
 };
 
-export const mainNavLinks = sortBy(getPostsCategoriesGroup(), (_) => [
-  _.category !== ALL_LABEL,
-  _.category.toLocaleLowerCase(),
+export const mainNavLinks = sortBy(getPostsCategoriesGroup(), (item) => [
+  item.category !== ALL_LABEL,
+  item.category.toLocaleLowerCase(),
 ]).map((category) => ({
   icon: <CalendarIcon />,
   href: routeBlogCategory(category.category.toLocaleLowerCase()),

@@ -4,5 +4,5 @@ import rtl from 'stylis-plugin-rtl'
 
 export function RtlProvider({ children }) {
     const cache = createCache( { key: 'css-he', stylisPlugins: [rtl] })
-    return <CacheProvider value={cache} children={children} />
+    return <CacheProvider value={cache}>{children}</CacheProvider>
 }
