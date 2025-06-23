@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
   VStack,
+  Box,
 } from "@chakra-ui/react";
 import BaseLayout from "layout/base-layout";
 import { ROUTE_BLOG } from "../../layout/routes";
@@ -54,6 +55,17 @@ const About = () => {
           <Text color={"gray.500"} maxW={"3xl"}>
             זהו טקסט
           </Text>
+          <Box
+            as="img"
+            src="/img/banner/banner-lim.png"
+            alt="Blog Banner"
+            w="100%"
+            maxH="50vh"
+            objectFit="contain"
+            borderBottomLeftRadius="lg"
+            borderBottomRightRadius="lg"
+            mb={6}
+          />
           <Stack spacing={6} direction={"row"}>
             <Button
               px={6}
